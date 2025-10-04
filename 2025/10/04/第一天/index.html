@@ -35,12 +35,12 @@
 
   
   
-    <meta name="description" content="1.对任意给定的$\beta(t)\in L^q[a,b]$， f(x)&#x3D;\int_a^b x(t)\beta(t)\mathrm{d}t,\forall x\in L^p[a,b]是$L^p[a,b]$上的连续线性泛函，并且$||f||&#x3D;||\beta||_q$.  $\textbf{证明}$.一方面， |f(x)|&#x3D;\left|\int_a^b x(t)\beta(t)\mathrm{d}t">
+    <meta name="description" content="1.对任意给定的$\beta(t)\in L^q[a,b]$， $$f(x)&#x3D;\int_a^b x(t)\beta(t)\mathrm{d}t,\forall x\in L^p[a,b]$$ 是$L^p[a,b]$上的连续线性泛函，并且$||f||&#x3D;||\beta||_q$.  $\textbf{证明}$.一方面， $$|f(x)|&#x3D;\left|\int_a^b x(t)\beta(t)\mat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第一天">
 <meta property="og:url" content="http://example.com/2025/10/04/%E7%AC%AC%E4%B8%80%E5%A4%A9/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1.对任意给定的$\beta(t)\in L^q[a,b]$， f(x)&#x3D;\int_a^b x(t)\beta(t)\mathrm{d}t,\forall x\in L^p[a,b]是$L^p[a,b]$上的连续线性泛函，并且$||f||&#x3D;||\beta||_q$.  $\textbf{证明}$.一方面， |f(x)|&#x3D;\left|\int_a^b x(t)\beta(t)\mathrm{d}t">
+<meta property="og:description" content="1.对任意给定的$\beta(t)\in L^q[a,b]$， $$f(x)&#x3D;\int_a^b x(t)\beta(t)\mathrm{d}t,\forall x\in L^p[a,b]$$ 是$L^p[a,b]$上的连续线性泛函，并且$||f||&#x3D;||\beta||_q$.  $\textbf{证明}$.一方面， $$|f(x)|&#x3D;\left|\int_a^b x(t)\beta(t)\mat">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://files.mdnice.com/user/9716/152cd43e-59d3-4c00-a389-5d2295fde286.JPG">
 <meta property="og:image" content="https://files.mdnice.com/user/9716/6a3a29f5-e303-4c83-a7b2-289ade2810b6.JPG">
@@ -352,32 +352,42 @@
       
       
         <blockquote>
-<p>1.对任意给定的$\beta(t)\in L^q[a,b]$，</p>
-<script type="math/tex; mode=display">f(x)=\int_a^b x(t)\beta(t)\mathrm{d}t,\forall x\in L^p[a,b]</script><p>是$L^p[a,b]$上的连续线性泛函，并且$||f||=||\beta||_q$.</p>
+<p>1.对任意给定的$\beta(t)\in L^q[a,b]$，<br>
+$$f(x)=\int_a^b x(t)\beta(t)\mathrm{d}t,\forall x\in L^p[a,b]$$<br>
+是$L^p[a,b]$上的连续线性泛函，并且$||f||=||\beta||_q$.</p>
 </blockquote>
-<p>$\textbf{证明}$.一方面，</p>
-<script type="math/tex; mode=display">|f(x)|=\left|\int_a^b x(t)\beta(t)\mathrm{d}t\right|\leq ||x||_p||\beta||_q</script><p>即</p>
-<script type="math/tex; mode=display">||f||\leq ||\beta||_q</script><p>另一方面，取$x_1(t)=|\beta(t)|^{q-1}\mathrm{sgn}\beta(t)\in L^p$，则</p>
-<script type="math/tex; mode=display">|x_1(t)|^p=|\beta(t)|^{(q-1)p}=|\beta(t)|^q</script><script type="math/tex; mode=display">\Rightarrow||x_1(t)||_p^p=\int_a^b|\beta(t)|^q\mathrm{d}t=||\beta||_q^q</script><script type="math/tex; mode=display">\Rightarrow||x_1||_p=||\beta||_q^{q/p}</script><p>于是</p>
-<script type="math/tex; mode=display">\begin{aligned}
-                                            ||f(x)||&\geq \int_a^b |\beta(t)|^{q}\mathrm{d}t=||\beta||_q^q=\left(||\beta||_q^{q/p}\right)^p\\
-                                            &=||x||_p^p=||x||_p\cdot ||x||_p^{p-1}=||x||_p\cdot ||\beta||_q
-                                            \end{aligned}</script><p>因此，$||f||\geq ||\beta||_q$.</p>
+<p>$\textbf{证明}$.一方面，<br>
+$$|f(x)|=\left|\int_a^b x(t)\beta(t)\mathrm{d}t\right|\leq ||x||_p||\beta||_q$$<br>
+即<br>
+$$||f||\leq ||\beta||_q$$<br>
+另一方面，取$x_1(t)=|\beta(t)|^{q-1}\mathrm{sgn}\beta(t)\in L^p$，则<br>
+$$|x_1(t)|<sup>p=|\beta(t)|</sup>{(q-1)p}=|\beta(t)|^q$$<br>
+$$\Rightarrow||x_1(t)||_p<sup>p=\int_a</sup>b|\beta(t)|<sup>q\mathrm{d}t=||\beta||_q</sup>q$$<br>
+$$\Rightarrow||x_1||_p=||\beta||_q^{q/p}$$<br>
+于是<br>
+$$\begin{aligned}<br>
+||f(x)||&amp;\geq \int_a^b |\beta(t)|<sup>{q}\mathrm{d}t=||\beta||_q</sup>q=\left(||\beta||_q<sup>{q/p}\right)</sup>p\<br>
+&amp;=||x||_p^p=||x||_p\cdot ||x||_p^{p-1}=||x||_p\cdot ||\beta||_q<br>
+\end{aligned}$$<br>
+因此，$||f||\geq ||\beta||_q$.</p>
 <p>综上，$||f||=||\beta||_q$.</p>
 <p>$\color{red}{思考}$:那么$f$是什么范数?</p>
 <p>$f$是$q$范数.</p>
 <blockquote>
 <p>2.证明$L^p(1\leq p\leq\infty)$是一个$\mathrm{Banach}$空间.</p>
 </blockquote>
-<p>$\textbf{证明}$.见$\mathrm{Royden}$实分析:<br><img src="https://files.mdnice.com/user/9716/152cd43e-59d3-4c00-a389-5d2295fde286.JPG" alt=""></p>
+<p>$\textbf{证明}$.见$\mathrm{Royden}$实分析:<br>
+<img src="https://files.mdnice.com/user/9716/152cd43e-59d3-4c00-a389-5d2295fde286.JPG" alt=""></p>
 <p><img src="https://files.mdnice.com/user/9716/6a3a29f5-e303-4c83-a7b2-289ade2810b6.JPG" alt=""></p>
 <p><img src="https://files.mdnice.com/user/9716/29e702e8-58fd-405d-ac1c-b6abb09518af.JPG" alt=""></p>
 <blockquote>
-<p>3.证明$\mathrm{Lebesgue}$微分定理:如果$f\in L_{loc}^1(\mathbb{R}^n)$，那么</p>
-<script type="math/tex; mode=display">\lim_{r\to 0^+}\frac{1}{m(B_r(x))}\int_{B_r(x)}|f(y)-f(x)|\mathrm{d}y=0</script><p>对$x\in \mathbb{R}^n$逐点a.e.</p>
+<p>3.证明$\mathrm{Lebesgue}$微分定理:如果$f\in L_{loc}<sup>1(\mathbb{R}</sup>n)$，那么<br>
+$$\lim_{r\to 0^+}\frac{1}{m(B_r(x))}\int_{B_r(x)}|f(y)-f(x)|\mathrm{d}y=0$$<br>
+对$x\in \mathbb{R}^n$逐点a.e.</p>
 </blockquote>
-<p>$\textbf{证明}$.由$f$的连续性，存在一个$\delta_0&gt;0$，使得当$|y-x|&lt;\delta_0$时，有$|f(y)-f(x)|&lt;\varepsilon$.对所有的$r&lt;\delta_0$，我们有</p>
-<script type="math/tex; mode=display">\frac{1}{m(B_r(x))}\int_{B_r(x)}|f(y)-f(x)|\mathrm{d}y\leq \frac{1}{m(B_r(x))}\int_{B_r(x)}\varepsilon\mathrm{d}x=\varepsilon</script>
+<p>$\textbf{证明}$.由$f$的连续性，存在一个$\delta_0&gt;0$，使得当$|y-x|&lt;\delta_0$时，有$|f(y)-f(x)|&lt;\varepsilon$.对所有的$r&lt;\delta_0$，我们有<br>
+$$\frac{1}{m(B_r(x))}\int_{B_r(x)}|f(y)-f(x)|\mathrm{d}y\leq \frac{1}{m(B_r(x))}\int_{B_r(x)}\varepsilon\mathrm{d}x=\varepsilon$$</p>
+
       
     </div>
     <footer class="article-footer">
@@ -455,10 +465,10 @@
     
       <div>
         <span class="icon-brush"></span>
-        875
+        772
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
-        00:06
+        00:05
       </div>
     
     
@@ -651,7 +661,7 @@
           url: "http://example.com/2025/10/04/%E7%AC%AC%E4%B8%80%E5%A4%A9/",
           excerpt: "",
           description: "",
-          stripContent: " 1.对任意给定的$\beta(t)\in L^q[a,b]$， f(x)=\int_a^b x(t)\beta(t)\mathrm{d}t,\forall x\in L^p[a,b]是$L^p[a,b]$上的连续线性泛函，并且$||f||=||\beta||_q$.  $\textbf{证明}$.一方面， |f(x)|=\left|\int_a^b x(t)\beta(t)\mathrm{d}t\right|\leq ||x||_p||\beta||_q即 ||f||\leq ||\beta|",
+          stripContent: " 1.对任意给定的$\beta(t)\in L^q[a,b]$， $$f(x)=\int_a^b x(t)\beta(t)\mathrm{d}t,\forall x\in L^p[a,b]$$ 是$L^p[a,b]$上的连续线性泛函，并且$||f||=||\beta||_q$.  $\textbf{证明}$.一方面， $$|f(x)|=\left|\int_a^b x(t)\beta(t)\mathrm{d}t\right|\leq ||x||_p||\beta||_q$$ 即 $$||f||\",
           date: "Sat Oct 04 2025 16:08:38 GMT+0800",
           updated: "Sat Oct 04 2025 16:12:10 GMT+0800",
           cover: "/images/banner.webp",
