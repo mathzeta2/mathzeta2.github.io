@@ -35,12 +35,12 @@
 
   
   
-    <meta name="description" content="设曲线$L$表示单位圆$x^2+y^2&#x3D;1$的正向，求下列曲线积分 $$I&#x3D;\int\limits_{L}\frac{\mathrm{e}^y}{x^2+y^2}\left[(x\sin x+y\cos x)\mathrm{d}x+(y\sin x-x\cos x)\mathrm{d}y\right]$$  $\textbf{解}$:做一个小圆$C:x^2+y^2&#x3D;\varepsilon^2$方">
+    <meta name="description" content="设曲线$L$表示单位圆$x^2+y^2&#x3D;1$的正向，求下列曲线积分$$I&#x3D;\int\limits_{L}\frac{\mathrm{e}^y}{x^2+y^2}\left[(x\sin x+y\cos x)\mathrm{d}x+(y\sin x-x\cos x)\mathrm{d}y\right]$$  $\textbf{解}$:做一个小圆$C:x^2+y^2&#x3D;\varepsilon^2$方向">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一道Green公式的问题">
 <meta property="og:url" content="http://example.com/2025/10/06/%E4%B8%80%E9%81%93Green%E5%85%AC%E5%BC%8F%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="zeta2的博客">
-<meta property="og:description" content="设曲线$L$表示单位圆$x^2+y^2&#x3D;1$的正向，求下列曲线积分 $$I&#x3D;\int\limits_{L}\frac{\mathrm{e}^y}{x^2+y^2}\left[(x\sin x+y\cos x)\mathrm{d}x+(y\sin x-x\cos x)\mathrm{d}y\right]$$  $\textbf{解}$:做一个小圆$C:x^2+y^2&#x3D;\varepsilon^2$方">
+<meta property="og:description" content="设曲线$L$表示单位圆$x^2+y^2&#x3D;1$的正向，求下列曲线积分$$I&#x3D;\int\limits_{L}\frac{\mathrm{e}^y}{x^2+y^2}\left[(x\sin x+y\cos x)\mathrm{d}x+(y\sin x-x\cos x)\mathrm{d}y\right]$$  $\textbf{解}$:做一个小圆$C:x^2+y^2&#x3D;\varepsilon^2$方向">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-10-06T15:03:39.000Z">
 <meta property="article:modified_time" content="2025-10-06T15:04:53.120Z">
@@ -374,42 +374,10 @@
       
       
         <blockquote>
-<p>设曲线$L$表示单位圆$x^2+y^2=1$的正向，求下列曲线积分<br>
-$$I=\int\limits_{L}\frac{\mathrm{e}^y}{x^2+y^2}\left[(x\sin x+y\cos x)\mathrm{d}x+(y\sin x-x\cos x)\mathrm{d}y\right]$$</p>
+<p>设曲线$L$表示单位圆$x^2+y^2=1$的正向，求下列曲线积分<br>$$I=\int\limits_{L}\frac{\mathrm{e}^y}{x^2+y^2}\left[(x\sin x+y\cos x)\mathrm{d}x+(y\sin x-x\cos x)\mathrm{d}y\right]$$</p>
 </blockquote>
-<p>$\textbf{解}$:做一个小圆$C:x^2+y^2=\varepsilon^2$方向逆时针，再对环形区域$D_{\varepsilon}$使用$\mathrm{Green}$公式<br>
-$$\int\limits_{L-C}P\mathrm{d}x+Q\mathrm{d}y=\iint\limits_{D_{\varepsilon}}\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)\mathrm{d}x\mathrm{d}y=0$$<br>
-于是<br>
-$$\begin{aligned}<br>
-&amp;\int\limits_{L}P\mathrm{d}x+Q\mathrm{d}y=\int\limits_{C}P\mathrm{d}x+Q\mathrm{d}y\<br>
-=&amp;\frac{1}{\varepsilon^2}\int\limits_{C}\mathrm{e}^y\left[(x\sin x+y\cos x)\mathrm{d}x+(y\sin x-x\cos x)\mathrm{d}y\right]\<br>
-=&amp;-\frac{2}{\varepsilon^2}\iint\limits_{D_C}\mathrm{e}^y\cos x\mathrm{d}x\mathrm{d}y=-\frac{2}{\varepsilon^2}\cdot \mathrm{e}^{y_0}\cos x_0\cdot \pi \varepsilon^2\<br>
-=&amp;-2\pi \mathrm{e}^{y_0}\cos x_0<br>
-\end{aligned}$$<br>
-最后令$\varepsilon\rightarrow 0^+$，得到<br>
-$$\lim_{\varepsilon\rightarrow 0^+}(-2\pi \mathrm{e}^{y_0}\cos x_0)=-2\pi \mathrm{e}^0\cos 0=-2\pi$$</p>
-<p>另解:将 $x^{2}+y^{2}=1$ 代入原积分, 再应用 $\mathrm{Green}$公式可知原积分等于<br>
-$$<br>
-I=\iint\limits_{D}-2 \mathrm{e}^{y} \cos x \mathrm{d} x \mathrm{d} y=-\int_{0}^{1} 2 r \mathrm{d} r \int_{0}^{2 \pi} \mathrm{e}^{r \cos \theta} \cos (r \sin \theta) \mathrm{d} \theta<br>
-$$<br>
-这里应用了极坐标变换 $x=r \sin \theta, y=r \cos \theta$.<br>
-考虑$\mathrm{Cauchy}$积分公式<br>
-$$<br>
-f(z)=\frac{1}{2 \pi i} \int\limits_{C} \frac{f(\zeta)}{\zeta-z} \mathrm{d} \zeta<br>
-$$<br>
-取 $z=0$ 并记圆周 $C: \zeta-z=r e^{i \theta}$, 代入公式得到<br>
-$$<br>
-f(0)=\frac{1}{2 \pi} \int_{0}^{2 \pi} f\left(r e^{i \theta}\right) \mathrm{d} \theta<br>
-$$<br>
-令函数 $f(z)=e^{z}$, 则 $f(0)=1$ 以及<br>
-$$<br>
-f\left(r e^{i \theta}\right)=\mathrm{e}^{r \mathrm{e}^{i \theta}}=\mathrm{e}^{r \cos \theta+i r \sin \theta}=\mathrm{e}^{r \cos \theta}[\cos (r \sin \theta)+i \sin (r \sin \theta)]<br>
-$$<br>
-代入$\mathrm{Cauchy}$积分公式得到（虚部积分为 $\mathbf{0}$ ）<br>
-$$<br>
-\int_{0}^{2 \pi} \mathrm{e}^{r \cos \theta} \cos (r \sin \theta) \mathrm{d} \theta=2 \pi f(0)=2 \pi<br>
-$$<br>
-故原积分 $I=-2 \pi$ 为所求.</p>
+<p>$\textbf{解}$:做一个小圆$C:x^2+y^2=\varepsilon^2$方向逆时针，再对环形区域$D_{\varepsilon}$使用$\mathrm{Green}$公式<br>$$\int\limits_{L-C}P\mathrm{d}x+Q\mathrm{d}y=\iint\limits_{D_{\varepsilon}}\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)\mathrm{d}x\mathrm{d}y=0$$<br>于是<br>$$\begin{aligned}<br>&amp;\int\limits_{L}P\mathrm{d}x+Q\mathrm{d}y=\int\limits_{C}P\mathrm{d}x+Q\mathrm{d}y\<br>=&amp;\frac{1}{\varepsilon^2}\int\limits_{C}\mathrm{e}^y\left[(x\sin x+y\cos x)\mathrm{d}x+(y\sin x-x\cos x)\mathrm{d}y\right]\<br>=&amp;-\frac{2}{\varepsilon^2}\iint\limits_{D_C}\mathrm{e}^y\cos x\mathrm{d}x\mathrm{d}y=-\frac{2}{\varepsilon^2}\cdot \mathrm{e}^{y_0}\cos x_0\cdot \pi \varepsilon^2\<br>=&amp;-2\pi \mathrm{e}^{y_0}\cos x_0<br>\end{aligned}$$<br>最后令$\varepsilon\rightarrow 0^+$，得到<br>$$\lim_{\varepsilon\rightarrow 0^+}(-2\pi \mathrm{e}^{y_0}\cos x_0)=-2\pi \mathrm{e}^0\cos 0=-2\pi$$</p>
+<p>另解:将 $x^{2}+y^{2}=1$ 代入原积分, 再应用 $\mathrm{Green}$公式可知原积分等于<br>$$<br>I=\iint\limits_{D}-2 \mathrm{e}^{y} \cos x \mathrm{d} x \mathrm{d} y=-\int_{0}^{1} 2 r \mathrm{d} r \int_{0}^{2 \pi} \mathrm{e}^{r \cos \theta} \cos (r \sin \theta) \mathrm{d} \theta<br>$$<br>这里应用了极坐标变换 $x=r \sin \theta, y=r \cos \theta$.<br>考虑$\mathrm{Cauchy}$积分公式<br>$$<br>f(z)=\frac{1}{2 \pi i} \int\limits_{C} \frac{f(\zeta)}{\zeta-z} \mathrm{d} \zeta<br>$$<br>取 $z=0$ 并记圆周 $C: \zeta-z=r e^{i \theta}$, 代入公式得到<br>$$<br>f(0)=\frac{1}{2 \pi} \int_{0}^{2 \pi} f\left(r e^{i \theta}\right) \mathrm{d} \theta<br>$$<br>令函数 $f(z)=e^{z}$, 则 $f(0)=1$ 以及<br>$$<br>f\left(r e^{i \theta}\right)=\mathrm{e}^{r \mathrm{e}^{i \theta}}=\mathrm{e}^{r \cos \theta+i r \sin \theta}=\mathrm{e}^{r \cos \theta}[\cos (r \sin \theta)+i \sin (r \sin \theta)]<br>$$<br>代入$\mathrm{Cauchy}$积分公式得到（虚部积分为 $\mathbf{0}$ ）<br>$$<br>\int_{0}^{2 \pi} \mathrm{e}^{r \cos \theta} \cos (r \sin \theta) \mathrm{d} \theta=2 \pi f(0)=2 \pi<br>$$<br>故原积分 $I=-2 \pi$ 为所求.</p>
 
       
     </div>
@@ -505,10 +473,10 @@ $$<br>
     
       <div>
         <span class="icon-brush"></span>
-        5k
+        5.1k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
-        00:26
+        00:27
       </div>
     
     
@@ -701,7 +669,7 @@ $$<br>
           url: "http://example.com/2025/10/06/%E4%B8%80%E9%81%93Green%E5%85%AC%E5%BC%8F%E7%9A%84%E9%97%AE%E9%A2%98/",
           excerpt: "",
           description: "",
-          stripContent: " 设曲线$L$表示单位圆$x^2+y^2=1$的正向，求下列曲线积分 $$I=\int\limits_{L}\frac{\mathrm{e}^y}{x^2+y^2}\left[(x\sin x+y\cos x)\mathrm{d}x+(y\sin x-x\cos x)\mathrm{d}y\right]$$  $\textbf{解}$:做一个小圆$C:x^2+y^2=\varepsilon^2$方向逆时针，再对环形区域$D_{\varepsilon}$使用$\mathrm{Green}$公式 $",
+          stripContent: " 设曲线$L$表示单位圆$x^2+y^2=1$的正向，求下列曲线积分$$I=\int\limits_{L}\frac{\mathrm{e}^y}{x^2+y^2}\left[(x\sin x+y\cos x)\mathrm{d}x+(y\sin x-x\cos x)\mathrm{d}y\right]$$  $\textbf{解}$:做一个小圆$C:x^2+y^2=\varepsilon^2$方向逆时针，再对环形区域$D_{\varepsilon}$使用$\mathrm{Green}$公式$$\",
           date: "Mon Oct 06 2025 23:03:39 GMT+0800",
           updated: "Mon Oct 06 2025 23:04:53 GMT+0800",
           cover: "/images/banner.webp",
