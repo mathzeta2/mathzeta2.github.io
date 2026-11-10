@@ -63,6 +63,14 @@ body {font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaH
 .article-entry h2 {font-size: 1.5em; padding-bottom: .5em; margin-top: 1.8em;}
 .article-entry .katex {font-size: 1.08em;}
 .article-entry .katex-display {overflow-x: auto; overflow-y: hidden; padding: 12px 2px; max-width: 100%;}
+/* Keep KaTeX's formula fragments together; only the equation number is positioned separately. */
+.katex {width: auto;}
+.katex .katex-html {padding: 0;}
+.katex .katex-html .base {margin: 0;}
+.katex-display > .katex {width: max-content; min-width: 100%; box-sizing: border-box;}
+.katex-display > .katex > .katex-html {display: block !important;}
+.katex-display > .katex > .katex-html:has(> .tag) {padding-inline: 3em; box-sizing: border-box;}
+.katex-display > .katex > .katex-html > .tag {position: absolute !important; right: .5em; float: none; margin-left: 0;}
 .article-entry pre,.article-entry table {max-width: 100%; overflow-x: auto;}
 .article-date-link,.article-category-link {box-shadow: none; font-size: 12px; padding: 8px 12px;}
 .article-meta {padding-top: 28px;}
