@@ -1,0 +1,386 @@
+% Compile with XeLaTeX; TeX Live with ctex and Fandol fonts required.
+\documentclass[UTF8,a4paper,11pt,fontset=fandol]{ctexart}
+\usepackage[margin=23mm,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage[unicode,hidelinks]{hyperref}
+\definecolor{accent}{HTML}{315B75}
+\ctexset{section={format=\Large\bfseries\color{accent}},subsection={format=\large\bfseries}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setlength{\emergencystretch}{2em}
+\allowdisplaybreaks[2]
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 高等数学 A（上）期中试题与详解}
+\fancyhead[R]{\small 2025--2026 学年}
+\fancyfoot[C]{\thepage}
+\title{\textbf{从极限到中值定理}\\[5pt]\Large 2025--2026 高等数学 A（上）期中试题与详解}
+\author{整理：zeta2}
+\date{2026 年 11 月 10 日}
+\begin{document}
+\maketitle
+本文依据北京邮电大学 2025—2026 学年第一学期《高等数学 A（上）》期中试题及配套答案整理，保留原题编号与分值，并补充计算过程和证明细节。
+
+\textbf{整理：zeta2}
+
+试卷满分 100 分，包括填空题、选择题、极限计算、参数方程求导及中值定理证明。
+
+
+
+\section*{一、填空题（共 30 分，每小题 5 分）}
+
+\subsection*{1. 反三角函数的定义域}
+
+\textbf{题目：} 已知 $f(x)=\arccos(1-x^2)$，求定义域。
+
+\textbf{解：} 反余弦函数要求自变量属于 $[-1,1]$，因此
+\[
+-1\le 1-x^2\le 1
+\quad\Longleftrightarrow\quad 0\le x^2\le 2.
+\]
+故定义域为
+\[
+\boxed{[-\sqrt{2},\sqrt{2}]}.
+\]
+
+\subsection*{2. 重要极限}
+
+\textbf{题目：} 求
+\[
+\lim_{x\to\infty}\left(\frac{1+x}{x}\right)^{2x}.
+\]
+
+\textbf{解：} 利用重要极限，得
+\[
+\lim_{x\to\infty}\left(1+\frac1x\right)^{2x}
+=\left[\lim_{x\to\infty}\left(1+\frac1x\right)^x\right]^2
+=\boxed{e^2}.
+\]
+
+\subsection*{3. 无穷小的阶}
+
+\textbf{题目：} 当 $x\to0$ 时，$\sin x-\tan x$ 与 $x^n$ 是同阶无穷小，求 $n$。
+
+\textbf{解：} 因为
+\[
+\sin x-\tan x
+=\frac{\sin x(\cos x-1)}{\cos x},
+\]
+所以
+\[
+\lim_{x\to0}\frac{\sin x-\tan x}{x^3}
+=\lim_{x\to0}\frac{\sin x}{x}
+\frac{\cos x-1}{x^2}\frac1{\cos x}
+=-\frac12.
+\]
+极限为有限非零常数，故 $\boxed{n=3}$。
+
+\subsection*{4. 复合函数求导}
+
+\textbf{题目：} 已知 $y=\arctan(x^2+1)$，求 $\left.\dfrac{\mathrm{d}y}{\mathrm{d}x}\right|_{x=0}$。
+
+\textbf{解：}
+\[
+y'=\frac{2x}{1+(x^2+1)^2},
+\qquad \boxed{y'(0)=0}.
+\]
+
+\subsection*{5. 对数求导法}
+
+\textbf{题目：} 设 $y=x^{\sin x}$，$x>0$，求 $y'$。
+
+\textbf{解：} 两边取对数，有 $\ln y=\sin x\ln x$。求导得
+\[
+\frac{y'}y=\cos x\ln x+\frac{\sin x}{x}.
+\]
+因此
+\[
+\boxed{y'=x^{\sin x}\left(\frac{\sin x}{x}+\cos x\ln x\right)}.
+\]
+
+\subsection*{6. 分段函数的可导性}
+
+\textbf{题目：} 函数
+\[
+f(x)=\begin{cases}
+ax^2+b,&x\ge1,\\
+x\cos\left(\dfrac{\pi x}{2}\right),&x<1
+\end{cases}
+\]
+在 $x=1$ 处可导，求 $a,b$。
+
+\textbf{解：} 可导必连续，故
+\[
+a+b=\lim_{x\to1^-}x\cos\left(\frac{\pi x}{2}\right)=0.
+\]
+在满足连续性的条件下，左右导数分别为
+\[
+f'_-(1)=\left[\cos\left(\frac{\pi x}{2}\right)
+-\frac{\pi x}{2}\sin\left(\frac{\pi x}{2}\right)\right]_{x=1}
+=-\frac\pi2,
+\qquad f'_+(1)=2a.
+\]
+令二者相等，得
+\[
+\boxed{a=-\frac\pi4,\qquad b=\frac\pi4}.
+\]
+
+\section*{二、选择题（共 30 分，每小题 5 分）}
+
+\subsection*{1. 幂指函数的极限}
+
+\textbf{题目：} 求 $\displaystyle\lim_{x\to0}(\cos^2x)^{1/x^2}$。
+
+A. $e^{-1/2}$；B. $1$；C. $e$；D. $e^{-1}$。
+
+\textbf{解：} 底数在零点附近为正。先计算对数的极限：
+\[
+\lim_{x\to0}\frac{\ln(\cos^2x)}{x^2}
+=\lim_{x\to0}\frac{\ln(1-\sin^2x)}{-\sin^2x}
+\frac{-\sin^2x}{x^2}=-1.
+\]
+所以原极限为 $e^{-1}$，选 \textbf{D}。
+
+\subsection*{2. 导数定义与复合增量}
+
+\textbf{题目：} 设 $f'(0)=4$，求
+\[
+\lim_{x\to0}\frac{f(3\sin x)-f(2\arctan x)}x.
+\]
+
+A. $\dfrac12$；B. $2$；C. $4$；D. $\dfrac14$。
+
+\textbf{解：} 由 $f$ 在零点可导，有
+\[
+f(u)=f(0)+4u+o(u)\qquad(u\to0).
+\]
+分别令 $u=3\sin x$ 和 $u=2\arctan x$，得
+\[
+f(3\sin x)-f(2\arctan x)
+=4(3\sin x-2\arctan x)+o(x).
+\]
+因此原极限为 $4(3-2)=4$，选 \textbf{C}。
+
+\subsection*{3. 间断点的分类}
+
+\textbf{题目：} 设
+\[
+f(x)=\frac{\sin x}{|\tan x|},
+\]
+判断 $x=0$ 是哪一类间断点。
+
+A. 可去间断点；B. 跳跃间断点；C. 第二类间断点；D. 无法判断。
+
+\textbf{解：} 注意分母中的绝对值。在零点的充分小去心邻域内，$\cos x>0$，故
+\[
+f(x)=\frac{\sin x}{|\sin x|}\cos x.
+\]
+于是
+\[
+\lim_{x\to0^-}f(x)=-1,\qquad
+\lim_{x\to0^+}f(x)=1.
+\]
+左右极限均存在但不相等，故为跳跃间断点，选 \textbf{B}。
+
+\subsection*{4. 函数增量的线性主部}
+
+\textbf{题目：} 设 $f$ 可导。当自变量在 $x=1$ 处取得增量 $\Delta x=0.1$ 时，相应函数增量 $\Delta y$ 的线性主部为 $0.5$，求 $f'(1)$。
+
+A. $1$；B. $0.1$；C. $5$；D. $0.5$。
+
+\textbf{解：} 线性主部为 $f'(1)\Delta x$，所以
+\[
+f'(1)\cdot0.1=0.5\quad\Longrightarrow\quad f'(1)=5.
+\]
+选 \textbf{C}。
+
+\subsection*{5. 隐函数求导}
+
+\textbf{题目：} 函数 $y=y(x)$ 由方程
+\[
+\ln(x^2+y)-x^3y-\sin x=0
+\]
+确定，求 $\left.\dfrac{\mathrm{d}y}{\mathrm{d}x}\right|_{x=0}$。
+
+A. $0$；B. $1$；C. $-1$；D. $\dfrac12$。
+
+\textbf{解：} 先代入 $x=0$，得到 $\ln y=0$，即 $y(0)=1$。对原方程两边求导：
+\[
+\frac{2x+y'}{x^2+y}-3x^2y-x^3y'-\cos x=0.
+\]
+再代入 $(x,y)=(0,1)$，得到 $y'(0)-1=0$，故选 \textbf{B}。
+
+\subsection*{6. 高阶导数}
+
+\textbf{题目：} 设 $f(x)=\ln(1-x)$，求 $f^{(2025)}(0)$。
+
+A. $-2024!$；B. $2023!$；C. $2024!$；D. $2025!$。
+
+\textbf{解：} 逐次求导可归纳得到
+\[
+f^{(n)}(x)=-\frac{(n-1)!}{(1-x)^n},\qquad n\ge1.
+\]
+所以 $f^{(2025)}(0)=-2024!$，选 \textbf{A}。
+
+\textbf{选择题答案汇总：} D、C、B、C、B、A。
+
+\section*{三、极限计算（15 分）}
+
+\subsection*{1. 三角函数之差的极限（7 分）}
+
+\textbf{题目：} 求
+\[
+\lim_{x\to0}\frac{\tan x-x}{4x^3}.
+\]
+
+\textbf{解：} 分子、分母均趋于零，使用洛必达法则：
+\[
+\begin{aligned}
+\lim_{x\to0}\frac{\tan x-x}{4x^3}
+&=\lim_{x\to0}\frac{\sec^2x-1}{12x^2}\\
+&=\lim_{x\to0}\frac{\sin^2x}{12x^2\cos^2x}\\
+&=\boxed{\frac1{12}}.
+\end{aligned}
+\]
+
+\subsection*{2. 幂平均的极限（8 分）}
+
+\textbf{题目：} 设 $a_1,a_2,\ldots,a_n>0$，求
+\[
+\lim_{x\to0}\left(\frac{a_1^x+a_2^x+\cdots+a_n^x}{n}\right)^{1/x}.
+\]
+
+\textbf{解：} 记
+\[
+A(x)=\frac1n\sum_{i=1}^n a_i^x.
+\]
+则 $A(x)>0$，且 $A(0)=1$。先求对数的极限，由洛必达法则，
+\[
+\begin{aligned}
+\lim_{x\to0}\frac{\ln A(x)}x
+&=\lim_{x\to0}\frac{A'(x)}{A(x)}\\
+&=\lim_{x\to0}\frac{\sum_{i=1}^n a_i^x\ln a_i}{\sum_{i=1}^n a_i^x}\\
+&=\frac1n\sum_{i=1}^n\ln a_i.
+\end{aligned}
+\]
+由指数函数的连续性，原极限为
+\[
+\boxed{\exp\left(\frac1n\sum_{i=1}^n\ln a_i\right)
+=\sqrt[n]{a_1a_2\cdots a_n}}.
+\]
+这一写法也涵盖所有 $a_i=1$ 的情形，无需额外除以 $A(x)-1$。
+
+\section*{四、参数方程求导（15 分）}
+
+\textbf{题目：} 设参数方程
+\[
+\begin{cases}
+x=e^t+t,\\
+e^t+e^y=2
+\end{cases}
+\]
+确定函数 $y=y(x)$，求 $x=1$ 处的切线、法线方程，以及 $\left.\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2}\right|_{x=1}$。
+
+\subsection*{1. 切线与法线（9 分）}
+
+由 $e^t+e^y=2$ 可得
+\[
+y=\ln(2-e^t),\qquad t<\ln2.
+\]
+又因为 $\dfrac{\mathrm{d}x}{\mathrm{d}t}=e^t+1>0$，$x$ 随 $t$ 严格递增。当 $x=1$ 时，唯一对应 $t=0$，进而 $y=0$。
+
+参数方程的一阶导数为
+\[
+\frac{\mathrm{d}y}{\mathrm{d}x}
+=\frac{\mathrm{d}y/\mathrm{d}t}{\mathrm{d}x/\mathrm{d}t}
+=-\frac{e^t}{(2-e^t)(e^t+1)}.
+\]
+因此在 $(1,0)$ 处，切线斜率为 $-\dfrac12$，法线斜率为 $2$。两条直线分别为
+\[
+\boxed{y=-\frac12(x-1)}\quad\text{（切线）},
+\]
+\[
+\boxed{y=2(x-1)}\quad\text{（法线）}.
+\]
+
+\subsection*{2. 二阶导数（6 分）}
+
+记
+\[
+p(t)=\frac{\mathrm{d}y}{\mathrm{d}x}
+=-\frac{e^t}{(2-e^t)(e^t+1)}.
+\]
+对 $t$ 求导，可整理为
+\[
+p'(t)=p(t)\left(1+\frac{e^t}{2-e^t}-\frac{e^t}{e^t+1}\right).
+\]
+于是
+\[
+p(0)=-\frac12,\qquad
+p'(0)=-\frac12\left(1+1-\frac12\right)=-\frac34.
+\]
+注意二阶导数还需除以 $x'(t)$：
+\[
+\frac{\mathrm{d}^2y}{\mathrm{d}x^2}
+=\frac{p'(t)}{x'(t)}.
+\]
+故
+\[
+\boxed{\left.\frac{\mathrm{d}^2y}{\mathrm{d}x^2}\right|_{x=1}
+=\frac{-3/4}{2}=-\frac38}.
+\]
+
+\section*{五、中值定理证明（10 分）}
+
+\textbf{题目：} 设 $f$ 在 $[0,\pi]$ 上连续，在 $(0,\pi)$ 内可导，且对任意 $x\in(0,\pi)$ 都有 $f'(x)\ne0$。证明下列结论。
+
+\subsection*{1. 拉格朗日中值定理（4 分）}
+
+\textbf{待证：} 存在 $c\in(0,\pi)$，使得
+\[
+\frac{f(\pi)-f(0)}\pi=f'(c).
+\]
+
+\textbf{证明：} 由题设，$f$ 满足闭区间 $[0,\pi]$ 上的拉格朗日中值定理条件。因此存在 $c\in(0,\pi)$，使得
+\[
+f(\pi)-f(0)=f'(c)(\pi-0).
+\]
+两边除以 $\pi$ 即得结论。
+
+\subsection*{2. 构造辅助函数与罗尔定理（6 分）}
+
+\textbf{待证：} 存在 $\xi\in(0,\pi)$，使得
+\[
+\frac{f(\xi)}{f'(\xi)}=-\tan\xi.
+\]
+
+\textbf{证明：} 令
+\[
+g(x)=f(x)\sin x.
+\]
+则 $g$ 在 $[0,\pi]$ 上连续，在 $(0,\pi)$ 内可导，并且
+\[
+g(0)=f(0)\sin0=0,\qquad g(\pi)=f(\pi)\sin\pi=0.
+\]
+由罗尔定理，存在 $\xi\in(0,\pi)$，使得
+\[
+g'(\xi)=f'(\xi)\sin\xi+f(\xi)\cos\xi=0.
+\]
+还需说明 $\cos\xi\ne0$。若 $\cos\xi=0$，则因 $\xi\in(0,\pi)$，必有 $\xi=\dfrac\pi2$。此时上式变为 $f'(\xi)=0$，与题设矛盾。
+
+故 $f'(\xi)\cos\xi\ne0$，可以将等式两边除以它，得到
+\[
+\boxed{\frac{f(\xi)}{f'(\xi)}=-\frac{\sin\xi}{\cos\xi}=-\tan\xi}.
+\]
+证毕。
+
+\section*{整理说明与资料}
+
+题目依据《25-26高数上-期中终稿.pdf》，答案依据《25-26高数上-期中答案.pdf》。本文为学习整理版；题目及参考答案来源于所附试卷资料，解题过程作了补充和排版整理。
+
+整理时保留了选择题第 3 题分母的绝对值，修正了参考答案中个别排版笔误，并补充了最后一题中 $\cos\xi\ne0$ 的论证。
+
+\end{document}
