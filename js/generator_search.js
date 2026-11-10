@@ -7,7 +7,7 @@
 
   searchInput.insertAdjacentHTML(
     "beforeend",
-    '<form id="search-form"><input type="text" id="search-text"></form>'
+    '<form id="search-form"><input type="text" id="search-text" aria-label="搜索文章" placeholder="搜索文章，按回车确认"></form>'
   );
   fetch("/search.json")
     .then((response) => {
@@ -21,7 +21,8 @@
         .off("submit")
         .on("submit", (event) => {
           event.preventDefault();
-          const inputText = _$("#search-text").value;
+          const inputText = _$("#search-text").value.trim();
+          currentPage = 1;
           searchResult.innerHTML = "";
           pagination.innerHTML = "";
           if (inputText) {

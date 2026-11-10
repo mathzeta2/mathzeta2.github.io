@@ -1,0 +1,97 @@
+/* zeta2 reading layer: independent of the upstream Reimu stylesheet. */
+:root {
+  --red-0: #854c45; --red-1: #94584f; --red-2: #a26358;
+  --red-3: #c29187; --red-4: #dfbdb5; --red-5: #f3e6e1;
+  --red-5-5: #faf4f0; --red-6: #faf5f2;
+  --color-background: #f6f4f0; --color-default: #3f4144;
+  --color-border: #e5dfd9; --color-wrap: #fffefa;
+  --color-header-background: rgba(255,254,250,.96);
+  --color-footer-background: #f6f4f0;
+  --color-red-6-shadow: rgba(126,84,68,.08);
+  --color-red-3-shadow: rgba(126,84,68,.12);
+  --shadow-card: 0 6px 24px rgba(40,32,24,.04);
+  --shadow-card-hover: 0 10px 28px rgba(40,32,24,.07);
+}
+[data-theme="dark"]:root {
+  --red-0: #e2aa98; --red-1: #e2aa98; --red-2: #e2aa98;
+  --red-3: #ae8176; --red-4: #88685f; --red-5: #392f2c;
+  --red-5-5: #302a28; --red-6: #302a28;
+  --color-background: #202224; --color-wrap: #292c2e;
+  --color-default: #d4d2ce; --color-border: #414344;
+  --color-header-background: rgba(32,34,36,.96);
+  --color-footer-background: #202224;
+  --color-mobile-nav-background: #292c2e;
+  --color-red-6-shadow: transparent; --color-red-3-shadow: transparent;
+}
+body {font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;}
+#header {min-height: 300px; height: 32vh; max-height: 390px;}
+#header img {height: 115%; object-position: center 42%;}
+#header-title {top: 53%; opacity: 1; filter: none; animation: none;}
+#logo {font-size: clamp(28px,3vw,42px); letter-spacing: .04em;}
+#logo h1 {line-height: 1.4;}
+#header-nav {box-shadow: 0 1px 0 var(--color-border); backdrop-filter: blur(16px);}
+#header-nav:hover {background: var(--color-header-background);}
+.main-nav-link {opacity: 1; font-weight: 500; padding: 19px 12px;}
+.main-nav-icon {display: none;}
+#content {max-width: 1240px; padding-top: 24px;}
+#main {min-width: 0;}
+.post-wrap {height: auto; min-height: 210px; margin-bottom: 22px; border: 1px solid var(--color-border); box-sizing: border-box; box-shadow: var(--shadow-card); overflow: hidden;}
+.post-wrapper:hover {transform: translateY(-2px);}
+.post-info {padding: 28px 32px;}
+.post-meta {justify-content: flex-start; gap: 18px; flex-wrap: wrap; margin: 0;}
+.post-meta > span {margin: 0; font-size: 12px; opacity: .8;}
+.post-meta > span > span {margin: 0 6px 0 0; font-size: 12px;}
+.post-title {white-space: normal; font-size: 25px; line-height: 1.5; padding: 13px 0 10px; letter-spacing: 0; color: var(--color-default);}
+.post-article {font-size: 15px; line-height: 1.9; opacity: .86;}
+.post-cover {width: 28%; min-height: 210px;}
+.post-cover.left,.post-cover.right {clip-path: none;}
+.post-link {z-index: 2;}
+.post-link:focus-visible {outline: 3px solid var(--red-1); outline-offset: -4px; border-radius: 12px;}
+.post-wrapper:has(.post-link:hover) .post-title {color: var(--color-link);}
+.sidebar-wrap,.article-inner,.archive-main {border: 1px solid var(--color-border); box-shadow: var(--shadow-card);}
+.sidebar-wrapper:hover {transform: none;}
+.sidebar-author img {box-shadow: none; border: 4px solid var(--color-background); margin-top: 30px;}
+.sidebar-author .sidebar-author-name {color: var(--color-default); font-size: 23px;}
+.sidebar-menu-link-wrap {border: 1px solid var(--color-border); border-radius: 7px; min-height: 40px;}
+.sidebar-menu-link-wrap:hover {border: 1px solid var(--red-2);}
+.sidebar-menu-icon {font-size: 17px;}
+.sidebar-menu-link-wrap.link-active {border: 1px solid var(--red-1); box-shadow: none; opacity: 1;}
+.sidebar-state {color: var(--color-default);}
+.sidebar-state-article,.sidebar-state-tag {border-color: var(--color-border);}
+.article-entry {font-size: 17px; padding: 6px 42px 24px; overflow-wrap: break-word;}
+.article-entry p,.article-entry li {line-height: 1.95;}
+.article-entry h2 {font-size: 1.5em; padding-bottom: .5em; margin-top: 1.8em;}
+.article-entry .katex {font-size: 1.08em;}
+.article-entry .katex-display {overflow-x: auto; overflow-y: hidden; padding: 12px 2px; max-width: 100%;}
+.article-entry pre,.article-entry table {max-width: 100%; overflow-x: auto;}
+.article-date-link,.article-category-link {box-shadow: none; font-size: 12px; padding: 8px 12px;}
+.article-meta {padding-top: 28px;}
+.hr-line {height: 1px; background: var(--color-border); filter: none; opacity: 1;}
+#footer {margin-top: 40px;}
+a:focus-visible,button:focus-visible {outline: 2px solid var(--red-1); outline-offset: 4px;}
+@media (max-width: 959px) {
+  #content {padding-top: 16px;}
+  #main {min-width: 100%;}
+}
+@media (max-width: 767px) {
+  #header {min-height: 240px; height: 30vh;}
+  #header-title {top: 56%;}
+  #logo {font-size: 28px;}
+  .post-wrap {height: auto; min-height: 0;}
+  .post-info {padding: 22px;}
+  .post-title {font-size: 21px;}
+  .post-meta {gap: 12px;}
+  .post-article {line-height: 1.8;}
+  .post-cover {width: 100%; height: 160px; min-height: 160px;}
+  .article-entry {font-size: 16px; padding: 0 20px 24px;}
+  .article-meta {padding: 20px 20px 0;}
+  .article-entry .katex {font-size: 1em;}
+}
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after {animation: none !important; transition: none !important; scroll-behavior: auto !important;}
+  #header-title {opacity: 1; filter: none;}
+}
+
+.sidebar-author img.lazyloaded {opacity: 1; filter: none; animation: none;}
+
+@media (max-width: 767px) { #live2d-widget {display: none !important;} }
