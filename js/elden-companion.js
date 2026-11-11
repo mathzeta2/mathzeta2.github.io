@@ -2,7 +2,7 @@
   const root=document.getElementById('elden-companion');
   if(!root || root.dataset.ready) return;
   root.dataset.ready='true';
-  const actor=root.querySelector('.ranni-actor'), speech=root.querySelector('.ranni-speech'), stage=root.querySelector('.ranni-stage'), restore=root.querySelector('.ranni-restore'), pupil=root.querySelector('.ranni-pupil');
+  const actor=root.querySelector('.ranni-actor'), speech=root.querySelector('.ranni-speech'), stage=root.querySelector('.ranni-stage'), restore=root.querySelector('.ranni-restore'), depth=root.querySelector('.ranni-depth');
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
   let speechTimer, motionTimer, drag=null, moved=false, phrase=0, frame=0;
   const lines=['褪色者，今天也来寻找知识了吗？','愿月光照亮你的证明。','休息片刻，再继续这段求知旅途吧。'];
@@ -29,5 +29,5 @@
   actor.addEventListener('pointerup',()=>drag=null);
   actor.addEventListener('pointercancel',()=>{drag=null;moved=false;});
   window.addEventListener('resize',()=>{if(root.style.left){const r=root.getBoundingClientRect();place(r.left,r.top);}});
-  if(!reduced)document.addEventListener('pointermove',e=>{if(frame||drag||stage.hidden)return;frame=requestAnimationFrame(()=>{const r=actor.getBoundingClientRect();const x=Math.max(-3,Math.min(3,(e.clientX-r.left-r.width/2)/80)),y=Math.max(-2,Math.min(2,(e.clientY-r.top-r.height/2)/100));pupil.setAttribute('transform',`translate(${x} ${y})`);frame=0;});},{passive:true});
+  if(!reduced)document.addEventListener('pointermove',e=>{if(frame||drag||stage.hidden)return;frame=requestAnimationFrame(()=>{const r=actor.getBoundingClientRect();const x=Math.max(-3,Math.min(3,(e.clientX-r.left-r.width/2)/80)),y=Math.max(-2,Math.min(2,(e.clientY-r.top-r.height/2)/100));depth.style.setProperty('--ranni-look-x',`${x*.5}deg`);depth.style.setProperty('--ranni-look-y',`${-y*.4}deg`);frame=0;});},{passive:true});
 })();

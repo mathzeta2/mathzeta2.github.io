@@ -4,21 +4,12 @@
 .reimu-popup .reimu-search {background:var(--color-wrap)}
 .reimu-hit-item-link {border-radius:8px;background:color-mix(in srgb,var(--color-wrap) 88%,transparent);margin-bottom:8px;padding-right:12px}
 [data-theme="dark"] .reimu-popup .reimu-bg {opacity:.28}
-#elden-companion {position:fixed;right:18px;bottom:16px;width:190px;z-index:50;pointer-events:none;user-select:none;font-family:inherit;color:#e6f6ff}
+#elden-companion {position:fixed;right:18px;bottom:16px;width:215px;z-index:50;pointer-events:none;user-select:none;font-family:inherit;color:#e6f6ff}
 #elden-companion [hidden] {display:none!important}
 .ranni-actor {pointer-events:auto;display:block;width:100%;border:0;background:none;padding:0;cursor:grab;touch-action:none;filter:drop-shadow(0 3px 9px #10203a45)}
 .ranni-actor:active {cursor:grabbing}
 .ranni-actor svg {width:100%;display:block;overflow:visible}
 .ranni-actor:focus-visible,.ranni-actions button:focus-visible,.ranni-restore:focus-visible {outline:2px solid #87cfff;outline-offset:3px;border-radius:12px}
-.ranni-float {animation:ranni-float 4s ease-in-out infinite;transform-origin:120px 160px}
-.ranni-eye {animation:ranni-blink 6s infinite;transform-origin:136px 126px}
-.ranni-orb {animation:ranni-glow 3s ease-in-out infinite}
-.ranni-magic {opacity:0;transform-origin:122px 255px}
-.ranni-stars {opacity:.4}
-.ranni-wave {transform-origin:148px 202px}
-.ranni-waving .ranni-wave {animation:ranni-wave .5s ease-in-out 4}
-.ranni-casting .ranni-magic {animation:ranni-spell 2s ease-out}
-.ranni-casting .ranni-stars {animation:ranni-glow .4s 5}
 .ranni-actions {pointer-events:auto;display:flex;justify-content:center;gap:5px;opacity:.8}
 .ranni-actions button,.ranni-restore {border:1px solid #a4c9e96b;border-radius:14px;background:#243b58e8;color:#e6f6ff;font-family:inherit;font-size:12px;line-height:1.3;padding:5px 9px;cursor:pointer;box-shadow:0 2px 8px #122b4533}
 .ranni-actions button:hover {background:#456283}
@@ -26,9 +17,21 @@
 .ranni-restore {pointer-events:auto;float:right;font-size:27px;width:42px;height:42px;padding:0}
 #elden-companion.is-collapsed {width:44px}
 body:has(.reimu-popup.show) #elden-companion {visibility:hidden}
-@keyframes ranni-float {50%{transform:translateY(-4px) rotate(1deg)}}
-@keyframes ranni-blink {0%,43%,47%,100%{transform:scaleY(1)}45%{transform:scaleY(.08)}}
-@keyframes ranni-glow {50%{opacity:.5}}
-@keyframes ranni-wave {50%{transform:rotate(-20deg)}}
-@keyframes ranni-spell {0%{opacity:0;transform:scale(.5)}30%{opacity:1}100%{opacity:0;transform:scale(1.3)}}
-@media(max-width:767px)
+@media(max-width:767px){ #elden-companion{width:145px;right:8px;bottom:12px}.ranni-actions{gap:2px}.ranni-actions button{font-size:11px;padding:5px 6px}.ranni-speech{width:175px}}
+@media(prefers-reduced-motion:reduce){ #elden-companion *{animation:none!important;transition:none!important}.ranni-casting .ranni-magic{opacity:1}}
+
+/* Realistic illustrated Ranni, with subtle motion and a separate moonlight effect. */
+.ranni-actor {position:relative;perspective:700px;filter:drop-shadow(0 4px 12px #0d172840)}
+.ranni-depth {display:block;transform:rotateY(var(--ranni-look-x,0deg)) rotateX(var(--ranni-look-y,0deg));transition:transform .25s ease-out}
+.ranni-portrait {display:block;width:100%;height:auto;max-height:340px;object-fit:contain;pointer-events:none;animation:ranni-breathe 5.5s ease-in-out infinite;transform-origin:50% 95%}
+.ranni-aura {position:absolute;bottom:6%;left:8%;width:84%;height:12%;border:1px solid #a8daff;box-shadow:0 0 12px #83bfff,inset 0 0 10px #aadfff;border-radius:50%;opacity:0;pointer-events:none}
+.ranni-moon {position:absolute;left:25%;top:49%;font-size:40px;color:#ddf8ff;text-shadow:0 0 16px #80bfff;opacity:0;pointer-events:none}
+.ranni-casting .ranni-aura {animation:ranni-moonring 2.2s ease-out}
+.ranni-casting .ranni-moon {animation:ranni-moonrise 2.2s ease-out}
+.ranni-waving .ranni-portrait {animation:ranni-greeting 2.2s ease-in-out}
+@keyframes ranni-breathe {50% {transform:translateY(-2px) scaleY(1.006)}}
+@keyframes ranni-greeting {35% {transform:translateY(2px) rotate(.7deg)}65% {transform:translateY(-1px)}}
+@keyframes ranni-moonring {0%{opacity:0;transform:scale(.6)}35%{opacity:.9}100%{opacity:0;transform:scale(1.3)}}
+@keyframes ranni-moonrise {0%{opacity:0;transform:translateY(8px) scale(.5)}35%{opacity:1}100%{opacity:0;transform:translateY(-36px) scale(1.1)}}
+@media(max-width:767px){.ranni-portrait{max-height:225px}.ranni-moon{font-size:28px}}
+@media(prefers-reduced-motion:reduce){.ranni-casting .ranni-aura,.ranni-casting .ranni-moon{opacity:.8}}
