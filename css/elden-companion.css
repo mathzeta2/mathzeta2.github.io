@@ -1,0 +1,34 @@
+/* Official Elden Ring screenshot, locally hosted for reliable search artwork. */
+.reimu-popup {isolation:isolate;background:var(--color-wrap)}
+.reimu-popup .reimu-bg {inset:0;width:100%;height:100%;max-width:none;object-fit:cover;opacity:.22;z-index:-1;pointer-events:none}
+.reimu-popup .reimu-search {background:var(--color-wrap)}
+.reimu-hit-item-link {border-radius:8px;background:color-mix(in srgb,var(--color-wrap) 88%,transparent);margin-bottom:8px;padding-right:12px}
+[data-theme="dark"] .reimu-popup .reimu-bg {opacity:.28}
+#elden-companion {position:fixed;right:18px;bottom:16px;width:190px;z-index:50;pointer-events:none;user-select:none;font-family:inherit;color:#e6f6ff}
+#elden-companion [hidden] {display:none!important}
+.ranni-actor {pointer-events:auto;display:block;width:100%;border:0;background:none;padding:0;cursor:grab;touch-action:none;filter:drop-shadow(0 3px 9px #10203a45)}
+.ranni-actor:active {cursor:grabbing}
+.ranni-actor svg {width:100%;display:block;overflow:visible}
+.ranni-actor:focus-visible,.ranni-actions button:focus-visible,.ranni-restore:focus-visible {outline:2px solid #87cfff;outline-offset:3px;border-radius:12px}
+.ranni-float {animation:ranni-float 4s ease-in-out infinite;transform-origin:120px 160px}
+.ranni-eye {animation:ranni-blink 6s infinite;transform-origin:136px 126px}
+.ranni-orb {animation:ranni-glow 3s ease-in-out infinite}
+.ranni-magic {opacity:0;transform-origin:122px 255px}
+.ranni-stars {opacity:.4}
+.ranni-wave {transform-origin:148px 202px}
+.ranni-waving .ranni-wave {animation:ranni-wave .5s ease-in-out 4}
+.ranni-casting .ranni-magic {animation:ranni-spell 2s ease-out}
+.ranni-casting .ranni-stars {animation:ranni-glow .4s 5}
+.ranni-actions {pointer-events:auto;display:flex;justify-content:center;gap:5px;opacity:.8}
+.ranni-actions button,.ranni-restore {border:1px solid #a4c9e96b;border-radius:14px;background:#243b58e8;color:#e6f6ff;font-family:inherit;font-size:12px;line-height:1.3;padding:5px 9px;cursor:pointer;box-shadow:0 2px 8px #122b4533}
+.ranni-actions button:hover {background:#456283}
+.ranni-speech {position:absolute;bottom:100%;right:0;width:192px;box-sizing:border-box;padding:12px 14px;border:1px solid #a4c9e96b;border-radius:16px 16px 3px 16px;background:#21354df5;color:#edf7ff;font-size:13px;line-height:1.7;box-shadow:0 4px 16px #15294030}
+.ranni-restore {pointer-events:auto;float:right;font-size:27px;width:42px;height:42px;padding:0}
+#elden-companion.is-collapsed {width:44px}
+body:has(.reimu-popup.show) #elden-companion {visibility:hidden}
+@keyframes ranni-float {50%{transform:translateY(-4px) rotate(1deg)}}
+@keyframes ranni-blink {0%,43%,47%,100%{transform:scaleY(1)}45%{transform:scaleY(.08)}}
+@keyframes ranni-glow {50%{opacity:.5}}
+@keyframes ranni-wave {50%{transform:rotate(-20deg)}}
+@keyframes ranni-spell {0%{opacity:0;transform:scale(.5)}30%{opacity:1}100%{opacity:0;transform:scale(1.3)}}
+@media(max-width:767px)

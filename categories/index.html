@@ -68,7 +68,7 @@
   
   
   
-    <link rel="stylesheet" href="/css/zeta-reading.css">
+    <link rel="stylesheet" href="/css/zeta-reading.css"><link rel="stylesheet" href="/css/elden-companion.css?v=1">
   
 <meta name="generator" content="Hexo 6.3.0"></head>
 
@@ -495,7 +495,7 @@
             <div id="reimu-hits"></div>
             <div id="reimu-pagination" class="reimu-pagination"></div>
           </div>
-          <img class="reimu-bg" src="/images/reimu.png"/>
+          <img class="reimu-bg" alt="" aria-hidden="true" src="/images/elden-ring/erdtree.webp"/>
         </div>
       </div>
     
@@ -821,7 +821,58 @@
 
 
 
+<aside id="elden-companion" aria-label="菈妮互动看板娘">
+  <div class="ranni-speech" role="status" aria-live="polite" hidden></div>
+  <div class="ranni-stage">
+    <button class="ranni-actor" type="button" aria-label="与菈妮互动；也可以拖动改变位置" title="点击互动 · 拖动移动">
+      <svg viewBox="0 0 240 300" role="img" aria-labelledby="ranni-title">
+        <title id="ranni-title">Q版月之公主菈妮：雪白魔女帽、蓝色人偶面容与四只手臂</title>
+        <defs>
+          <linearGradient id="ranni-cloak" x2="1" y2="1"><stop stop-color="#4d6694"/><stop offset="1" stop-color="#172d52"/></linearGradient>
+          <linearGradient id="ranni-hat" x2="0" y2="1"><stop stop-color="#f1f0e6"/><stop offset="1" stop-color="#a5b9cc"/></linearGradient>
+          <radialGradient id="ranni-orb"><stop stop-color="#fff"/><stop offset=".4" stop-color="#b6f6ff"/><stop offset="1" stop-color="#78aaff" stop-opacity="0"/></radialGradient>
+        </defs>
+        <ellipse cx="123" cy="284" rx="65" ry="9" fill="#101c3c" opacity=".2"/>
+        <g class="ranni-float" stroke="#354663" stroke-width="2" stroke-linejoin="round">
+          <g class="ranni-magic" fill="none" stroke="#b9edff"><ellipse cx="122" cy="255" rx="89" ry="23"/><ellipse cx="122" cy="255" rx="76" ry="18"/><path d="m42 243 160 24M48 269l148-28M121 232v45"/></g>
+          <path d="M91 147Q64 186 53 269Q117 295 187 270L158 149Z" fill="url(#ranni-cloak)"/>
+          <path d="m105 170-27 105m65-105 28 105m-46-105-5 106" fill="none" stroke="#91accb" opacity=".5"/>
+          <!-- The doll's four arms and articulated wrists. -->
+          <g fill="#718fc4">
+            <path d="M90 166Q64 177 55 217L63 222Q82 200 105 189Z"/>
+            <path d="M151 166Q173 177 183 213L174 219Q154 199 139 189Z"/>
+            <path d="M96 193Q75 208 81 244L92 244Q95 221 115 211Z"/>
+            <g class="ranni-wave"><path d="M145 190Q168 185 183 168L191 177Q173 210 148 214Z"/><path d="M183 170l-2-16q2-5 5 1l4 8 1-18q4-4 5 1l1 18 6-11q5-1 3 4l-8 19-8 3Z"/></g>
+            <path d="m55 214-8 13 4 10 6-1 3-11 6-6Z"/><path d="m175 210 12 11 2 12-6 3-4-12-8-8Z"/>
+            <path d="m81 241-3 11 7 7 9-4 2-12Z"/>
+          </g>
+          <g stroke="#c5dbed" fill="none"><path d="m56 214 9 5m109-8 10 7m-103 23 12 1m90-69 9 5"/></g>
+          <path d="M90 137 71 158l10 7-7 10 16 1 3 13 17-6 14 7 13-7 15 5 8-16 13-2-6-11 7-8-24-17Z" fill="#d8e2e7"/>
+          <path d="M88 82Q65 111 79 155L69 174q18 4 30-14l45 1q19 17 32 9l-12-29q13-44-14-60Z" fill="#d9e7ef"/>
+          <path d="M84 104Q80 143 119 157Q158 148 159 105Z" fill="#86a9db"/>
+          <path d="M88 91q-9 20-5 41l13-24 9 15 7-25q24 25 44 19l-7-31Z" fill="#e7eff2"/>
+          <path d="M89 127q10 7 20-1" fill="none" stroke-width="2.5"/>
+          <g class="ranni-eye"><path d="M125 126q12-9 22 0-9 10-22 0Z" fill="#e8faff"/><g class="ranni-pupil"><ellipse cx="136" cy="126" rx="3.5" ry="5" fill="#4867c3"/><circle cx="137" cy="124" r="1.5" fill="white" stroke="none"/></g></g>
+          <path d="m101 119 2 15m-1-7-4 6m20 11q6 3 10-1" fill="none" stroke="#5276a6" stroke-width="1.4"/>
+          <!-- The spectral second face. -->
+          <g opacity=".4" stroke="#b9eaff" fill="none"><path d="M147 104q32 13 24 40l-12 10-11-10"/><path d="m153 126 14 2m-10 14 7-1"/></g>
+          <path d="M79 78Q96 37 119 13Q128 34 166 46L151 88Z" fill="url(#ranni-hat)"/>
+          <path d="m86 72q38 10 69-3l1 17-75 6Z" fill="#758aa7"/>
+          <path d="M25 101Q35 72 80 79Q125 93 164 79Q194 79 218 102Q183 129 126 111Q68 123 25 101Z" fill="url(#ranni-hat)"/>
+          <path d="M29 100q40-4 88 6t95-5" fill="none" stroke="#eff7f5"/>
+          <g class="ranni-orb"><circle cx="85" cy="237" r="23" fill="url(#ranni-orb)" stroke="none"/><path d="M89 224a12 12 0 1 0 2 23 13 13 0 0 1-2-23Z" fill="#dcfaff" stroke="#a4d9ff"/></g>
+          <g class="ranni-stars" stroke="#cceeff"><path d="M36 167v14m-7-7h14m157 30v12m-6-6h12M59 67v8m-4-4h8"/></g>
+        </g>
+      </svg>
+    </button>
+    <div class="ranni-actions"><button type="button" data-action="wave" aria-label="让菈妮挥手">招呼</button><button type="button" data-action="magic" aria-label="让菈妮施放月光魔法">月光</button><button type="button" data-action="hide" aria-label="收起菈妮">收起</button></div>
+  </div>
+  <button class="ranni-restore" type="button" aria-label="唤醒菈妮" title="唤醒菈妮" hidden>☾</button>
+</aside>
+
+<script src="/js/elden-companion.js?v=1" defer></script>
+
     
-  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"position":"left","log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+  </body>
   </html>
 
