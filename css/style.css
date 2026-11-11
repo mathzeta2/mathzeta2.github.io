@@ -43,9 +43,9 @@
   --cursor-default: default;
   --cursor-pointer: pointer;
   --cursor-text: text;
-  --footer-icon: url("../images/taichi.png");
+  --footer-icon: url("/images/elden-ring/icons/great-rune.svg");
   --sponsor-icon: url("../images/taichi.png");
-  --top-icon: url("../images/taichi.png");
+  --top-icon: url("/images/elden-ring/icons/great-rune.svg");
   --shadow-meta: 0 0 5px 2px var(--color-meta-shadow);
   --shadow-meta-hover: 0 0 6px 4px var(--color-meta-shadow);
   --shadow-card: 0 0 10px 2px var(--color-hover-shadow);
@@ -1626,6 +1626,9 @@ button {
 #comments .comment-header .comment-selector-wrap .selector-item.active {
   color: #fff;
   background-color: var(--red-1);
+}
+.giscus-comment {
+  width: auto;
 }
 .archives-outer-wrap {
   background: var(--color-wrap);

@@ -6,7 +6,65 @@
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
   let speechTimer, motionTimer, drag=null, moved=false, phrase=0, frame=0;
   const lines=['褪色者，今天也来寻找知识了吗？','愿月光照亮你的证明。','休息片刻，再继续这段求知旅途吧。'];
+  // Create audio only inside a gesture; no autoplay or external audio requests.
+  const soundButton=root.querySelector('[data-action="sound"]');
+  let soundEnabled=true, audioContext=null, soundGeneration=0;
+  const voices=new Set();
+  try{soundEnabled=localStorage.getItem('zeta-ranni-sound')!=='muted';}catch(_){}
+  function updateSoundButton(){
+    soundButton.setAttribute('aria-pressed',String(soundEnabled));
+    soundButton.textContent=soundEnabled?'音效开':'音效关';
+    soundButton.title=soundEnabled?'关闭互动音效':'开启互动音效';
+  }
+  function stopSound(){
+    soundGeneration++;
+    for(const voice of voices){
+      try{voice.osc.stop();}catch(_){}
+      voice.osc.disconnect();voice.gain.disconnect();
+    }
+    voices.clear();
+  }
+  async function playSound(kind){
+    stopSound();
+    if(!soundEnabled)return;
+    const generation=soundGeneration;
+    try{
+      const Audio=window.AudioContext||window.webkitAudioContext;
+      if(!Audio)return;
+      if(!audioContext)audioContext=new Audio();
+      if(audioContext.state==='suspended')await audioContext.resume();
+      if(!soundEnabled||generation!==soundGeneration||audioContext.state!=='running')return;
+      const notes=kind==='magic'?[523.25,783.99,1046.5,1567.98]:[659.25,987.77];
+      const now=audioContext.currentTime+.015;
+      notes.forEach((frequency,index)=>{
+        const start=now+index*(kind==='magic'?.13:.11);
+        const duration=kind==='magic'?1.3:.85;
+        // Two quiet sine partials create a soft crystalline chime.
+        [1,2.002].forEach((partial,harmonic)=>{
+          const osc=audioContext.createOscillator(),gain=audioContext.createGain();
+          const voice={osc,gain};voices.add(voice);
+          osc.type='sine';osc.frequency.setValueAtTime(frequency*partial,start);
+          gain.gain.setValueAtTime(0,start);
+          gain.gain.linearRampToValueAtTime(harmonic?.009:.035,start+.025);
+          gain.gain.exponentialRampToValueAtTime(.0001,start+duration);
+          gain.gain.linearRampToValueAtTime(0,start+duration+.04);
+          osc.connect(gain);gain.connect(audioContext.destination);
+          osc.onended=()=>{osc.disconnect();gain.disconnect();voices.delete(voice);};
+          osc.start(start);osc.stop(start+duration+.06);
+        });
+      });
+    }catch(_){/* Audio failure must never block the character controls. */}
+  }
+  soundButton.addEventListener('click',()=>{
+    soundEnabled=!soundEnabled;updateSoundButton();
+    try{localStorage.setItem('zeta-ranni-sound',soundEnabled?'enabled':'muted');}catch(_){}
+    if(soundEnabled)playSound('wave');else stopSound();
+  });
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)stopSound();});
+  window.addEventListener('pagehide',stopSound);
+  updateSoundButton();
   function respond(kind){
+    playSound(kind);
     clearTimeout(speechTimer);clearTimeout(motionTimer);
     root.classList.remove('ranni-waving','ranni-casting');
     void actor.offsetWidth;
@@ -16,7 +74,7 @@
     motionTimer=setTimeout(()=>root.classList.remove('ranni-waving','ranni-casting'),2200);
     speechTimer=setTimeout(()=>speech.hidden=true,5000);
   }
-  function collapse(value){stage.hidden=value;restore.hidden=!value;speech.hidden=true;root.classList.toggle('is-collapsed',value);root.style.left='';root.style.top='';root.style.right='';root.style.bottom='';try{localStorage.setItem('zeta-ranni-collapsed',String(value));}catch(_){} }
+  function collapse(value){if(value)stopSound();stage.hidden=value;restore.hidden=!value;speech.hidden=true;root.classList.toggle('is-collapsed',value);root.style.left='';root.style.top='';root.style.right='';root.style.bottom='';try{localStorage.setItem('zeta-ranni-collapsed',String(value));}catch(_){} }
   actor.addEventListener('click',()=>{if(moved){moved=false;return;}respond('wave');});
   root.querySelector('[data-action="wave"]').addEventListener('click',()=>respond('wave'));
   root.querySelector('[data-action="magic"]').addEventListener('click',()=>respond('magic'));
