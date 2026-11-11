@@ -36,16 +36,16 @@ body:has(.reimu-popup.show) #elden-companion {visibility:hidden}
 @media(max-width:767px){.ranni-portrait{max-height:225px}.ranni-moon{font-size:28px}}
 @media(prefers-reduced-motion:reduce){.ranni-casting .ranni-aura,.ranni-casting .ranni-moon{opacity:.8}}
 
-/* Compact, hand-drawn Elden Ring motifs keep navigation labels readable. */
-.sidebar-menu-icon img {width:22px!important;height:22px;display:block}
-.sidebar-menu-link-wrap.link-active .sidebar-menu-icon img {filter:brightness(0) invert(1)}
-.sidebar-top .sidebar-top-taichi {mask-size:70%;-webkit-mask-size:70%;border-radius:0;background-color:#c9ad72}
-.footer-info-sep {background-color:#c9ad72}
+/* Original inventory icons: preserve their artwork and color at navigation size. */
+.sidebar-menu-icon img {width:40px!important;height:40px;display:block;object-fit:contain;background:radial-gradient(ellipse,#c2b18b38,transparent 72%);filter:drop-shadow(0 1px 2px #0008)}
+.sidebar-menu-link-wrap.link-active .sidebar-menu-icon img {filter:drop-shadow(0 1px 3px #33220bbb)}
+.sidebar-top .sidebar-top-taichi {mask:none;-webkit-mask:none;border-radius:0;background:var(--top-icon) no-repeat center / 100%}
+.footer-info-sep {mask:none;-webkit-mask:none;background:var(--footer-icon) no-repeat center / contain;min-height:28px}
 .ranni-actions {flex-wrap:wrap;row-gap:4px}
 .ranni-actions button {padding:5px 7px}
 .ranni-actions [data-action="sound"][aria-pressed="false"] {color:#bdc5ce;background:#293440}
 @media(max-width:767px){.ranni-actions button{font-size:10px;padding:5px 4px}}
-:root {--top-icon:url('/images/elden-ring/icons/great-rune.svg');--footer-icon:url('/images/elden-ring/icons/great-rune.svg')}
+:root {--top-icon:url('/images/elden-ring/icons/grace-mimic.png');--footer-icon:url('/images/elden-ring/icons/grace-mimic.png')}
 /* Keep the return button clear of the companion and its sound controls. */
 .sidebar-top {right:248px;bottom:22px}
 @media(max-width:767px){.sidebar-top{right:165px;bottom:16px}}
