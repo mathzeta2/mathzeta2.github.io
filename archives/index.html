@@ -424,13 +424,17 @@
     
     
     
-      <script defer src="/js/visit-stats-status.js"></script>
-      <div>
+      
+      <div id="visit-stats" data-recorded-at="2026-11-11T12:53:39+08:00">
         <span class="icon-eye"></span>
-        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv" aria-live="polite">加载中…</span></span>
+        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv" aria-live="polite">1667</span></span>
         &nbsp;|&nbsp;
         <span class="icon-user"></span>
-        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv" aria-live="polite">加载中…</span></span>
+        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv" aria-live="polite">1202</span></span>
+        <div style="font-size: .85em; margin-top: .4em;">
+          <span id="visit-stats-status" title="真实统计的最近记录；连接成功后会更新。">最近记录：2026-11-11 12:53</span>
+          <button id="visit-stats-retry" type="button" hidden style="margin-left: .5em; color: inherit; cursor: pointer;">重新获取</button>
+        </div>
       </div>
     
   </div>
@@ -604,9 +608,7 @@
 
 
 
-  
-<script src="/lib/busuanzi/busuanzi.pure.mini.js" integrity="sha384-oaKlriFiEaHzTKw66TKlzwgjYHPT5tvx+uf4JRnAGvP7HCHj5NPqEoAkyyOAPxZN" crossorigin="anonymous" async></script>
-
+  <script src="/js/visit-stats.js?v=20261111-2" defer></script>
 
 
 
