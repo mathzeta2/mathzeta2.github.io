@@ -45,7 +45,14 @@ body:has(.reimu-popup.show) #elden-companion {visibility:hidden}
 .ranni-actions button {padding:5px 7px}
 .ranni-actions [data-action="sound"][aria-pressed="false"] {color:#bdc5ce;background:#293440}
 @media(max-width:767px){.ranni-actions button{font-size:10px;padding:5px 4px}}
-:root {--top-icon:url('/images/elden-ring/icons/grace-mimic.png');--footer-icon:url('/images/elden-ring/icons/grace-mimic.png')}
+:root {--top-icon:url('/images/elden-ring/icons/dark-moon-ring.png');--footer-icon:url('/images/elden-ring/icons/grace-mimic.png')}
 /* Keep the return button clear of the companion and its sound controls. */
 .sidebar-top {right:248px;bottom:22px}
 @media(max-width:767px){.sidebar-top{right:165px;bottom:16px}}
+
+/* Dark Moon Ring rotates gently; the reduced-motion preference is respected. */
+.sidebar-top .sidebar-top-taichi.rotate {animation:elden-ring-turn 8s linear infinite;transform-origin:center}
+.sidebar-top:hover .sidebar-top-taichi {opacity:1;filter:drop-shadow(0 0 5px #95bcf0);animation-play-state:paused}
+.sidebar-top:hover .arrow-up {opacity:0}
+@keyframes elden-ring-turn {from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.sidebar-top .sidebar-top-taichi.rotate{animation:none}}
