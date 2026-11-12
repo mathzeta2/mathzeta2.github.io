@@ -73,7 +73,7 @@
   
   
   
-    <link rel="stylesheet" href="/css/zeta-reading.css"><link rel="stylesheet" href="/css/elden-companion.css?v=5"><link rel="stylesheet" href="/css/grace-reading.css?v=1"><link rel="stylesheet" href="/css/elden-cursor-music.css?v=4">
+    <link rel="stylesheet" href="/css/zeta-reading.css"><link rel="stylesheet" href="/css/elden-companion.css?v=5"><link rel="stylesheet" href="/css/grace-reading.css?v=1"><link rel="stylesheet" href="/css/elden-cursor-music.css?v=5">
   
 <meta name="generator" content="Hexo 6.3.0"></head>
 
@@ -187,14 +187,29 @@
     <img src="/images/elden-ring/icons/harp-bow.png" alt="竖琴弓" title="竖琴弓 · Harp Bow" width="30" height="30">
     <span>交界地之声 <small>NETEASE MUSIC</small></span>
   </div>
+  <div id="elden-music-player" class="elden-native-player" hidden>
+    <div class="elden-track-info">
+      <img class="elden-track-cover" alt="" width="52" height="52" hidden>
+      <div><strong class="elden-track-name"></strong><span class="elden-track-artist"></span></div>
+    </div>
+    <audio class="elden-audio" controls preload="none" aria-label="音乐播放控制"></audio>
+    <div class="elden-track-actions">
+      <button type="button" data-music-action="prev">上一首</button>
+      <button type="button" data-music-action="next">下一首</button>
+      <a class="elden-track-link" target="_blank" rel="noopener noreferrer">网易云听本曲 ↗</a>
+    </div>
+    <details class="elden-track-picker">
+      <summary>选择曲目 <span class="elden-track-count"></span></summary>
+      <ol class="elden-track-list"></ol>
+    </details>
+  </div>
+  <p class="elden-music-status" role="status" aria-live="polite">正在载入歌单…</p>
   <div class="elden-music-controls">
-    <button type="button" class="elden-music-load" aria-controls="elden-music-mount">加载播放器</button>
+    <button type="button" class="elden-music-retry" hidden>重试播放</button>
     <a href="https://music.163.com/#/playlist?id=2990929899" target="_blank" rel="noopener noreferrer">在网易云打开歌单 ↗</a>
   </div>
-  <p class="elden-music-status" role="status" aria-live="polite">点击加载网易云播放器，或直接打开歌单收听。</p>
-  <div id="elden-music-mount" class="elden-music-mount"></div>
-  <noscript><p class="elden-music-note">浏览器未启用 JavaScript，请使用上方 网易云链接收听。</p></noscript>
-  <p class="elden-music-note">播放权限由网易云提供；播放器空白或曲目受限时，可打开歌单收听。</p>
+  <noscript><p class="elden-music-note">请启用 JavaScript，或通过上方链接收听。</p></noscript>
+  <p class="elden-music-note">部分曲目仅提供试听，完整收听请打开网易云。</p>
 </section>
 
   
@@ -1256,7 +1271,7 @@ p&#x27;(0)=-\frac12\left(1+1-\frac12\right)=-\frac34.
 <script src="/js/reading-store.js?v=1" defer></script>
 <script src="/js/grace-reading.js?v=1" defer></script>
 
-<script src="/js/elden-music.js?v=2" defer></script>
+<script src="/js/elden-music.js?v=3" defer></script>
 
     
   </body>

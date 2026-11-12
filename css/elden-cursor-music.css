@@ -25,13 +25,29 @@
 .elden-music-heading {display: flex; align-items: center; gap: 8px; padding: 12px 14px; font-size: 14px; letter-spacing: .06em;}
 .elden-music-heading img {object-fit: contain;}
 .elden-music-heading small {display: block; margin-top: 3px; font-size: 9px; opacity: .65; letter-spacing: .12em;}
-/* Keep the NetEase playlist controls and track list visible. */
-.elden-music-frame {display: block; width: 100%; height: 450px; border: 0; border-radius: 0; background: #fff;}
-.elden-music-mount:empty {display: none;}
+/* Native player remains visible without loading a third-party page. */
+.elden-native-player {padding: 0 12px;}
+.elden-native-player[hidden], .elden-music-retry[hidden], .elden-track-cover[hidden] {display: none;}
+.elden-track-info {display: flex; align-items: center; gap: 10px; margin-bottom: 10px; min-width: 0;}
+.elden-track-info > div {min-width: 0;}
+.elden-track-cover {object-fit: cover; border-radius: 7px; flex: 0 0 52px;}
+.elden-track-name {display: block; font-size: 14px; font-weight: 500; line-height: 1.5; overflow-wrap: anywhere;}
+.elden-track-artist {display: block; font-size: 11px; opacity: .7; margin-top: 3px;}
+.elden-audio {display: block; width: 100%; max-width: 100%; height: 42px; margin-bottom: 8px;}
+[data-theme="dark"] .elden-audio {color-scheme: dark;}
+.elden-track-actions {display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 11px;}
+.elden-track-actions button {font: inherit; color: var(--color-default); background: var(--color-background); border: 1px solid var(--color-border); border-radius: 5px; min-height: 34px; padding: 5px 9px;}
+.elden-track-link {color: var(--color-link); margin-left: auto;}
+.elden-track-picker {margin-top: 12px; font-size: 12px;}
+.elden-track-picker summary {color: var(--color-link); padding: 5px 0; cursor: var(--cursor-pointer);}
+.elden-track-list {max-height: 240px; overflow-y: auto; overscroll-behavior: contain; padding: 0 0 0 26px; margin: 8px 0 0;}
+.elden-track-list li {padding: 0;}
+.elden-track-list button {font: inherit; text-align: left; line-height: 1.5; width: 100%; padding: 8px 5px; border: 0; border-bottom: 1px solid var(--color-border); color: var(--color-default); background: transparent; cursor: var(--cursor-pointer);}
+.elden-track-list button[aria-pressed="true"] {color: var(--color-link); background: var(--color-background);}
 .elden-music-controls {display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 0 14px; font-size: 12px;}
 .elden-music-controls a {color: var(--color-link); text-decoration: none;}
 .elden-music-controls a:hover {text-decoration: underline;}
-.elden-music-load {font: inherit; padding: 8px 10px; border: 1px solid var(--color-border); border-radius: 6px; background: var(--color-background); color: var(--color-default); cursor: var(--cursor-pointer); min-height: 38px;}
+.elden-music-retry {font: inherit; padding: 8px 10px; border: 1px solid var(--color-border); border-radius: 6px; background: var(--color-background); color: var(--color-default); cursor: var(--cursor-pointer); min-height: 38px;}
 .elden-music-status {font-size: 12px; line-height: 1.65; margin: 10px 14px; opacity: .8;}
 @media (min-width: 960px) {
   #content #sidebar {min-width: 282px;}
