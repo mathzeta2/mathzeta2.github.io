@@ -1,0 +1,44 @@
+/* Original Dark Moon Greatsword art; the tip is the click target. */
+@media (hover: hover) and (pointer: fine) {
+  :root {
+    --cursor-default: url('/images/elden-ring/icons/cursor-default.svg') 3 3, default;
+    --cursor-pointer: url('/images/elden-ring/icons/cursor-pointer.svg') 3 3, pointer;
+    --cursor-text: text;
+  }
+  html, body {cursor: var(--cursor-default);}
+  a, button, summary, [role="button"], label[for], input[type="submit"], input[type="button"],
+  .sidebar-top, .post-link {cursor: var(--cursor-pointer);}
+  input:not([type="button"]):not([type="submit"]):not([type="checkbox"]):not([type="radio"]),
+  textarea, [contenteditable="true"] {cursor: text;}
+}
+.elden-music {
+  flex: 0 0 auto;
+  min-width: 0;
+  margin-bottom: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--color-wrap);
+  color: var(--color-default);
+  box-shadow: var(--shadow-card);
+}
+.elden-music-heading {display: flex; align-items: center; gap: 8px; padding: 12px 14px; font-size: 14px; letter-spacing: .06em;}
+.elden-music-heading img {object-fit: contain;}
+.elden-music-heading small {display: block; margin-top: 3px; font-size: 9px; opacity: .65; letter-spacing: .12em;}
+.elden-music-frame {display: block; width: 100%; height: 152px; border: 0; background: #282828;}
+.elden-music:has(.elden-music-expand[open]) .elden-music-frame {height: 352px;}
+.elden-music-expand {padding: 10px 14px 0; font-size: 12px;}
+.elden-music-expand summary {width: fit-content; color: var(--color-link);}
+.music-collapse-label, .elden-music-expand[open] .music-expand-label {display: none;}
+.elden-music-expand[open] .music-collapse-label {display: inline;}
+.elden-music-links {display: flex; align-items: center; gap: 8px; padding: 10px 14px 0; font-size: 12px;}
+.elden-music-links a {color: var(--color-link); text-decoration: none;}
+.elden-music-links a:hover {text-decoration: underline;}
+.elden-music-note {font-size: 11px; line-height: 1.65; opacity: .68; margin: 8px 14px 12px;}
+@media (max-width: 959px) {
+  #content.sidebar-left, #content.sidebar-right {flex-direction: column;}
+  #content #sidebar {display: block; width: auto; min-width: 0; margin: 0 16px;}
+  #sidebar .sidebar-wrapper, #sidebar .sidebar-widget {display: none;}
+  #sidebar .sidebar-wrapper-container.sticky {position: static; max-height: none;}
+  .elden-music {max-width: 520px; width: 100%; margin: 0 auto 18px;}
+}
