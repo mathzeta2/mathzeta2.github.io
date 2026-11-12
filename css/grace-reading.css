@@ -1,0 +1,55 @@
+/* Reading tools use the site's palette and original inventory artwork. */
+.grace-article-tools,.grace-sidebar-tools,.ranni-reading-actions {display:flex;flex-wrap:wrap;gap:8px}
+.grace-article-tools {margin:16px 42px 22px;padding:14px;border:1px solid var(--color-border);border-radius:12px;background:var(--color-background)}
+.grace-article-tools button,.grace-sidebar-tools button,.ranni-reading-actions button,#grace-dialog button {font:inherit;cursor:pointer;border:1px solid var(--color-border);border-radius:8px;color:var(--color-default);background:var(--color-wrap);padding:9px 12px;line-height:1.5}
+.grace-article-tools button {display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:13px}
+.grace-article-tools img,.grace-sidebar-tools img {width:25px;height:25px;object-fit:contain}
+[data-grace-count] {display:inline-grid;place-items:center;min-width:20px;height:20px;border-radius:20px;background:var(--color-background);font-size:12px}
+.grace-article-tools [aria-pressed="true"],#grace-dialog .grace-primary {border-color:#b59859;background:#b598591f;color:var(--color-default)}
+.grace-article-tools [aria-pressed="true"] img {filter:drop-shadow(0 0 5px #ebbb5e)}
+.grace-sidebar-tools {justify-content:center;margin:20px auto 26px;width:85%}
+.grace-sidebar-tools button {display:flex;align-items:center;justify-content:center;gap:6px;width:100%;font-size:13px}
+.ranni-reading-actions {pointer-events:auto;justify-content:center;gap:5px;margin:6px 0}
+.ranni-reading-actions button {font-size:12px;padding:6px 9px;color:#e9f5ff;background:#253950ed;border-color:#9eb9d96b;border-radius:14px}
+.ranni-reading-actions button:first-child {background:#384b65f5}
+#grace-dialog {width:min(600px,calc(100vw - 28px));max-height:min(82vh,780px);max-height:min(82dvh,780px);box-sizing:border-box;padding:0;border:1px solid var(--color-border);border-radius:18px;background:var(--color-wrap);color:var(--color-default);box-shadow:0 24px 100px #0008;overscroll-behavior:contain;z-index:2000}
+#grace-dialog::backdrop {background:#07101bbb;backdrop-filter:blur(5px)}
+.grace-dialog-head {display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px 24px 14px;background:linear-gradient(135deg,#8aabcf18,#c3a66e12)}
+#grace-dialog h2 {margin:3px 0 0;font-size:24px;line-height:1.4}
+#grace-dialog .grace-close {font-size:26px;line-height:1;width:38px;height:38px;padding:0;flex-shrink:0}
+.grace-eyebrow {font-size:12px;letter-spacing:.08em;opacity:.75;margin:0}
+.grace-tabs {display:flex;gap:8px;padding:12px 24px;border-bottom:1px solid var(--color-border)}
+#grace-dialog .grace-tabs button {font-size:13px;padding:7px 12px}
+#grace-dialog .grace-tabs [aria-pressed="true"] {background:#b5985924;border-color:#b59859}
+#grace-dialog-content {padding:20px 24px}
+.grace-intro {margin:0 0 18px;line-height:1.8;font-size:14px;opacity:.9}
+.grace-local-note {margin:0;padding:15px 24px 20px;border-top:1px solid var(--color-border);font-size:12px;line-height:1.7;opacity:.75}
+.grace-saved-list,.grace-toc-list {padding:0;margin:0;list-style:none}
+.grace-saved-row {border:1px solid var(--color-border);border-radius:12px;padding:16px;margin-bottom:12px;background:var(--color-background)}
+.grace-post-title {font-size:16px;line-height:1.65;font-weight:600;color:var(--color-default);text-decoration:none;display:block}
+.grace-progress {font-size:12px;opacity:.75;margin:8px 0 12px}
+.grace-row-actions {display:flex;gap:8px;flex-wrap:wrap}
+#grace-dialog .grace-row-actions button {font-size:12px;padding:6px 11px}
+#grace-dialog .grace-subtle {background:transparent}
+.grace-ranni-greeting {display:flex;gap:14px;align-items:center;margin-bottom:18px}
+.grace-ranni-greeting img {width:62px;height:62px;object-fit:contain;flex-shrink:0}
+.grace-ranni-greeting p {font-size:14px;line-height:1.9;margin:0}
+.grace-current {padding:15px;border:1px solid #b5985966;border-radius:12px;margin-bottom:16px;background:#b598590d}
+.grace-current>p:not(.grace-eyebrow) {font-size:14px;line-height:1.7;margin:5px 0 12px}
+#grace-dialog .grace-current button {font-size:13px}
+.grace-assistant-grid {display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#grace-dialog .grace-action-card {padding:16px;text-align:left;background:var(--color-background)}
+.grace-action-card strong {display:block;font-size:14px;margin-bottom:7px}
+.grace-action-card span {display:block;font-size:12px;line-height:1.75;opacity:.8;overflow-wrap:anywhere}
+#grace-dialog button:disabled {opacity:.48;cursor:default}
+#grace-dialog button:not(:disabled):hover,.grace-article-tools button:hover,.grace-sidebar-tools button:hover {border-color:#b59859;background:#b598591c}
+#grace-dialog button:focus-visible,.grace-article-tools button:focus-visible,.grace-sidebar-tools button:focus-visible,.ranni-reading-actions button:focus-visible {outline:2px solid #ae944f;outline-offset:3px}
+#grace-dialog .grace-toc-list button {text-align:left;border:none;background:transparent;width:100%;padding:10px 8px;font-size:14px}
+.grace-toc-list li {border-bottom:1px solid var(--color-border)}
+.grace-toc-child {padding-left:18px;opacity:.8}
+.e-content.article-entry h2,.e-content.article-entry h3 {scroll-margin-top:90px}
+#grace-toast {position:fixed;left:50%;bottom:30px;transform:translateX(-50%);max-width:min(480px,80vw);box-sizing:border-box;padding:12px 20px;border:1px solid #b99d5d7a;border-radius:12px;background:#252c36f5;color:#f2e9d6;font-size:14px;line-height:1.7;box-shadow:0 8px 30px #0005;z-index:2200;pointer-events:none}
+#grace-toast[hidden] {display:none}
+body:has(#grace-dialog[open]) {overflow:hidden}
+@media(max-width:767px){.grace-article-tools{margin:12px 16px;padding:10px;gap:6px}.grace-article-tools button{font-size:12px;padding:7px 9px}.ranni-reading-actions button{font-size:11px;padding:6px 8px}.grace-dialog-head{padding:20px 18px 12px}#grace-dialog h2{font-size:21px}.grace-tabs{padding:10px 18px}#grace-dialog-content{padding:18px}.grace-local-note{padding:14px 18px}.grace-assistant-grid{grid-template-columns:1fr}.grace-action-card strong{margin-bottom:4px}#grace-toast{bottom:80px;font-size:12px}}
+.grace-dialog-head {position:sticky;top:0;z-index:2;background:linear-gradient(135deg,#8aabcf18,#c3a66e12),var(--color-wrap)}

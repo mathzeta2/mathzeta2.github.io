@@ -63,17 +63,18 @@
   document.addEventListener('visibilitychange',()=>{if(document.hidden)stopSound();});
   window.addEventListener('pagehide',stopSound);
   updateSoundButton();
-  function respond(kind){
+  function respond(kind,customText){
     playSound(kind);
     clearTimeout(speechTimer);clearTimeout(motionTimer);
     root.classList.remove('ranni-waving','ranni-casting');
     void actor.offsetWidth;
     root.classList.add(kind==='magic'?'ranni-casting':'ranni-waving');
-    speech.textContent=kind==='magic'?'赠你一缕月光。愿难题也有清晰的解。':lines[phrase++%lines.length];
+    speech.textContent=customText || (kind==='magic'?'赠你一缕月光。愿难题也有清晰的解。':lines[phrase++%lines.length]);
     speech.hidden=false;
     motionTimer=setTimeout(()=>root.classList.remove('ranni-waving','ranni-casting'),2200);
     speechTimer=setTimeout(()=>speech.hidden=true,5000);
   }
+  document.addEventListener('zeta:reading-message',event=>{if(!stage.hidden && typeof event.detail?.text==='string')respond('magic',event.detail.text);});
   function collapse(value){if(value)stopSound();stage.hidden=value;restore.hidden=!value;speech.hidden=true;root.classList.toggle('is-collapsed',value);root.style.left='';root.style.top='';root.style.right='';root.style.bottom='';try{localStorage.setItem('zeta-ranni-collapsed',String(value));}catch(_){} }
   actor.addEventListener('click',()=>{if(moved){moved=false;return;}respond('wave');});
   root.querySelector('[data-action="wave"]').addEventListener('click',()=>respond('wave'));

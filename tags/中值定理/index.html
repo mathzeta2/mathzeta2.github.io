@@ -64,7 +64,7 @@
   
   
   
-    <link rel="stylesheet" href="/css/zeta-reading.css"><link rel="stylesheet" href="/css/elden-companion.css?v=5">
+    <link rel="stylesheet" href="/css/zeta-reading.css"><link rel="stylesheet" href="/css/elden-companion.css?v=5"><link rel="stylesheet" href="/css/grace-reading.css?v=1">
   
 <meta name="generator" content="Hexo 6.3.0"></head>
 
@@ -267,6 +267,11 @@
       </div>
     
   
+</div>
+
+<div class="grace-sidebar-tools">
+  <button type="button" data-reading-action="shelf"><img src="/images/elden-ring/icons/grace-mimic.png" alt="">我的赐福 <span data-grace-count>0</span></button>
+  <button type="button" data-reading-action="assistant">菈妮阅读助手</button>
 </div>
 
       
@@ -531,6 +536,11 @@
   
 </div>
 
+<div class="grace-sidebar-tools">
+  <button type="button" data-reading-action="shelf"><img src="/images/elden-ring/icons/grace-mimic.png" alt="">我的赐福 <span data-grace-count>0</span></button>
+  <button type="button" data-reading-action="assistant">菈妮阅读助手</button>
+</div>
+
     
   </div>
   
@@ -654,12 +664,31 @@
       <span class="ranni-aura" aria-hidden="true"></span>
       <span class="ranni-moon" aria-hidden="true">☾</span>
     </button>
+    <div class="ranni-reading-actions"><button type="button" data-reading-action="assistant">阅读助手</button><button type="button" data-reading-action="shelf">赐福收藏</button></div>
     <div class="ranni-actions"><button type="button" data-action="wave" aria-label="向菈妮打招呼">招呼</button><button type="button" data-action="magic" aria-label="唤起月光魔法">月光</button><button type="button" data-action="sound" aria-label="互动音效" aria-pressed="true" title="关闭互动音效">音效开</button><button type="button" data-action="hide" aria-label="收起菈妮">收起</button></div>
   </div>
   <button class="ranni-restore" type="button" aria-label="唤醒菈妮" title="唤醒菈妮" hidden>☾</button>
 </aside>
 
-<script src="/js/elden-companion.js?v=3" defer></script>
+<script src="/js/elden-companion.js?v=4" defer></script>
+
+<script type="application/json" id="grace-catalog">[{"path":"/2026/11/10/applied-functional-analysis-exercises/","title":"应用泛函分析习题集：从度量空间到基本定理"},{"path":"/2026/11/10/calculus-midterm-2025-2026-solutions/","title":"从极限到中值定理：2025—2026 高数 A（上）期中试题与详解"},{"path":"/2026/11/10/week-09-differentials-and-mean-value-theorems/","title":"微分与中值定理：第九周作业参考解答"}]</script>
+<dialog id="grace-dialog" aria-labelledby="grace-dialog-title">
+  <div class="grace-dialog-head">
+    <div><p class="grace-eyebrow">月光指引 · 求知之旅</p><h2 id="grace-dialog-title">赐福收藏夹</h2></div>
+    <button type="button" class="grace-close" data-reading-action="close" aria-label="关闭阅读面板">×</button>
+  </div>
+  <nav class="grace-tabs" aria-label="阅读面板切换">
+    <button type="button" data-reading-action="shelf">赐福收藏</button>
+    <button type="button" data-reading-action="assistant">菈妮的指引</button>
+  </nav>
+  <div id="grace-dialog-content"></div>
+  <p class="grace-local-note">收藏与阅读记录仅保存在当前浏览器，清理浏览器数据后会消失。</p>
+</dialog>
+<div id="grace-toast" role="status" aria-live="polite" hidden></div>
+
+<script src="/js/reading-store.js?v=1" defer></script>
+<script src="/js/grace-reading.js?v=1" defer></script>
 
     
   </body>
