@@ -1,0 +1,1179 @@
+
+  <!DOCTYPE html>
+  <html lang="zh-CN"  
+    
+      data-theme-mode="auto"
+    
+  >
+  <head>
+  
+  <meta charset="utf-8">
+  
+
+  
+
+  
+
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://mathzeta2.github.io';</script>
+  
+  <title>
+    Lean 4 形式化入门：从数学证明到可检查的代码 |
+    
+    zeta2的博客
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+  
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  
+  
+    <meta name="description" content="面向数学学习者的 Lean 4 教程导读，整理官方教材、交互练习与学习路线，配合逻辑推理、存在性、等式改写和实数恒等式示例。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lean 4 形式化入门：从数学证明到可检查的代码">
+<meta property="og:url" content="https://mathzeta2.github.io/2026/11/13/lean4-formalization-guide/index.html">
+<meta property="og:site_name" content="zeta2的博客">
+<meta property="og:description" content="面向数学学习者的 Lean 4 教程导读，整理官方教材、交互练习与学习路线，配合逻辑推理、存在性、等式改写和实数恒等式示例。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-11-13T03:10:00.000Z">
+<meta property="article:modified_time" content="2026-11-13T03:11:38.410Z">
+<meta property="article:author" content="zeta2">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="Lean 4">
+<meta property="article:tag" content="形式化证明">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+    <link rel="shortcut icon" href="/images/elden-ring/icons/crimson-flask.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
+  
+    
+      
+        
+<link rel="stylesheet" href="/lib/katex/katex.min.css" integrity="" crossorigin="anonymous">
+
+      
+    
+  
+  
+  
+  
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+  
+  
+  
+  
+    <link rel="stylesheet" href="/css/zeta-reading.css"><link rel="stylesheet" href="/css/elden-companion.css?v=5"><link rel="stylesheet" href="/css/grace-reading.css?v=1"><link rel="stylesheet" href="/css/elden-cursor-music.css?v=5">
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+    
+    
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+    
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon ">
+             
+              
+                <img src="/images/elden-ring/icons/crimson-flask.png" alt="红露滴圣杯瓶" title="红露滴圣杯瓶" style="height: 1em;">
+              
+             
+          </div>
+          <a class="main-nav-link" href="/">首页</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon ">
+             
+              
+                <img src="/images/elden-ring/icons/memory-stone.png" alt="记忆石" title="记忆石" style="height: 1em;">
+              
+             
+          </div>
+          <a class="main-nav-link" href="/archives">归档</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon ">
+             
+              
+                <img src="/images/elden-ring/icons/snow-witch-hat.png" alt="雪魔女帽" title="雪魔女帽" style="height: 1em;">
+              
+             
+          </div>
+          <a class="main-nav-link" href="/about">关于</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon ">
+             
+              
+                <img src="/images/elden-ring/icons/finger-remedy.png" alt="唤勾指药" title="唤勾指药" style="height: 1em;">
+              
+             
+          </div>
+          <a class="main-nav-link" href="/friend">友链</a>
+        </span>
+      
+    
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+    
+    
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="搜索" aria-label="搜索"></a>
+    
+  </nav>
+  
+</div>
+<header id="header" aria-label="Site header">
+  
+    
+      
+        <picture>
+          
+        </picture>
+        
+          <img  fetchpriority="high" src="/images/banner.webp" alt="Lean 4 形式化入门：从数学证明到可检查的代码">
+        
+      
+    
+  
+  <div id="header-outer">
+    <div id="header-title">
+      
+        
+        
+          <span id="logo">
+            <h1 data-aos="slide-up">Lean 4 形式化入门：从数学证明到可检查的代码</h1>
+          </span>
+        
+      
+      
+        
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+          
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content"  class="sidebar-right" >
+          <aside id="sidebar" aria-label="Sidebar">
+  
+  <div class="sidebar-wrapper-container sticky">
+  <section class="elden-music" aria-label="交界地之声音乐播放器">
+  <div class="elden-music-heading">
+    <img src="/images/elden-ring/icons/harp-bow.png" alt="竖琴弓" title="竖琴弓 · Harp Bow" width="30" height="30">
+    <span>交界地之声 <small>NETEASE MUSIC</small></span>
+  </div>
+  <div id="elden-music-player" class="elden-native-player" hidden>
+    <div class="elden-track-info">
+      <img class="elden-track-cover" alt="" width="52" height="52" hidden>
+      <div><strong class="elden-track-name"></strong><span class="elden-track-artist"></span></div>
+    </div>
+    <audio class="elden-audio" controls preload="none" aria-label="音乐播放控制"></audio>
+    <div class="elden-track-actions">
+      <button type="button" data-music-action="prev">上一首</button>
+      <button type="button" data-music-action="next">下一首</button>
+      <a class="elden-track-link" target="_blank" rel="noopener noreferrer">网易云听本曲 ↗</a>
+    </div>
+    <details class="elden-track-picker">
+      <summary>选择曲目 <span class="elden-track-count"></span></summary>
+      <ol class="elden-track-list"></ol>
+    </details>
+  </div>
+  <p class="elden-music-status" role="status" aria-live="polite">正在载入歌单…</p>
+  <div class="elden-music-controls">
+    <button type="button" class="elden-music-retry" hidden>重试播放</button>
+    <a href="https://music.163.com/#/playlist?id=2990929899" target="_blank" rel="noopener noreferrer">在网易云打开歌单 ↗</a>
+  </div>
+  <noscript><p class="elden-music-note">请启用 JavaScript，或通过上方链接收听。</p></noscript>
+  <p class="elden-music-note">部分曲目仅提供试听，完整收听请打开网易云。</p>
+</section>
+
+  
+    
+    
+  
+ 
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+      
+        
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+  
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%85%88%E4%BB%8E%E5%93%AA%E4%BB%BD%E6%95%99%E7%A8%8B%E5%BC%80%E5%A7%8B"><span class="toc-number">1.</span> <span class="toc-text"> 一、先从哪份教程开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%87%86%E5%A4%87%E4%B8%80%E4%B8%AA%E8%83%BD%E7%9C%8B%E5%88%B0%E8%AF%81%E6%98%8E%E7%8A%B6%E6%80%81%E7%9A%84%E7%8E%AF%E5%A2%83"><span class="toc-number">2.</span> <span class="toc-text"> 二、准备一个能看到证明状态的环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%88%E5%9C%A8%E7%BA%BF%E4%BD%93%E9%AA%8C"><span class="toc-number">2.1.</span> <span class="toc-text"> 先在线体验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%8D%E5%AE%89%E8%A3%85%E6%9C%AC%E5%9C%B0%E7%8E%AF%E5%A2%83"><span class="toc-number">2.2.</span> <span class="toc-text"> 再安装本地环境</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%85%88%E8%AF%BB%E6%87%82%E7%9B%AE%E6%A0%87%E5%86%8D%E9%80%89%E6%8B%A9%E7%AD%96%E7%95%A5"><span class="toc-number">3.</span> <span class="toc-text"> 三、先读懂目标，再选择策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E4%BA%94%E4%B8%AA%E5%B0%8F%E8%AF%81%E6%98%8E"><span class="toc-number">4.</span> <span class="toc-text"> 四、五个小证明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%8A%8A%E4%B8%A4%E6%AC%A1%E6%8E%A8%E7%90%86%E8%BF%9E%E6%8E%A5%E8%B5%B7%E6%9D%A5"><span class="toc-number">4.1.</span> <span class="toc-text"> 1. 把两次推理连接起来</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BA%A4%E6%8D%A2%E5%90%88%E5%8F%96%E7%9A%84%E9%A1%BA%E5%BA%8F"><span class="toc-number">4.2.</span> <span class="toc-text"> 2. 交换合取的顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AD%98%E5%9C%A8%E6%80%A7%E9%9C%80%E8%A6%81%E7%BB%99%E5%87%BA%E8%A7%81%E8%AF%81"><span class="toc-number">4.3.</span> <span class="toc-text"> 3. 存在性需要给出见证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%8A%8A%E5%B7%B2%E6%9C%89%E7%AD%89%E5%BC%8F%E7%94%A8%E4%BA%8E%E6%9B%B4%E5%A4%A7%E7%9A%84%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">4.4.</span> <span class="toc-text"> 4. 把已有等式用于更大的表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E4%BD%BF%E7%94%A8-mathlib-%E9%AA%8C%E8%AF%81%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%81%92%E7%AD%89%E5%BC%8F"><span class="toc-number">4.5.</span> <span class="toc-text"> 5. 使用 mathlib 验证多项式恒等式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E6%80%8E%E6%A0%B7%E4%BB%8E%E5%B0%8F%E4%BE%8B%E5%AD%90%E8%B5%B0%E5%90%91%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text"> 五、怎样从小例子走向数学分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E5%88%9D%E5%AD%A6%E6%97%B6%E5%B8%B8%E8%A7%81%E7%9A%84%E5%8D%A1%E7%82%B9"><span class="toc-number">6.</span> <span class="toc-text"> 六、初学时常见的卡点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E7%BB%83%E4%B9%A0%E6%96%87%E4%BB%B6%E4%B8%8E%E7%BB%A7%E7%BB%AD%E9%98%85%E8%AF%BB"><span class="toc-number">7.</span> <span class="toc-text"> 七、练习文件与继续阅读</span></a></li></ol>
+  
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="zeta2" class="lazyload">
+  <div class="sidebar-author-name">zeta2</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">5</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">1</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">17</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/crimson-flask.png" alt="红露滴圣杯瓶" title="红露滴圣杯瓶" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/memory-stone.png" alt="记忆石" title="记忆石" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/snow-witch-hat.png" alt="雪魔女帽" title="雪魔女帽" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/finger-remedy.png" alt="唤勾指药" title="唤勾指药" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+    
+  
+</div>
+
+<div class="grace-sidebar-tools">
+  <button type="button" data-reading-action="shelf"><img src="/images/elden-ring/icons/grace-mimic.png" alt="">我的赐福 <span data-grace-count>0</span></button>
+  <button type="button" data-reading-action="assistant">菈妮阅读助手</button>
+</div>
+</div>
+        
+      
+      
+        
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+        
+      
+    </div>
+  </div>
+  
+  <div class="sidebar-widget">
+  
+  </div>
+  
+  </div>
+  
+</aside>
+
+
+
+          <section id="main" aria-label="Main content"><article id="post-lean4-formalization-guide" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2026-11-13T03:10:00.000Z" itemprop="datePublished">2026-11-13</time>
+    <time style="display: none;" id="post-update-time">2026-11-13</time>
+  </span>
+  
+</div>
+
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E5%AD%A6/" title="数学">数学</a>
+  </div>
+
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+
+    
+    <div class="grace-article-tools" data-reading-post="/2026/11/13/lean4-formalization-guide/">
+      <button type="button" data-reading-action="save" aria-pressed="false"><img src="/images/elden-ring/icons/grace-mimic.png" alt=""> <span data-save-label>点亮赐福</span></button>
+      <button type="button" data-reading-action="shelf">我的赐福 <span data-grace-count>0</span></button>
+      <button type="button" data-reading-action="toc">文章目录</button>
+      <button type="button" data-reading-action="assistant">菈妮阅读助手</button>
+    </div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+      
+        <p>纸笔证明中，我们常写“由假设可知”“代入即得”。到了形式化证明里，需要把这些步骤表达成计算机能够检查的对象。Lean 可以帮助我们明确：用了哪些假设，当前还缺什么，以及结论是否确实由这些条件推出。</p>
+<p>这篇文章面向已经接触高等数学、线性代数或数学分析，希望开始学习形式化的读者。先整理值得跟读的教程，再用几个小例子体验证明过程。</p>
+<p><strong>整理：zeta2 · 资料核对日期：2026 年 11 月 13 日。</strong> 本文使用 Lean 4；教程介绍是中文导读，链接指向原作者或官方维护的资源，代码示例为本文编写。</p>
+<span id="more"></span>
+<h2 id="一-先从哪份教程开始"><a class="markdownIt-Anchor" href="#一-先从哪份教程开始"></a> 一、先从哪份教程开始</h2>
+<p>如果只选一本主教材，数学背景的读者可以先读 <strong>Mathematics in Lean</strong>。如果希望先知道“在 Lean 里证明一道题是什么感觉”，就先玩 Natural Number Game，再进入教材。这也是 Lean 官方学习页面提供的主要入门方向：<a target="_blank" rel="noopener" href="https://lean-lang.org/learn/">官方学习资源</a>。</p>
+<table>
+<thead>
+<tr>
+<th>资源</th>
+<th>适合什么时候使用</th>
+<th>建议做法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://adam.math.hhu.de/#/g/leanprover-community/NNG4">Natural Number Game</a></td>
+<td>第一次接触证明助手</td>
+<td>跟着关卡理解目标、改写和归纳；注意游戏有专门的教学环境</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://leanprover-community.github.io/mathematics_in_lean/">Mathematics in Lean</a></td>
+<td>想把熟悉的数学写成 Lean</td>
+<td>作为主线，一边阅读一边完成对应的 Lean 文件练习</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://lean-lang.org/theorem_proving_in_lean4/">Theorem Proving in Lean 4</a></td>
+<td>想理解语法与逻辑基础</td>
+<td>重点查阅命题、量词、等式和 tactics 章节</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/PatrickMassot/GlimpseOfLean">A Glimpse of Lean</a></td>
+<td>想较快接触数学证明实例</td>
+<td>从 Introduction 开始，再选短路线或 Basics 目录</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://leanprover-community.github.io/mathlib4_docs/">mathlib API 文档</a></td>
+<td>已经在写证明，想找定义和定理</td>
+<td>当作工具书使用，不必从头读</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mathematics in Lean（MIL）</strong> 使用 mathlib 数学库，面向数学形式化；<strong>Theorem Proving in Lean 4（TPIL）</strong> 更系统地介绍 Lean 的逻辑框架和核心语法。两本书可以互相补充，不需要先完整读完 TPIL 才开始做数学。教材的定位和使用方式见 <a target="_blank" rel="noopener" href="https://leanprover-community.github.io/mathematics_in_lean/C01_Introduction.html">MIL 第一章</a>。</p>
+<p>Glimpse of Lean 的项目提供在线练习入口；基础部分之后还可以选择实数数列极限、环论等专题，适合作为从语法走向数学实例的过渡。具体路线见 <a target="_blank" rel="noopener" href="https://github.com/PatrickMassot/GlimpseOfLean#readme">项目说明</a>。</p>
+<h2 id="二-准备一个能看到证明状态的环境"><a class="markdownIt-Anchor" href="#二-准备一个能看到证明状态的环境"></a> 二、准备一个能看到证明状态的环境</h2>
+<h3 id="先在线体验"><a class="markdownIt-Anchor" href="#先在线体验"></a> 先在线体验</h3>
+<p>打开 <a target="_blank" rel="noopener" href="https://live.lean-lang.org/">Lean Playground</a>。本文最后一个例子使用实数与 <code>ring</code>，需要选择包含 <strong>mathlib</strong> 的环境，并将 <code>import Mathlib</code> 放在文件第一行。</p>
+<p>编辑器右侧的 <strong>InfoView</strong> 很重要：光标放到证明中的某一步时，可以看到当前假设和待证目标。初学时应养成“写一步、看一次目标”的习惯。在线入口和本地安装路径见 <a target="_blank" rel="noopener" href="https://lean-lang.org/getting-started/">官方 Getting Started</a>。</p>
+<h3 id="再安装本地环境"><a class="markdownIt-Anchor" href="#再安装本地环境"></a> 再安装本地环境</h3>
+<ol>
+<li>安装 VS Code，以及发布者为 <code>leanprover</code> 的 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=leanprover.lean4">Lean 4 扩展</a>。</li>
+<li>按扩展的 Setup Guide 完成 Lean 安装。</li>
+<li>跟读 MIL 时，按 <a target="_blank" rel="noopener" href="https://leanprover-community.github.io/mathematics_in_lean/C01_Introduction.html#getting-started">教材安装说明</a> 下载教材项目，并用 VS Code 打开项目文件夹。</li>
+<li>复制教材的 <code>MIL</code> 目录，在副本中做练习，保留原始练习供对照。</li>
+</ol>
+<p>学习数学时，直接进入教材项目更方便：项目已经声明所需依赖。一个只包含核心 Lean 的普通项目，并不会因为写了 <code>import Mathlib</code> 就自动安装 mathlib。</p>
+<p>已有项目中的 <code>lean-toolchain</code> 用来指定 Lean 工具链，依赖由项目配置与 <code>lake-manifest.json</code> 配合管理。跟教程时优先使用项目提供的版本；不要只升级 Lean 编译器，再期待旧依赖自动兼容。Lake 的项目与工具链说明见 <a target="_blank" rel="noopener" href="https://github.com/leanprover/lean4/tree/master/src/lake#readme">官方 Lake 文档</a>。</p>
+<h2 id="三-先读懂目标再选择策略"><a class="markdownIt-Anchor" href="#三-先读懂目标再选择策略"></a> 三、先读懂目标，再选择策略</h2>
+<p>例如当前状态是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">P Q : Prop</span><br><span class="line">h : P</span><br><span class="line">⊢ Q</span><br></pre></td></tr></table></figure>
+<p>可以读成：“P、Q 是命题，手里有 P 的证明 h，现在需要证明 Q。”符号 <code>⊢</code> 后面是当前目标；上面是当前可用的对象和假设。仅凭这个状态，通常无法证明 Q，还需要例如 <code>P → Q</code> 这样的条件。</p>
+<p>初学阶段可以先建立下面的对应关系：</p>
+<table>
+<thead>
+<tr>
+<th>Lean 写法或策略</th>
+<th>在证明中做什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>P : Prop</code></td>
+<td>声明 P 是一个命题</td>
+</tr>
+<tr>
+<td><code>h : P</code></td>
+<td>h 是 P 的一个证明</td>
+</tr>
+<tr>
+<td><code>intro h</code></td>
+<td>对蕴含目标引入假设，或对全称目标引入对象</td>
+</tr>
+<tr>
+<td><code>exact h</code></td>
+<td>用类型与当前目标匹配的证明完成目标</td>
+</tr>
+<tr>
+<td><code>apply h</code></td>
+<td>用结论符合目标的定理，将所需前提变成新目标</td>
+</tr>
+<tr>
+<td><code>constructor</code></td>
+<td>按构造方式拆解目标；例如把合取拆成两部分</td>
+</tr>
+<tr>
+<td><code>rw [h]</code></td>
+<td>使用等式或等价关系改写</td>
+</tr>
+<tr>
+<td><code>rfl</code></td>
+<td>处理两边按定义计算后相同的等式</td>
+</tr>
+<tr>
+<td><code>simp</code></td>
+<td>使用化简规则简化表达式，有时可以直接完成目标</td>
+</tr>
+</tbody>
+</table>
+<p>这些策略的详细行为可查 <a target="_blank" rel="noopener" href="https://lean-lang.org/theorem_proving_in_lean4/Tactics/">TPIL：Tactics</a>。不要把策略名当成万能口令：先看目标的形状，再判断它会把目标变成什么。</p>
+<h2 id="四-五个小证明"><a class="markdownIt-Anchor" href="#四-五个小证明"></a> 四、五个小证明</h2>
+<p>以下五个示例已于整理当日在官方 Playground 的 <strong>Stable Release：Lean v4.35.0（含 mathlib）</strong> 环境中通过检查，未产生错误或警告；<code>#print axioms</code> 的结果中没有 <code>sorryAx</code>。这里记录的是实际检查环境，不表示所有教材必须使用同一个版本。</p>
+<p>示例可以合并到同一个文件中。完整文件在文末提供，首行包含 <code>import Mathlib</code>；前四例只涉及基础逻辑与自然数，第五例使用 mathlib。</p>
+<h3 id="1-把两次推理连接起来"><a class="markdownIt-Anchor" href="#1-把两次推理连接起来"></a> 1. 把两次推理连接起来</h3>
+<p>已知 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>→</mo><mi>Q</mi></mrow><annotation encoding="application/x-tex">P\to Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">Q</span></span></span></span> 与 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>→</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">Q\to R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">Q</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span>，证明 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>→</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">P\to R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">theorem chain (P Q R : Prop) (hPQ : P → Q) (hQR : Q → R) : P → R := by</span><br><span class="line">  intro hP</span><br><span class="line">  exact hQR (hPQ hP)</span><br></pre></td></tr></table></figure>
+<p><code>intro hP</code> 假设 P 成立，把目标变为 R。<code>hPQ hP</code> 得到 Q 的证明，再交给 <code>hQR</code>，便得到 R 的证明。这里不是“算出命题真假”，而是把一个证明作为另一个推理的输入。</p>
+<p>关于命题与证明的类型关系，可以继续读 <a target="_blank" rel="noopener" href="https://lean-lang.org/theorem_proving_in_lean4/Propositions-and-Proofs/">TPIL：Propositions and Proofs</a>。</p>
+<h3 id="2-交换合取的顺序"><a class="markdownIt-Anchor" href="#2-交换合取的顺序"></a> 2. 交换合取的顺序</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">theorem swapAnd (P Q : Prop) (h : P ∧ Q) : Q ∧ P := by</span><br><span class="line">  constructor</span><br><span class="line">  · exact h.2</span><br><span class="line">  · exact h.1</span><br></pre></td></tr></table></figure>
+<p><code>constructor</code> 把目标分成 Q 和 P。已知 <code>h : P ∧ Q</code>，其中 <code>h.1</code> 取出 P 的证明，<code>h.2</code> 取出 Q 的证明。两个 <code>·</code> 分别组织两个子目标，缩进表明各段属于哪个分支。</p>
+<p>练习：先不看答案，写出从 <code>P ∧ Q</code> 推出 P 的证明，再尝试从 <code>P ∧ (Q ∧ R)</code> 推出 R。</p>
+<h3 id="3-存在性需要给出见证"><a class="markdownIt-Anchor" href="#3-存在性需要给出见证"></a> 3. 存在性需要给出见证</h3>
+<p>对任意自然数 n，存在自然数 m，使得 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mi>n</mi><mo>+</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">m=n+n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">theorem doubleWitness (n : Nat) : ∃ m : Nat, m = n + n := by</span><br><span class="line">  exact ⟨n + n, rfl⟩</span><br></pre></td></tr></table></figure>
+<p><code>⟨n + n, rfl⟩</code> 同时提供两个部分：选择见证 <code>m := n + n</code>，并证明代入后出现的等式 <code>n + n = n + n</code>。这个例子有意选得很简单，重点是存在量词的证明结构。</p>
+<p>进一步可读 <a target="_blank" rel="noopener" href="https://lean-lang.org/theorem_proving_in_lean4/Quantifiers-and-Equality/">TPIL：Quantifiers and Equality</a>。</p>
+<h3 id="4-把已有等式用于更大的表达式"><a class="markdownIt-Anchor" href="#4-把已有等式用于更大的表达式"></a> 4. 把已有等式用于更大的表达式</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">theorem swapThenAddOne (a b : Nat) : (a + b) + 1 = (b + a) + 1 := by</span><br><span class="line">  rw [Nat.add_comm a b]</span><br></pre></td></tr></table></figure>
+<p><code>Nat.add_comm a b</code> 是关于自然数加法交换律的已有定理。这里明确给出 a、b，使它表达 <code>a + b = b + a</code>；改写后，目标两边相同。</p>
+<p>遇到一个陌生定理，先输入 <code>#check Nat.add_comm</code>，查看完整类型，再决定该怎样使用。定理名字只是线索，参数和结论才是使用依据。</p>
+<h3 id="5-使用-mathlib-验证多项式恒等式"><a class="markdownIt-Anchor" href="#5-使用-mathlib-验证多项式恒等式"></a> 5. 使用 mathlib 验证多项式恒等式</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import Mathlib</span><br><span class="line"></span><br><span class="line">theorem squareShift (x : ℝ) : (x + 2) ^ 2 = x ^ 2 + 4 * x + 4 := by</span><br><span class="line">  ring</span><br></pre></td></tr></table></figure>
+<p>单独运行这一例时保留第一行；若与其他示例合并，<code>import Mathlib</code> 只需在整个文件开头出现一次。</p>
+<p>数学上，这是展开平方再整理同类项。<code>ring</code> 可以处理相应代数结构中的多项式等式；它并不是求解所有数学问题的通用策略。实数、相关代数结构与策略由 mathlib 提供，可查 <a target="_blank" rel="noopener" href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Ring/Basic.html">mathlib 的 Ring 策略文档</a>。</p>
+<h2 id="五-怎样从小例子走向数学分析"><a class="markdownIt-Anchor" href="#五-怎样从小例子走向数学分析"></a> 五、怎样从小例子走向数学分析</h2>
+<p>对于数学专业学习者，我建议采用以下练习顺序。每阶段以“能独立完成小证明”为结束条件，不必追求固定天数。</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>练习重点</th>
+<th>完成标志</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>认识证明状态</td>
+<td>Natural Number Game、本文前两例</td>
+<td>能说明每一步的假设和目标如何变化</td>
+</tr>
+<tr>
+<td>逻辑与量词</td>
+<td>全称、存在、合取、蕴含和等价</td>
+<td>能把一段简单纸笔证明拆成若干小目标</td>
+</tr>
+<tr>
+<td>等式与函数</td>
+<td>改写、复合、单射、满射</td>
+<td>能查到并正确使用一个已有定理</td>
+</tr>
+<tr>
+<td>集合与数系</td>
+<td>集合包含、自然数、整数、实数</td>
+<td>能区分定义展开和调用库中结果</td>
+</tr>
+<tr>
+<td>分析入门</td>
+<td>数列极限、连续性相关的基础练习</td>
+<td>能解释定义中各变量及量词的作用范围</td>
+</tr>
+</tbody>
+</table>
+<p>这份顺序是本文的学习建议。具体章节与练习请跟随 <a target="_blank" rel="noopener" href="https://leanprover-community.github.io/mathematics_in_lean/">MIL 目录</a>；想较早接触数列极限，也可以选择 Glimpse of Lean 的 SequenceLimits 专题。</p>
+<p>例如纸笔上写：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">∀</mi><mi>ε</mi><mo>&gt;</mo><mn>0</mn><mo separator="true">,</mo><mtext> </mtext><mi mathvariant="normal">∃</mi><mi>N</mi><mo>∈</mo><mi mathvariant="double-struck">N</mi><mo separator="true">,</mo><mtext> </mtext><mi mathvariant="normal">∀</mi><mi>n</mi><mo>≥</mo><mi>N</mi><mo separator="true">,</mo><mtext> </mtext><mi mathvariant="normal">∣</mi><msub><mi>u</mi><mi>n</mi></msub><mo>−</mo><mi>L</mi><mi mathvariant="normal">∣</mi><mo>&lt;</mo><mi>ε</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">\forall\varepsilon&gt;0,\ \exists N\in\mathbb N,\ \forall n\ge N,\ |u_n-L|&lt;\varepsilon.
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord">∀</span><span class="mord mathnormal">ε</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">∃</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathbb">N</span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">∀</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">ε</span><span class="mord">.</span></span></span></span></span></p>
+<p>形式化时首先要弄清：ε 的类型是什么，N 可以依赖哪些已引入的量，后面的 n 又是什么类型。掌握这些细节后，再学习 mathlib 已有的极限表示与定理，会更容易理解库接口。</p>
+<h2 id="六-初学时常见的卡点"><a class="markdownIt-Anchor" href="#六-初学时常见的卡点"></a> 六、初学时常见的卡点</h2>
+<p><strong>拿到了 Lean 3 代码。</strong> 老教材中常见 <code>begin ... end</code> 风格，不能直接当成本文的 Lean 4 示例使用。搜索时优先确认教程版本；社区维护的 <a target="_blank" rel="noopener" href="https://leanprover-community.github.io/learn.html">Lean 4 学习页</a> 可作为入口。</p>
+<p><strong>出现 <code>unknown module prefix 'Mathlib'</code>。</strong> 先确认打开的是含 mathlib 依赖的项目根目录，而不只是单独一个文件。教材项目准备完成后再编写示例；不要把模块找不到误认为证明有错。</p>
+<p><strong><code>exact</code> 报类型不匹配。</strong> 对比当前目标与所提供证明的类型。<code>P → Q</code> 是一条推理规则，Q 是它的结论；两者不同。还要留意自然数、整数、实数及其转换。</p>
+<p><strong><code>rw</code> 没有找到要改写的表达式。</strong> 查看等式方向、表达式实际形状和所在位置。反向使用等式时可以写 <code>rw [← h]</code>；若要处理某条假设，需要说明在该假设中改写。</p>
+<p><strong>还留着 <code>sorry</code>。</strong> <code>sorry</code> 允许临时跳过证明，并会带来警告；它适合搭草稿，但不代表该结论已经证明。检查完整证明时需要移除这些占位符。关于证明、公理和计算的边界，见 <a target="_blank" rel="noopener" href="https://lean-lang.org/theorem_proving_in_lean4/Axioms-and-Computation/">TPIL：Axioms and Computation</a>。</p>
+<p><strong>不知道库里叫什么。</strong> 可以从目标的类型、运算或命名空间出发，在 <a target="_blank" rel="noopener" href="https://leanprover-community.github.io/mathlib4_docs/">mathlib API</a> 或官方学习页列出的 <a target="_blank" rel="noopener" href="https://loogle.lean-lang.org/">Loogle</a> 中查找；找到候选结果后，再核对假设是否满足。</p>
+<h2 id="七-练习文件与继续阅读"><a class="markdownIt-Anchor" href="#七-练习文件与继续阅读"></a> 七、练习文件与继续阅读</h2>
+<p><a href="/downloads/lean4-starter/LeanIntro.lean">下载本文完整示例：LeanIntro.lean</a></p>
+<p>文件包含五个定理，以及检查它们所依赖公理的 <code>#print axioms</code> 命令。可以复制到启用了 mathlib 的 Playground 中，或放入准备好的数学项目后，在项目根目录执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lake <span class="built_in">env</span> lean LeanIntro.lean</span><br></pre></td></tr></table></figure>
+<p>如果文件放在子目录，替换为它的实际相对路径。命令行检查成功与否要看退出状态和诊断；<code>#print axioms</code> 输出的信息本身不是报错，也不能只凭“列出了公理”就断定证明有问题。</p>
+<p>建议先独立重写本文前两个例子，再开始 MIL 的练习。每次遇到报错，记录“原目标、已有假设、尝试的步骤”，比仅记住一条成功的策略更有助于理解。</p>
+<p>本文参考入口：<a target="_blank" rel="noopener" href="https://lean-lang.org/learn/">Lean 官方学习页</a>、<a target="_blank" rel="noopener" href="https://lean-lang.org/getting-started/">官方环境准备</a>、<a target="_blank" rel="noopener" href="https://leanprover-community.github.io/mathematics_in_lean/">Mathematics in Lean</a>、<a target="_blank" rel="noopener" href="https://lean-lang.org/theorem_proving_in_lean4/">Theorem Proving in Lean 4</a>、<a target="_blank" rel="noopener" href="https://github.com/PatrickMassot/GlimpseOfLean">Glimpse of Lean</a>。各教材的版权归原作者；本文保留原始链接，方便继续阅读和交互练习。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/Lean-4/" rel="tag" title="Lean 4">Lean 4</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag" title="学习笔记">学习笔记</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E5%BD%A2%E5%BC%8F%E5%8C%96%E8%AF%81%E6%98%8E/" rel="tag" title="形式化证明">形式化证明</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag" title="数学">数学</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+  <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+    
+    
+    
+    <div class="article-nav-link-wrap right">
+      
+          <img data-src="/images/elden-ring/sunset.webp" data-sizes="auto" alt="" class="lazyload">
+        
+      <a href="/2026/11/13/manim-beginner-guide/" aria-label="后一篇: Manim 入门指南：从第一个动画到导数可视化"  title="后一篇: Manim 入门指南：从第一个动画到导数可视化"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+        
+          Manim 入门指南：从第一个动画到导数可视化
+        
+      </h3>
+    </div>
+    
+  </nav>
+
+
+</article>
+
+
+
+
+
+
+
+
+
+  <section id="comments" data-aos="fade-up">
+    <div class="comment-header">
+      
+      
+      <h2 class="comment-title">评论区</h2>
+      <div class="comment-selector">
+        <div class="comment-selector-wrap">
+            
+            <div class="selector-item" data-selector="giscus">
+              <span>giscus</span>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+    <div class="comment-content">
+      
+        <div class="comment giscus-comment" data-aos="fade-up"
+          id="giscus-comment">
+        </div>
+      
+    </div>
+  </section>
+
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    
+    <div>
+      <span class="icon-copyright"></span>
+      
+      
+      
+        2020-2026
+      
+      <span class="footer-info-sep "></span>
+      zeta2
+    </div>
+    
+      <div>
+        基于&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+    
+    
+      <div>
+        <span class="icon-brush"></span>
+        33k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        02:34
+      </div>
+    
+    
+    
+    
+    
+      
+      <div id="visit-stats" data-recorded-at="2026-11-11T12:53:39+08:00">
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv" aria-live="polite">1667</span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv" aria-live="polite">1202</span></span>
+        <div style="font-size: .85em; margin-top: .4em;">
+          <span id="visit-stats-status" title="真实统计的最近记录；连接成功后会更新。">最近记录：2026-11-11 12:53</span>
+          <button id="visit-stats-retry" type="button" hidden style="margin-left: .5em; color: inherit; cursor: pointer;">重新获取</button>
+        </div>
+      </div>
+    
+  </div>
+</footer>
+
+        
+          <div class="sidebar-top" title="返回顶部 · 暗月戒指">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+    
+      
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+  
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%85%88%E4%BB%8E%E5%93%AA%E4%BB%BD%E6%95%99%E7%A8%8B%E5%BC%80%E5%A7%8B"><span class="toc-number">1.</span> <span class="toc-text"> 一、先从哪份教程开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%87%86%E5%A4%87%E4%B8%80%E4%B8%AA%E8%83%BD%E7%9C%8B%E5%88%B0%E8%AF%81%E6%98%8E%E7%8A%B6%E6%80%81%E7%9A%84%E7%8E%AF%E5%A2%83"><span class="toc-number">2.</span> <span class="toc-text"> 二、准备一个能看到证明状态的环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%88%E5%9C%A8%E7%BA%BF%E4%BD%93%E9%AA%8C"><span class="toc-number">2.1.</span> <span class="toc-text"> 先在线体验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%8D%E5%AE%89%E8%A3%85%E6%9C%AC%E5%9C%B0%E7%8E%AF%E5%A2%83"><span class="toc-number">2.2.</span> <span class="toc-text"> 再安装本地环境</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%85%88%E8%AF%BB%E6%87%82%E7%9B%AE%E6%A0%87%E5%86%8D%E9%80%89%E6%8B%A9%E7%AD%96%E7%95%A5"><span class="toc-number">3.</span> <span class="toc-text"> 三、先读懂目标，再选择策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E4%BA%94%E4%B8%AA%E5%B0%8F%E8%AF%81%E6%98%8E"><span class="toc-number">4.</span> <span class="toc-text"> 四、五个小证明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%8A%8A%E4%B8%A4%E6%AC%A1%E6%8E%A8%E7%90%86%E8%BF%9E%E6%8E%A5%E8%B5%B7%E6%9D%A5"><span class="toc-number">4.1.</span> <span class="toc-text"> 1. 把两次推理连接起来</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BA%A4%E6%8D%A2%E5%90%88%E5%8F%96%E7%9A%84%E9%A1%BA%E5%BA%8F"><span class="toc-number">4.2.</span> <span class="toc-text"> 2. 交换合取的顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AD%98%E5%9C%A8%E6%80%A7%E9%9C%80%E8%A6%81%E7%BB%99%E5%87%BA%E8%A7%81%E8%AF%81"><span class="toc-number">4.3.</span> <span class="toc-text"> 3. 存在性需要给出见证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%8A%8A%E5%B7%B2%E6%9C%89%E7%AD%89%E5%BC%8F%E7%94%A8%E4%BA%8E%E6%9B%B4%E5%A4%A7%E7%9A%84%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">4.4.</span> <span class="toc-text"> 4. 把已有等式用于更大的表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E4%BD%BF%E7%94%A8-mathlib-%E9%AA%8C%E8%AF%81%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%81%92%E7%AD%89%E5%BC%8F"><span class="toc-number">4.5.</span> <span class="toc-text"> 5. 使用 mathlib 验证多项式恒等式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E6%80%8E%E6%A0%B7%E4%BB%8E%E5%B0%8F%E4%BE%8B%E5%AD%90%E8%B5%B0%E5%90%91%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text"> 五、怎样从小例子走向数学分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E5%88%9D%E5%AD%A6%E6%97%B6%E5%B8%B8%E8%A7%81%E7%9A%84%E5%8D%A1%E7%82%B9"><span class="toc-number">6.</span> <span class="toc-text"> 六、初学时常见的卡点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E7%BB%83%E4%B9%A0%E6%96%87%E4%BB%B6%E4%B8%8E%E7%BB%A7%E7%BB%AD%E9%98%85%E8%AF%BB"><span class="toc-number">7.</span> <span class="toc-text"> 七、练习文件与继续阅读</span></a></li></ol>
+  
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="zeta2" class="lazyload">
+  <div class="sidebar-author-name">zeta2</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">5</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">1</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">17</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/crimson-flask.png" alt="红露滴圣杯瓶" title="红露滴圣杯瓶" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/memory-stone.png" alt="记忆石" title="记忆石" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/snow-witch-hat.png" alt="雪魔女帽" title="雪魔女帽" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/finger-remedy.png" alt="唤勾指药" title="唤勾指药" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+    
+  
+</div>
+
+<div class="grace-sidebar-tools">
+  <button type="button" data-reading-action="shelf"><img src="/images/elden-ring/icons/grace-mimic.png" alt="">我的赐福 <span data-grace-count>0</span></button>
+  <button type="button" data-reading-action="assistant">菈妮阅读助手</button>
+</div>
+</div>
+      
+    
+  </div>
+  
+    
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+    
+  
+</nav>
+
+    </div>
+    
+      <div class="site-search">
+        <div class="reimu-popup popup">
+          <div class="reimu-search">
+            <div class="reimu-search-input-icon"></div>
+            <div id="reimu-search-input"></div>
+            <div class="popup-btn-close"></div>
+          </div>
+          <div class="reimu-results">
+            <div id="reimu-stats"></div>
+            <div id="reimu-hits"></div>
+            <div id="reimu-pagination" class="reimu-pagination"></div>
+          </div>
+          <img class="reimu-bg" alt="" aria-hidden="true" src="/images/elden-ring/erdtree.webp"/>
+        </div>
+      </div>
+    
+    
+    
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+  
+<script src="/js/generator_search.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+    
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "zeta2",
+          title: "Lean 4 形式化入门：从数学证明到可检查的代码",
+          url: "https://mathzeta2.github.io/2026/11/13/lean4-formalization-guide/",
+          excerpt: "纸笔证明中，我们常写“由假设可知”“代入即得”。到了形式化证明里，需要把这些步骤表达成计算机能够检查的对象。Lean 可以帮助我们明确：用了哪些假设，当前还缺什么，以及结论是否确实由这些条件推出。 这篇文章面向已经接触高等数学、线性代数或数学分析，希望开始学习形式化的读者。先整理值得跟读的教程，再用几个小例子体验证明过程。 整理：zeta2 · 资料核对日期：2026 年 11 月 13 日。 本文使用 Lean 4；教程介绍是中文导读，链接指向原作者或官方维护的资源，代码示例为本文编写。",
+          description: "面向数学学习者的 Lean 4 教程导读，整理官方教材、交互练习与学习路线，配合逻辑推理、存在性、等式改写和实数恒等式示例。",
+          stripContent: "纸笔证明中，我们常写“由假设可知”“代入即得”。到了形式化证明里，需要把这些步骤表达成计算机能够检查的对象。Lean 可以帮助我们明确：用了哪些假设，当前还缺什么，以及结论是否确实由这些条件推出。 这篇文章面向已经接触高等数学、线性代数或数学分析，希望开始学习形式化的读者。先整理值得跟读的教程，再用几个小例子体验证明过程。 整理：zeta2 · 资料核对日期：2026 年 11 月 13 日。 本文使用 Lean 4；教程介绍是中文导读，链接指向原作者或官方维护的资源，代码示例为本文编写。 一、",
+          date: "Fri Nov 13 2026 11:10:00 GMT+0800",
+          updated: "Fri Nov 13 2026 11:11:38 GMT+0800",
+          cover: "/images/banner.webp",
+        };
+      </script>
+       
+    
+    
+      
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+        
+      
+    
+    
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+        const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+      
+        
+
+
+
+
+
+
+
+
+<script data-pjax>
+  var loadScript = (src, integrity) => {
+    const script = document.createElement('script');
+    script.src = src;
+    if (integrity) script.integrity = integrity;
+    script.crossOrigin = 'anonymous';
+    return script;
+  };
+
+  var commentConfigKeys = ["giscus"];
+  var commentConfig = {
+    
+    
+    
+    
+    
+    giscus: {
+      enable: true,
+      load: () => {
+        const container = document.querySelector('.giscus-comment');
+        if (!container) return;
+        container.style.display = 'block';
+
+        // 删除可能已存在的 giscus 脚本和 iframe
+        const existingScript = container.querySelector('script[src*="giscus.app/client.js"]');
+        if (existingScript) existingScript.remove();
+        const existingFrame = document.querySelector('iframe.giscus-frame');
+        if (existingFrame) existingFrame.remove();
+
+        const giscusScript = document.createElement('script');
+        const domMode = document.documentElement.getAttribute("data-theme");
+
+        const docLang = document.documentElement.lang || 'en';
+        const langBase = docLang.split('-')[0];
+        const supportedLangs = ['ar', 'be', 'bg', 'ca', 'cs', 'da', 'de', 'en', 
+        'eo', 'es', 'eu', 'fa', 'fr', 'gr', 'hbs', 'he', 'hu', 'id', 'it', 'ja', 
+        'kh', 'ko', 'nl', 'pl', 'pt', 'ro', 'ru', 'th', 'tr', 'uk', 'uz', 'vi', 'zh-CN', 'zh-HK', 'zh-TW'];
+        const giscusLang = supportedLangs.includes(docLang) ? docLang : supportedLangs.includes(langBase) ? langBase : 'en';
+
+        giscusScript.src = 'https://giscus.app/client.js';
+        giscusScript.setAttribute('data-repo', 'mathzeta2/mathzeta2.github.io');
+        giscusScript.setAttribute('data-repo-id', 'R_kgDOP8A4ug');
+        giscusScript.setAttribute('data-category', 'Announcements'); 
+        giscusScript.setAttribute('data-category-id', 'DIC_kwDOP8A4us4DK3Cg');
+        giscusScript.setAttribute('data-mapping', 'pathname');
+        giscusScript.setAttribute('data-strict', '1');
+        giscusScript.setAttribute('data-reactions-enabled', '1');
+        giscusScript.setAttribute('data-emit-metadata', '0');
+        giscusScript.setAttribute('data-input-position', 'top');
+        giscusScript.setAttribute('data-theme', domMode === 'dark' ? 'dark' : 'light');
+        giscusScript.setAttribute('data-lang', giscusLang);
+        giscusScript.setAttribute('crossorigin', 'anonymous');
+        giscusScript.async = true;
+        container.appendChild(giscusScript);
+        document.body.addEventListener('light-theme-set', () => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: 'light' } } }, 'https://giscus.app');
+        });
+        document.body.addEventListener('dark-theme-set', () => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: 'dark' } } }, 'https://giscus.app');
+        });
+      }
+    }
+    
+  }
+  commentConfig.enable = commentConfigKeys.some(key => commentConfig[key].enable);
+
+  var defaultComment = '';
+  if (commentConfig.enable) {
+    // 1. 首先检查localStorage中是否有保存的评论类型
+    var savedCommentType = localStorage.getItem('commentType');
+    
+    // 2. 如果localStorage中有值且对应的评论系统可用，就使用它
+    if (savedCommentType) {
+      if (commentConfig[savedCommentType]?.enable) {
+        defaultComment = savedCommentType;
+      }
+    }
+    
+    // 3. 如果localStorage无效，检查配置的默认评论系统
+    if (!defaultComment) {
+      var configDefault = 'giscus';
+      if (commentConfig[configDefault]?.enable) {
+        defaultComment = configDefault;
+      }
+    }
+    
+    // 4. 如果前两项都无效，按指定顺序找到第一个可用的评论系统
+    if (!defaultComment) {
+      defaultComment = commentConfigKeys.find(sys => commentConfig[sys].enable) || '';
+    }
+  }
+  function loadComments() {
+    if (!commentConfig.enable) return;
+    const loadedComments = {
+      valine: false,
+      waline: false,
+      twikoo: false,
+      gitalk: false,
+      giscus: false
+    };
+
+    // 隐藏所有评论容器
+    const hideAllComments = () => {
+      const commentContainers = document.querySelectorAll('.comment');
+      commentContainers.forEach(container => {
+        container.style.display = 'none';
+      });
+    };
+
+    // 按需加载评论系统
+    const loadCommentSystem = (type) => {
+      if (loadedComments[type]) {
+        // 如果已加载，只需显示对应容器
+        document.querySelector(`.${type}-comment`).style.display = 'block';
+        return;
+      }
+
+      // 根据类型加载对应的脚本
+      commentConfig[type]?.load();
+      loadedComments[type] = true;
+    };
+
+    // 评论组件选择器
+    const changeActiveCommentItems = (item) => {
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let i = 0; i < commentItems.length; i++) {
+        commentItems[i].classList.remove('active');
+      }
+      item.classList.add('active');
+
+      // 获取要加载的评论系统类型
+      const commentType = item.getAttribute('data-selector');
+
+      // 隐藏所有评论系统
+      hideAllComments();
+
+      // 加载选中的评论系统
+      loadCommentSystem(commentType);
+    };
+
+    const commentInit = () => {
+      // 评论组件选择器点击事件
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let item of commentItems) {
+        item.addEventListener('click', () => {
+          // 保存选择器状态
+          const commentType = item.getAttribute('data-selector');
+          window.localStorage.setItem('commentType', commentType);
+          // 切换选中状态
+          changeActiveCommentItems(item);
+        });
+      }
+
+      // 检查是否需要加载默认评论系统
+      if (defaultComment) {
+        const defaultSelectorItem = document.querySelector(`[data-selector="${defaultComment}"]`);
+        if (!defaultSelectorItem) return;
+        defaultSelectorItem.style.display = 'block';
+        defaultSelectorItem.classList.add('active');
+        loadCommentSystem(defaultComment);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', commentInit);
+    } else {
+      commentInit();
+    }
+  };
+  loadComments();
+</script>
+
+      
+    
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.10.0' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+
+  <script src="/js/visit-stats.js?v=20261111-2" defer></script>
+
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+
+
+  
+
+
+
+
+
+
+
+<aside id="elden-companion" aria-label="菈妮互动角色">
+  <div class="ranni-speech" role="status" aria-live="polite" hidden></div>
+  <div class="ranni-stage">
+    <button class="ranni-actor" type="button" aria-label="与菈妮互动；也可以拖动改变位置" title="点击互动 · 拖动移动">
+      <span class="ranni-depth">
+        <img class="ranni-portrait" src="/images/elden-ring/ranni-realistic.png" alt="菈妮：雪魔女帽、银白长发、蓝色人偶面容与四只手臂" draggable="false">
+      </span>
+      <span class="ranni-aura" aria-hidden="true"></span>
+      <span class="ranni-moon" aria-hidden="true">☾</span>
+    </button>
+    <div class="ranni-reading-actions"><button type="button" data-reading-action="assistant">阅读助手</button><button type="button" data-reading-action="shelf">赐福收藏</button></div>
+    <div class="ranni-actions"><button type="button" data-action="wave" aria-label="向菈妮打招呼">招呼</button><button type="button" data-action="magic" aria-label="唤起月光魔法">月光</button><button type="button" data-action="sound" aria-label="互动音效" aria-pressed="true" title="关闭互动音效">音效开</button><button type="button" data-action="hide" aria-label="收起菈妮">收起</button></div>
+  </div>
+  <button class="ranni-restore" type="button" aria-label="唤醒菈妮" title="唤醒菈妮" hidden>☾</button>
+</aside>
+
+<script src="/js/elden-companion.js?v=4" defer></script>
+
+<script type="application/json" id="grace-catalog">[{"path":"/2026/11/13/lean4-formalization-guide/","title":"Lean 4 形式化入门：从数学证明到可检查的代码"},{"path":"/2026/11/13/manim-beginner-guide/","title":"Manim 入门指南：从第一个动画到导数可视化"},{"path":"/2026/11/10/applied-functional-analysis-exercises/","title":"应用泛函分析习题集：从度量空间到基本定理"},{"path":"/2026/11/10/calculus-midterm-2025-2026-solutions/","title":"从极限到中值定理：2025—2026 高数 A（上）期中试题与详解"},{"path":"/2026/11/10/week-09-differentials-and-mean-value-theorems/","title":"微分与中值定理：第九周作业参考解答"}]</script>
+<dialog id="grace-dialog" aria-labelledby="grace-dialog-title">
+  <div class="grace-dialog-head">
+    <div><p class="grace-eyebrow">月光指引 · 求知之旅</p><h2 id="grace-dialog-title">赐福收藏夹</h2></div>
+    <button type="button" class="grace-close" data-reading-action="close" aria-label="关闭阅读面板">×</button>
+  </div>
+  <nav class="grace-tabs" aria-label="阅读面板切换">
+    <button type="button" data-reading-action="shelf">赐福收藏</button>
+    <button type="button" data-reading-action="assistant">菈妮的指引</button>
+  </nav>
+  <div id="grace-dialog-content"></div>
+  <p class="grace-local-note">收藏与阅读记录仅保存在当前浏览器，清理浏览器数据后会消失。</p>
+</dialog>
+<div id="grace-toast" role="status" aria-live="polite" hidden></div>
+
+<script src="/js/reading-store.js?v=1" defer></script>
+<script src="/js/grace-reading.js?v=1" defer></script>
+
+<script src="/js/elden-music.js?v=3" defer></script>
+
+    
+  </body>
+  </html>
+
