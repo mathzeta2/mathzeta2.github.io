@@ -40,7 +40,7 @@
 
 ## 技术与仓库说明
 
-博客使用 [Hexo](https://hexo.io/) 生成，以 [Reimu](https://github.com/D-Sketon/hexo-theme-reimu) 为基础主题，并部署于 GitHub Pages。数学公式由 [KaTeX](https://katex.org/) 渲染，评论使用 [Giscus](https://giscus.app/)，阅读统计使用[不蒜子](https://busuanzi.ibruce.info/)。
+博客使用 [Hexo](https://hexo.io/) 生成，以 [Reimu](https://github.com/D-Sketon/hexo-theme-reimu) 为基础主题，并部署于 GitHub Pages。数学公式由 [KaTeX](https://katex.org/) 渲染，评论使用 [Giscus](https://giscus.app/)，全站访问统计使用[不蒜子](https://busuanzi.ibruce.info/)，文章阅读量使用支持显式页面地址的 [Busuanzi（xcsoft）](https://github.com/soxft/busuanzi)。
 
 **本仓库存放生成后的静态站点文件。** 文章源稿、Hexo 配置与主题定制在本地源工程中维护，因此克隆本仓库后不能直接通过 `npm install` / `hexo generate` 重建博客。
 
