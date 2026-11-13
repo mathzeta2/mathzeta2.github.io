@@ -74,6 +74,11 @@ body {font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaH
 .article-entry pre,.article-entry table {max-width: 100%; overflow-x: auto;}
 .article-date-link,.article-category-link {box-shadow: none; font-size: 12px; padding: 8px 12px;}
 .article-meta {padding-top: 28px;}
+.article-reading {display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: 0 12px 16px 0; font-size: 12px;}
+.article-reading-count {padding: 8px 12px; border-radius: 8px; color: var(--red-1); background: var(--red-5); white-space: nowrap;}
+.article-reading-status {color: var(--color-default); opacity: .7; font-size: 12px;}
+.article-reading-retry {color: var(--red-1); background: transparent; border: 1px solid var(--color-border); border-radius: 5px; padding: 4px 8px; cursor: pointer;}
+.article-reading-retry[hidden] {display: none;}
 .hr-line {height: 1px; background: var(--color-border); filter: none; opacity: 1;}
 #footer {margin-top: 40px;}
 a:focus-visible,button:focus-visible {outline: 2px solid var(--red-1); outline-offset: 4px;}
