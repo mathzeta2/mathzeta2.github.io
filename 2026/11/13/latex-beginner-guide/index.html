@@ -29,15 +29,15 @@
   
   
   
-    <meta name="description" content="整理中文 LaTeX 入门课程与官方参考资料，从 XeLaTeX 和中文文档结构讲起，学习公式、定理证明、表格和交叉引用，附完整示例与 PDF。">
+    <meta name="description" content="从 Windows、macOS、Linux 安装和 Overleaf 配置开始，学习中文数学文档、公式、定理证明、表格和交叉引用，附完整示例与 PDF。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LaTeX 入门指南：写出第一份中文数学笔记">
 <meta property="og:url" content="https://mathzeta2.github.io/2026/11/13/latex-beginner-guide/index.html">
 <meta property="og:site_name" content="zeta2的博客">
-<meta property="og:description" content="整理中文 LaTeX 入门课程与官方参考资料，从 XeLaTeX 和中文文档结构讲起，学习公式、定理证明、表格和交叉引用，附完整示例与 PDF。">
+<meta property="og:description" content="从 Windows、macOS、Linux 安装和 Overleaf 配置开始，学习中文数学文档、公式、定理证明、表格和交叉引用，附完整示例与 PDF。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-11-13T03:22:00.000Z">
-<meta property="article:modified_time" content="2026-11-13T03:23:23.779Z">
+<meta property="article:modified_time" content="2026-11-13T03:28:00.000Z">
 <meta property="article:author" content="zeta2">
 <meta property="article:tag" content="学习笔记">
 <meta property="article:tag" content="LaTeX">
@@ -222,7 +222,7 @@
           <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
   
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E6%8E%A8%E8%8D%90%E4%BB%8E%E8%BF%99%E5%87%A0%E4%BB%BD%E8%B5%84%E6%96%99%E5%BC%80%E5%A7%8B"><span class="toc-number">1.</span> <span class="toc-text"> 一、推荐从这几份资料开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%88%86%E6%B8%85%E7%BC%96%E8%BE%91%E5%99%A8-%E5%8F%91%E8%A1%8C%E7%89%88%E4%B8%8E%E7%BC%96%E8%AF%91%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text"> 二、分清编辑器、发行版与编译器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E8%AE%A4%E8%AF%86%E6%96%87%E6%A1%A3%E7%9A%84%E9%AA%A8%E6%9E%B6"><span class="toc-number">3.</span> <span class="toc-text"> 三、认识文档的骨架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E5%85%88%E6%8E%8C%E6%8F%A1%E4%B8%89%E7%A7%8D%E7%8E%AF%E5%A2%83"><span class="toc-number">4.</span> <span class="toc-text"> 四、数学公式：先掌握三种环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E5%86%85%E4%B8%8E%E7%8B%AC%E7%AB%8B%E5%85%AC%E5%BC%8F"><span class="toc-number">4.1.</span> <span class="toc-text"> 行内与独立公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E7%BC%96%E5%8F%B7%E4%B8%8E%E5%BC%95%E7%94%A8"><span class="toc-number">4.2.</span> <span class="toc-text"> 自动编号与引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%A1%8C%E6%8E%A8%E5%AF%BC%E6%8C%89%E7%AD%89%E5%8F%B7%E5%AF%B9%E9%BD%90"><span class="toc-number">4.3.</span> <span class="toc-text"> 多行推导按等号对齐</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E5%AE%9A%E7%90%86-%E8%AF%81%E6%98%8E-%E8%A1%A8%E6%A0%BC%E4%B8%8E%E4%BA%A4%E5%8F%89%E5%BC%95%E7%94%A8"><span class="toc-number">5.</span> <span class="toc-text"> 五、定理、证明、表格与交叉引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E7%90%86%E5%92%8C%E8%AF%81%E6%98%8E"><span class="toc-number">5.1.</span> <span class="toc-text"> 定理和证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC%E4%B8%8E%E6%A0%87%E7%AD%BE"><span class="toc-number">5.2.</span> <span class="toc-text"> 表格与标签</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E5%AE%8C%E6%95%B4%E7%A4%BA%E4%BE%8B%E7%AC%AC%E4%B8%80%E4%BB%BD%E4%B8%AD%E6%96%87%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0"><span class="toc-number">6.</span> <span class="toc-text"> 六、完整示例：第一份中文数学笔记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E6%8A%A5%E9%94%99%E6%97%B6%E5%85%88%E6%A3%80%E6%9F%A5%E8%BF%99%E4%BA%9B%E5%9C%B0%E6%96%B9"><span class="toc-number">7.</span> <span class="toc-text"> 七、报错时先检查这些地方</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%80%8E%E4%B9%88%E7%BB%83%E4%B9%A0"><span class="toc-number">8.</span> <span class="toc-text"> 八、接下来怎么练习</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E6%8E%A8%E8%8D%90%E4%BB%8E%E8%BF%99%E5%87%A0%E4%BB%BD%E8%B5%84%E6%96%99%E5%BC%80%E5%A7%8B"><span class="toc-number">1.</span> <span class="toc-text"> 一、推荐从这几份资料开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%AE%89%E8%A3%85%E4%B8%8E%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E6%8C%89%E7%B3%BB%E7%BB%9F%E9%80%89%E6%8B%A9"><span class="toc-number">2.</span> <span class="toc-text"> 二、安装与环境配置（按系统选择）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#21-%E5%9C%A8%E7%BA%BF%E4%BD%BF%E7%94%A8overleaf"><span class="toc-number">2.1.</span> <span class="toc-text"> 2.1 在线使用：Overleaf</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22-windows%E5%AE%89%E8%A3%85-tex-live"><span class="toc-number">2.2.</span> <span class="toc-text"> 2.2 Windows：安装 TeX Live</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23-macos%E5%AE%89%E8%A3%85-mactex"><span class="toc-number">2.3.</span> <span class="toc-text"> 2.3 macOS：安装 MacTeX</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#24-linux%E4%BB%A5-ubuntu-debian-%E4%B8%BA%E4%BE%8B"><span class="toc-number">2.4.</span> <span class="toc-text"> 2.4 Linux：以 Ubuntu &#x2F; Debian 为例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#25-%E6%A3%80%E6%9F%A5%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F-%E4%B8%AD%E6%96%87%E5%AE%8F%E5%8C%85%E5%92%8C%E5%AD%97%E4%BD%93"><span class="toc-number">2.5.</span> <span class="toc-text"> 2.5 检查安装：程序、中文宏包和字体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#26-%E7%94%9F%E6%88%90%E7%AC%AC%E4%B8%80%E4%BB%BD%E4%B8%AD%E6%96%87-pdf"><span class="toc-number">2.6.</span> <span class="toc-text"> 2.6 生成第一份中文 PDF</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E8%AE%A4%E8%AF%86%E6%96%87%E6%A1%A3%E7%9A%84%E9%AA%A8%E6%9E%B6"><span class="toc-number">3.</span> <span class="toc-text"> 三、认识文档的骨架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E5%85%88%E6%8E%8C%E6%8F%A1%E4%B8%89%E7%A7%8D%E7%8E%AF%E5%A2%83"><span class="toc-number">4.</span> <span class="toc-text"> 四、数学公式：先掌握三种环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E5%86%85%E4%B8%8E%E7%8B%AC%E7%AB%8B%E5%85%AC%E5%BC%8F"><span class="toc-number">4.1.</span> <span class="toc-text"> 行内与独立公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E7%BC%96%E5%8F%B7%E4%B8%8E%E5%BC%95%E7%94%A8"><span class="toc-number">4.2.</span> <span class="toc-text"> 自动编号与引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%A1%8C%E6%8E%A8%E5%AF%BC%E6%8C%89%E7%AD%89%E5%8F%B7%E5%AF%B9%E9%BD%90"><span class="toc-number">4.3.</span> <span class="toc-text"> 多行推导按等号对齐</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E5%AE%9A%E7%90%86-%E8%AF%81%E6%98%8E-%E8%A1%A8%E6%A0%BC%E4%B8%8E%E4%BA%A4%E5%8F%89%E5%BC%95%E7%94%A8"><span class="toc-number">5.</span> <span class="toc-text"> 五、定理、证明、表格与交叉引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E7%90%86%E5%92%8C%E8%AF%81%E6%98%8E"><span class="toc-number">5.1.</span> <span class="toc-text"> 定理和证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC%E4%B8%8E%E6%A0%87%E7%AD%BE"><span class="toc-number">5.2.</span> <span class="toc-text"> 表格与标签</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E5%AE%8C%E6%95%B4%E7%A4%BA%E4%BE%8B%E7%AC%AC%E4%B8%80%E4%BB%BD%E4%B8%AD%E6%96%87%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0"><span class="toc-number">6.</span> <span class="toc-text"> 六、完整示例：第一份中文数学笔记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E6%8A%A5%E9%94%99%E6%97%B6%E5%85%88%E6%A3%80%E6%9F%A5%E8%BF%99%E4%BA%9B%E5%9C%B0%E6%96%B9"><span class="toc-number">7.</span> <span class="toc-text"> 七、报错时先检查这些地方</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%80%8E%E4%B9%88%E7%BB%83%E4%B9%A0"><span class="toc-number">8.</span> <span class="toc-text"> 八、接下来怎么练习</span></a></li></ol>
   
 </div>
 </div>
@@ -407,15 +407,103 @@
 </tbody>
 </table>
 <p>LearnLaTeX 中文版提供 16 节基础课程和中文语言特性补充课；先按顺序完成基础，再按需求查后面的专题即可。《简短的介绍》中文版由中文 TeX 社区维护，CTAN 页面可找到原文、项目与下载入口。本文采用自己的例子讲解，完整教材请通过上面的原始链接阅读。</p>
-<h2 id="二-分清编辑器-发行版与编译器"><a class="markdownIt-Anchor" href="#二-分清编辑器-发行版与编译器"></a> 二、分清编辑器、发行版与编译器</h2>
+<h2 id="二-安装与环境配置按系统选择"><a class="markdownIt-Anchor" href="#二-安装与环境配置按系统选择"></a> 二、安装与环境配置（按系统选择）</h2>
 <p>LaTeX 文档通常是一个 UTF-8 编码的 <code>.tex</code> 文本文件。我们在里面写内容和结构命令，再编译成 PDF。编辑器是写代码的地方，TeX 发行版提供实际排版所需的程序、宏包和字体，两者不要混为一谈。<a target="_blank" rel="noopener" href="https://www.latex-project.org/get/">官方安装说明</a> 列出了不同平台的选择。</p>
-<p>初学者有两条实用路线：</p>
-<ul>
-<li><strong>在线：Overleaf。</strong> 新建空白项目，把下文完整代码放进 <code>main.tex</code>，在项目设置中将编译器改为 <strong>XeLaTeX</strong>，然后编译。</li>
-<li><strong>本地：安装 TeX 发行版。</strong> macOS 可使用 MacTeX，Windows 可使用 TeX Live 或 MiKTeX，Linux 可参考系统软件源或 TeX Live。再用自己习惯的编辑器打开 <code>.tex</code> 文件。</li>
-</ul>
+<p>先按自己的情况选一条路线，不需要把表格里的软件全部安装：</p>
+<table>
+<thead>
+<tr>
+<th>使用环境</th>
+<th>本文采用的路线</th>
+<th>完成后在哪里写文档</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>想先在线试用</td>
+<td>Overleaf，无须本地安装</td>
+<td>浏览器里的项目编辑器</td>
+</tr>
+<tr>
+<td>Windows</td>
+<td>TeX Live 完整安装</td>
+<td>随发行版安装的 TeXworks，或其他文本编辑器</td>
+</tr>
+<tr>
+<td>macOS</td>
+<td>完整版 MacTeX</td>
+<td>“应用程序 → TeX”中的 TeXShop</td>
+</tr>
+<tr>
+<td>Ubuntu / Debian</td>
+<td>系统软件源中的 TeX Live 相关包</td>
+<td>文本编辑器与终端</td>
+</tr>
+</tbody>
+</table>
 <p>本文选择 <strong>XeLaTeX + <code>ctexart</code></strong> 作为中文起点：<code>ctexart</code> 提供中文文章的常见排版设置；XeLaTeX 支持 Unicode 与现代字体。中文配置的具体说明见 <a target="_blank" rel="noopener" href="https://www.overleaf.com/learn/latex/Chinese">Overleaf 中文排版教程</a> 和 <a target="_blank" rel="noopener" href="https://www.learnlatex.org/zh-hans/language-01">LearnLaTeX 中文语言特性</a>。</p>
 <p>示例显式设置 <code>fontset=fandol</code>，使用 TeX 生态中的 <a target="_blank" rel="noopener" href="https://ctan.org/pkg/fandol">Fandol 字体</a>，避免依赖某台电脑特有的中文字体。若精简安装中缺少字体或 <code>ctex</code>，需要先通过发行版的包管理工具补齐。</p>
+<h3 id="21-在线使用overleaf"><a class="markdownIt-Anchor" href="#21-在线使用overleaf"></a> 2.1 在线使用：Overleaf</h3>
+<ol>
+<li>打开 <a target="_blank" rel="noopener" href="https://www.overleaf.com/">Overleaf</a>，登录后进入项目列表。</li>
+<li>选择 <strong>New Project → Blank Project</strong>，给项目起名，例如 <code>latex-starter</code>。</li>
+<li>打开项目中的 <code>main.tex</code>，用下文“文档骨架”的整段代码替换默认内容。</li>
+<li>点击项目左下角齿轮 <strong>Settings</strong>，进入 <strong>Compiler</strong> 选项卡，将编译器选择为 <strong>XeLaTeX</strong>。如果使用旧版界面，可在项目菜单的 Settings 中寻找 Compiler。</li>
+<li>确认主文档是 <code>main.tex</code>，点击 <strong>Recompile</strong>。右侧出现中文标题和公式，就完成了第一次编译。</li>
+<li>使用 PDF 预览区的下载功能保存结果；以后修改源码，再次编译即可。</li>
+</ol>
+<p>这个选择是按项目保存的，新建其他中文项目时也要检查编译器。设置入口以 <a target="_blank" rel="noopener" href="https://docs.overleaf.com/getting-started/recompiling-your-project/selecting-a-tex-live-version-and-latex-compiler">Overleaf 官方编译器说明</a> 为准。在线路线完成后，可以直接进入第三节，不需要执行下面的本地安装命令。</p>
+<h3 id="22-windows安装-tex-live"><a class="markdownIt-Anchor" href="#22-windows安装-tex-live"></a> 2.2 Windows：安装 TeX Live</h3>
+<ol>
+<li>打开 <a target="_blank" rel="noopener" href="https://www.tug.org/texlive/acquire-netinstall.html">TeX Live 官方下载页</a>，下载 Windows 安装程序 <strong><code>install-tl-windows.exe</code></strong>。</li>
+<li>双击运行，等待安装器解压并打开安装窗口。</li>
+<li>初学建议选择 <strong>完整安装方案（scheme-full）</strong>；需要时通过 <strong>Advanced</strong> 查看安装方案。保留 TeXworks 编辑器，避免安装后还要另找编辑器。</li>
+<li>安装目录使用默认的 <code>C:\texlive\年份</code> 即可。若自行修改，选择简单的英文路径；这里的“年份”由下载版本决定，不要照抄成一个目录名。</li>
+<li>点击 <strong>Install</strong>，保持网络连接，等待文件下载和格式生成全部完成。完整安装体积较大，请以安装器显示的空间需求为准；进度较慢时不要仅凭窗口暂时不动就认定失败。</li>
+<li>安装完成后，关闭原来的终端和编辑器。重新打开 <strong>PowerShell</strong>，执行后面的“检查安装”命令。开始菜单里的 TeX Live 分组可找到 TeXworks。</li>
+</ol>
+<p>安装器通常会把程序目录加入 PATH。若网络逐包下载很慢，官方同页还提供 <code>install-tl-iso-windows.exe</code>，先下载 ISO 再安装；任选一种安装方式即可。Windows 的路径配置与安装行为见 <a target="_blank" rel="noopener" href="https://www.tug.org/texlive/windows.html">TeX Live Windows 官方说明</a>。</p>
+<h3 id="23-macos安装-mactex"><a class="markdownIt-Anchor" href="#23-macos安装-mactex"></a> 2.3 macOS：安装 MacTeX</h3>
+<ol>
+<li>打开 <a target="_blank" rel="noopener" href="https://www.tug.org/mactex/mactex-download.html">MacTeX 官方下载页</a>，确认当前安装包支持自己的 macOS 版本，再下载 <strong><code>MacTeX.pkg</code></strong>。</li>
+<li>双击 <code>.pkg</code>，按安装器提示阅读说明、确认选项并完成安装。本文使用包含 TeX Live 与图形工具的完整安装；精简的 BasicTeX 需要另行补包，不作为本教程的默认路线。</li>
+<li>安装成功后，在 Finder 的 <strong>应用程序 → TeX</strong> 中打开 <strong>TeXShop</strong>。</li>
+<li>新建文档，粘贴第三节的完整代码，以 UTF-8 编码保存为 <code>main.tex</code>。在 TeXShop 的排版引擎选择框中选 <strong>XeLaTeX</strong>，点击 <strong>Typeset（排版）</strong>，查看生成的 PDF。</li>
+<li>再打开一个新的“终端”窗口，执行下文“检查安装”中的版本检查命令，确认命令行也能找到编译器。</li>
+</ol>
+<p>MacTeX 提供的稳定程序入口是 <code>/Library/TeX/texbin</code>。如果新终端仍提示找不到 <code>xelatex</code>，先用完整路径检查：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Library/TeX/texbin/xelatex --version</span><br></pre></td></tr></table></figure>
+<p>若这样能输出版本号，说明程序已安装，问题在终端的 PATH；重新打开终端后仍不生效时，可在<strong>当前终端会话</strong>临时加入路径：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="string">&quot;/Library/TeX/texbin:<span class="variable">$PATH</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<p>这条命令不修改系统配置文件。MacTeX 的目录布局、TeXShop 和 PATH 入口见 <a target="_blank" rel="noopener" href="https://www.tug.org/mactex/mactex-download.html">官方安装说明</a>。</p>
+<h3 id="24-linux以-ubuntu-debian-为例"><a class="markdownIt-Anchor" href="#24-linux以-ubuntu-debian-为例"></a> 2.4 Linux：以 Ubuntu / Debian 为例</h3>
+<p>打开终端，使用系统包管理器安装中文、XeLaTeX 和常用宏包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install texlive-xetex texlive-lang-chinese texlive-latex-extra texlive-fonts-recommended latexmk</span><br></pre></td></tr></table></figure>
+<p>第一条更新软件包索引，第二条安装所需程序和宏包。出现确认提示时检查下载量与磁盘占用，再继续；安装期间会配置格式和字体，请等待命令正常结束。</p>
+<p>这里 <code>texlive-xetex</code> 提供 XeTeX 相关支持，<code>texlive-lang-chinese</code> 提供中文排版组件，<code>latexmk</code> 帮助重复编译。包名与用途可核对 <a target="_blank" rel="noopener" href="https://packages.ubuntu.com/noble/texlive-xetex">Ubuntu 的 XeTeX 包</a>、<a target="_blank" rel="noopener" href="https://packages.ubuntu.com/noble/texlive-lang-chinese">中文支持包</a> 和 <a target="_blank" rel="noopener" href="https://packages.ubuntu.com/noble/latexmk">latexmk 包</a>。不同系统版本的软件包版本可能不同。</p>
+<p>这些 <code>apt</code> 命令不适用于所有 Linux 发行版；Fedora、Arch 等应使用各自的包管理器，或参考 <a target="_blank" rel="noopener" href="https://www.tug.org/texlive/acquire-netinstall.html">TeX Live 官方安装入口</a>。通过系统软件源安装的 TeX 环境，后续也优先用系统包管理器维护。</p>
+<h3 id="25-检查安装程序-中文宏包和字体"><a class="markdownIt-Anchor" href="#25-检查安装程序-中文宏包和字体"></a> 2.5 检查安装：程序、中文宏包和字体</h3>
+<p>本地安装完成后，在 <strong>Windows PowerShell</strong> 或 <strong>macOS / Linux 终端</strong> 中依次运行：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">xelatex --version</span><br><span class="line">latexmk -v</span><br><span class="line">kpsewhich ctexart.cls</span><br><span class="line">kpsewhich FandolSong-Regular.otf</span><br></pre></td></tr></table></figure>
+<p>判断标准如下：</p>
+<ul>
+<li>前两条分别输出 XeTeX 和 Latexmk 的版本信息，且没有“找不到命令”的错误。</li>
+<li>后两条分别输出一个 <code>.cls</code> 文件路径和一个 <code>.otf</code> 字体路径；路径因系统和版本不同而不同。没有输出时，继续检查相应宏包或字体是否安装。</li>
+</ul>
+<p>如果 Windows 找不到命令，可运行 <code>where.exe xelatex</code> 检查程序路径；若没有结果，先重开终端，再核对 TeX Live 安装是否成功以及 PATH 中是否有实际的 <code>C:\texlive\年份\bin\windows</code> 目录。如果出现多个结果，留意当前调用的是否为预期版本。</p>
+<p>若已经安装 TeX Live，但缺少 <code>ctex</code> 或 Fandol，可在 TeX Live Manager 中查找并安装相应包；macOS 可以使用 TeX Live Utility。Ubuntu / Debian 则回到上一小节，检查中文支持包的安装状态。</p>
+<h3 id="26-生成第一份中文-pdf"><a class="markdownIt-Anchor" href="#26-生成第一份中文-pdf"></a> 2.6 生成第一份中文 PDF</h3>
+<ol>
+<li>新建一个用于练习的文件夹，例如 <code>latex-starter</code>。</li>
+<li>用 TeXworks、TeXShop 或其他文本编辑器新建 <code>main.tex</code>，复制第三节“文档骨架”的整段代码，按 <strong>UTF-8 纯文本</strong>保存。检查文件名没有变成 <code>main.tex.txt</code>。</li>
+<li>在这个文件夹内打开终端。Windows 可在资源管理器中打开该文件夹，在地址栏输入 <code>powershell</code> 后回车；macOS / Linux 可在终端输入 <code>cd </code>，再拖入文件夹路径并回车。</li>
+<li>执行下面的命令：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xelatex -interaction=nonstopmode -halt-on-error main.tex</span><br></pre></td></tr></table></figure>
+<p>编译完成后，同一文件夹应出现 <code>main.pdf</code>。打开它，检查中文标题“我的数学笔记”、作者 <code>zeta2</code> 和公式是否显示正常。<strong>能输出版本号只是第一步，成功生成并打开这份中文 PDF 才是本教程的安装验证终点。</strong></p>
+<p>后面运行第六节带目录和交叉引用的完整示例时，改用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">latexmk -xelatex -interaction=nonstopmode -halt-on-error main.tex</span><br></pre></td></tr></table></figure>
+<p>本文在已有的 macOS TeX 环境中验证了示例编译；Windows 和 Ubuntu / Debian 安装流程根据所链接的官方资料整理，并未在全新系统上逐一重装实测。</p>
 <h2 id="三-认识文档的骨架"><a class="markdownIt-Anchor" href="#三-认识文档的骨架"></a> 三、认识文档的骨架</h2>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>[UTF8,fontset=fandol]&#123;ctexart&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;amsmath&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\title</span>&#123;我的数学笔记&#125;</span><br><span class="line"><span class="keyword">\author</span>&#123;zeta2&#125;</span><br><span class="line"><span class="keyword">\date</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="keyword">\maketitle</span></span><br><span class="line"><span class="keyword">\section</span>&#123;第一个问题&#125;</span><br><span class="line">这是一段正文，行内公式是 <span class="keyword">\(</span>f(x)=x<span class="built_in">^</span>2<span class="keyword">\)</span>。</span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
 <p>这几部分分别负责：</p>
@@ -630,10 +718,10 @@
     
       <div>
         <span class="icon-brush"></span>
-        36k
+        37.8k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
-        02:46
+        02:53
       </div>
     
     
@@ -671,7 +759,7 @@
         <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
   
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E6%8E%A8%E8%8D%90%E4%BB%8E%E8%BF%99%E5%87%A0%E4%BB%BD%E8%B5%84%E6%96%99%E5%BC%80%E5%A7%8B"><span class="toc-number">1.</span> <span class="toc-text"> 一、推荐从这几份资料开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%88%86%E6%B8%85%E7%BC%96%E8%BE%91%E5%99%A8-%E5%8F%91%E8%A1%8C%E7%89%88%E4%B8%8E%E7%BC%96%E8%AF%91%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text"> 二、分清编辑器、发行版与编译器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E8%AE%A4%E8%AF%86%E6%96%87%E6%A1%A3%E7%9A%84%E9%AA%A8%E6%9E%B6"><span class="toc-number">3.</span> <span class="toc-text"> 三、认识文档的骨架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E5%85%88%E6%8E%8C%E6%8F%A1%E4%B8%89%E7%A7%8D%E7%8E%AF%E5%A2%83"><span class="toc-number">4.</span> <span class="toc-text"> 四、数学公式：先掌握三种环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E5%86%85%E4%B8%8E%E7%8B%AC%E7%AB%8B%E5%85%AC%E5%BC%8F"><span class="toc-number">4.1.</span> <span class="toc-text"> 行内与独立公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E7%BC%96%E5%8F%B7%E4%B8%8E%E5%BC%95%E7%94%A8"><span class="toc-number">4.2.</span> <span class="toc-text"> 自动编号与引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%A1%8C%E6%8E%A8%E5%AF%BC%E6%8C%89%E7%AD%89%E5%8F%B7%E5%AF%B9%E9%BD%90"><span class="toc-number">4.3.</span> <span class="toc-text"> 多行推导按等号对齐</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E5%AE%9A%E7%90%86-%E8%AF%81%E6%98%8E-%E8%A1%A8%E6%A0%BC%E4%B8%8E%E4%BA%A4%E5%8F%89%E5%BC%95%E7%94%A8"><span class="toc-number">5.</span> <span class="toc-text"> 五、定理、证明、表格与交叉引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E7%90%86%E5%92%8C%E8%AF%81%E6%98%8E"><span class="toc-number">5.1.</span> <span class="toc-text"> 定理和证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC%E4%B8%8E%E6%A0%87%E7%AD%BE"><span class="toc-number">5.2.</span> <span class="toc-text"> 表格与标签</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E5%AE%8C%E6%95%B4%E7%A4%BA%E4%BE%8B%E7%AC%AC%E4%B8%80%E4%BB%BD%E4%B8%AD%E6%96%87%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0"><span class="toc-number">6.</span> <span class="toc-text"> 六、完整示例：第一份中文数学笔记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E6%8A%A5%E9%94%99%E6%97%B6%E5%85%88%E6%A3%80%E6%9F%A5%E8%BF%99%E4%BA%9B%E5%9C%B0%E6%96%B9"><span class="toc-number">7.</span> <span class="toc-text"> 七、报错时先检查这些地方</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%80%8E%E4%B9%88%E7%BB%83%E4%B9%A0"><span class="toc-number">8.</span> <span class="toc-text"> 八、接下来怎么练习</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E6%8E%A8%E8%8D%90%E4%BB%8E%E8%BF%99%E5%87%A0%E4%BB%BD%E8%B5%84%E6%96%99%E5%BC%80%E5%A7%8B"><span class="toc-number">1.</span> <span class="toc-text"> 一、推荐从这几份资料开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%AE%89%E8%A3%85%E4%B8%8E%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E6%8C%89%E7%B3%BB%E7%BB%9F%E9%80%89%E6%8B%A9"><span class="toc-number">2.</span> <span class="toc-text"> 二、安装与环境配置（按系统选择）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#21-%E5%9C%A8%E7%BA%BF%E4%BD%BF%E7%94%A8overleaf"><span class="toc-number">2.1.</span> <span class="toc-text"> 2.1 在线使用：Overleaf</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22-windows%E5%AE%89%E8%A3%85-tex-live"><span class="toc-number">2.2.</span> <span class="toc-text"> 2.2 Windows：安装 TeX Live</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23-macos%E5%AE%89%E8%A3%85-mactex"><span class="toc-number">2.3.</span> <span class="toc-text"> 2.3 macOS：安装 MacTeX</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#24-linux%E4%BB%A5-ubuntu-debian-%E4%B8%BA%E4%BE%8B"><span class="toc-number">2.4.</span> <span class="toc-text"> 2.4 Linux：以 Ubuntu &#x2F; Debian 为例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#25-%E6%A3%80%E6%9F%A5%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F-%E4%B8%AD%E6%96%87%E5%AE%8F%E5%8C%85%E5%92%8C%E5%AD%97%E4%BD%93"><span class="toc-number">2.5.</span> <span class="toc-text"> 2.5 检查安装：程序、中文宏包和字体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#26-%E7%94%9F%E6%88%90%E7%AC%AC%E4%B8%80%E4%BB%BD%E4%B8%AD%E6%96%87-pdf"><span class="toc-number">2.6.</span> <span class="toc-text"> 2.6 生成第一份中文 PDF</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E8%AE%A4%E8%AF%86%E6%96%87%E6%A1%A3%E7%9A%84%E9%AA%A8%E6%9E%B6"><span class="toc-number">3.</span> <span class="toc-text"> 三、认识文档的骨架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E5%85%88%E6%8E%8C%E6%8F%A1%E4%B8%89%E7%A7%8D%E7%8E%AF%E5%A2%83"><span class="toc-number">4.</span> <span class="toc-text"> 四、数学公式：先掌握三种环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E5%86%85%E4%B8%8E%E7%8B%AC%E7%AB%8B%E5%85%AC%E5%BC%8F"><span class="toc-number">4.1.</span> <span class="toc-text"> 行内与独立公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E7%BC%96%E5%8F%B7%E4%B8%8E%E5%BC%95%E7%94%A8"><span class="toc-number">4.2.</span> <span class="toc-text"> 自动编号与引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%A1%8C%E6%8E%A8%E5%AF%BC%E6%8C%89%E7%AD%89%E5%8F%B7%E5%AF%B9%E9%BD%90"><span class="toc-number">4.3.</span> <span class="toc-text"> 多行推导按等号对齐</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E5%AE%9A%E7%90%86-%E8%AF%81%E6%98%8E-%E8%A1%A8%E6%A0%BC%E4%B8%8E%E4%BA%A4%E5%8F%89%E5%BC%95%E7%94%A8"><span class="toc-number">5.</span> <span class="toc-text"> 五、定理、证明、表格与交叉引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E7%90%86%E5%92%8C%E8%AF%81%E6%98%8E"><span class="toc-number">5.1.</span> <span class="toc-text"> 定理和证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC%E4%B8%8E%E6%A0%87%E7%AD%BE"><span class="toc-number">5.2.</span> <span class="toc-text"> 表格与标签</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E5%AE%8C%E6%95%B4%E7%A4%BA%E4%BE%8B%E7%AC%AC%E4%B8%80%E4%BB%BD%E4%B8%AD%E6%96%87%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0"><span class="toc-number">6.</span> <span class="toc-text"> 六、完整示例：第一份中文数学笔记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E6%8A%A5%E9%94%99%E6%97%B6%E5%85%88%E6%A3%80%E6%9F%A5%E8%BF%99%E4%BA%9B%E5%9C%B0%E6%96%B9"><span class="toc-number">7.</span> <span class="toc-text"> 七、报错时先检查这些地方</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%80%8E%E4%B9%88%E7%BB%83%E4%B9%A0"><span class="toc-number">8.</span> <span class="toc-text"> 八、接下来怎么练习</span></a></li></ol>
   
 </div>
 </div>
@@ -837,10 +925,10 @@
           title: "LaTeX 入门指南：写出第一份中文数学笔记",
           url: "https://mathzeta2.github.io/2026/11/13/latex-beginner-guide/",
           excerpt: "如果你想把数学作业、课程笔记或论文写得整齐，LaTeX 是值得学习的工具。初学时可以把目标定得具体一些：先做出一份中文数学笔记，包含标题、公式、定理、表格和自动编号，再逐步扩展。 本文整理适合入门的在线课程，并给出一份可以直接复制编译的完整示例。整理：zeta2 · 资料核对日期：2026 年 11 月 13 日。 示例使用本机 TeX Live 2022 中的 XeLaTeX 实际编译；这个版本记录用于说明验证环境，不表示新安装时需要选择旧版。",
-          description: "整理中文 LaTeX 入门课程与官方参考资料，从 XeLaTeX 和中文文档结构讲起，学习公式、定理证明、表格和交叉引用，附完整示例与 PDF。",
+          description: "从 Windows、macOS、Linux 安装和 Overleaf 配置开始，学习中文数学文档、公式、定理证明、表格和交叉引用，附完整示例与 PDF。",
           stripContent: "如果你想把数学作业、课程笔记或论文写得整齐，LaTeX 是值得学习的工具。初学时可以把目标定得具体一些：先做出一份中文数学笔记，包含标题、公式、定理、表格和自动编号，再逐步扩展。 本文整理适合入门的在线课程，并给出一份可以直接复制编译的完整示例。整理：zeta2 · 资料核对日期：2026 年 11 月 13 日。 示例使用本机 TeX Live 2022 中的 XeLaTeX 实际编译；这个版本记录用于说明验证环境，不表示新安装时需要选择旧版。 入门教程系列：系列归档 · LaTeX：数学排版",
           date: "Fri Nov 13 2026 11:22:00 GMT+0800",
-          updated: "Fri Nov 13 2026 11:23:23 GMT+0800",
+          updated: "Fri Nov 13 2026 11:28:00 GMT+0800",
           cover: "/images/banner.webp",
         };
       </script>
