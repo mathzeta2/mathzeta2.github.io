@@ -49,7 +49,7 @@
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 16000);
     try {
-      const response = await fetch('https://busuanzi.9420.ltd/api', {
+      const response = await fetch('https://bsz.iirose.cn/api', {
         method, mode: 'cors', credentials: 'omit', cache: 'no-store',
         referrerPolicy: 'no-referrer',
         headers: {'x-bsz-referer': canonical},
