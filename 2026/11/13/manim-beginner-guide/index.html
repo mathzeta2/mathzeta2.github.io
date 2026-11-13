@@ -1,0 +1,1150 @@
+
+  <!DOCTYPE html>
+  <html lang="zh-CN"  
+    
+      data-theme-mode="auto"
+    
+  >
+  <head>
+  
+  <meta charset="utf-8">
+  
+
+  
+
+  
+
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://mathzeta2.github.io';</script>
+  
+  <title>
+    Manim 入门指南：从第一个动画到导数可视化 |
+    
+    zeta2的博客
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+  
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  
+  
+    <meta name="description" content="整理 Manim Community 官方教程与学习路线，从环境安装、图形变换到割线趋近切线，附实测代码和动画视频。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Manim 入门指南：从第一个动画到导数可视化">
+<meta property="og:url" content="https://mathzeta2.github.io/2026/11/13/manim-beginner-guide/index.html">
+<meta property="og:site_name" content="zeta2的博客">
+<meta property="og:description" content="整理 Manim Community 官方教程与学习路线，从环境安装、图形变换到割线趋近切线，附实测代码和动画视频。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-11-13T02:57:00.000Z">
+<meta property="article:modified_time" content="2026-11-13T02:58:56.604Z">
+<meta property="article:author" content="zeta2">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="Manim">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="数学可视化">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+    <link rel="shortcut icon" href="/images/elden-ring/icons/crimson-flask.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
+  
+    
+      
+        
+<link rel="stylesheet" href="/lib/katex/katex.min.css" integrity="" crossorigin="anonymous">
+
+      
+    
+  
+  
+  
+  
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+  
+  
+  
+  
+    <link rel="stylesheet" href="/css/zeta-reading.css"><link rel="stylesheet" href="/css/elden-companion.css?v=5"><link rel="stylesheet" href="/css/grace-reading.css?v=1"><link rel="stylesheet" href="/css/elden-cursor-music.css?v=5">
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+    
+    
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+    
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon ">
+             
+              
+                <img src="/images/elden-ring/icons/crimson-flask.png" alt="红露滴圣杯瓶" title="红露滴圣杯瓶" style="height: 1em;">
+              
+             
+          </div>
+          <a class="main-nav-link" href="/">首页</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon ">
+             
+              
+                <img src="/images/elden-ring/icons/memory-stone.png" alt="记忆石" title="记忆石" style="height: 1em;">
+              
+             
+          </div>
+          <a class="main-nav-link" href="/archives">归档</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon ">
+             
+              
+                <img src="/images/elden-ring/icons/snow-witch-hat.png" alt="雪魔女帽" title="雪魔女帽" style="height: 1em;">
+              
+             
+          </div>
+          <a class="main-nav-link" href="/about">关于</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon ">
+             
+              
+                <img src="/images/elden-ring/icons/finger-remedy.png" alt="唤勾指药" title="唤勾指药" style="height: 1em;">
+              
+             
+          </div>
+          <a class="main-nav-link" href="/friend">友链</a>
+        </span>
+      
+    
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+    
+    
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="搜索" aria-label="搜索"></a>
+    
+  </nav>
+  
+</div>
+<header id="header" aria-label="Site header">
+  
+    
+      
+        <picture>
+          
+        </picture>
+        
+          <img  fetchpriority="high" src="/images/banner.webp" alt="Manim 入门指南：从第一个动画到导数可视化">
+        
+      
+    
+  
+  <div id="header-outer">
+    <div id="header-title">
+      
+        
+        
+          <span id="logo">
+            <h1 data-aos="slide-up">Manim 入门指南：从第一个动画到导数可视化</h1>
+          </span>
+        
+      
+      
+        
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+          
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content"  class="sidebar-right" >
+          <aside id="sidebar" aria-label="Sidebar">
+  
+  <div class="sidebar-wrapper-container sticky">
+  <section class="elden-music" aria-label="交界地之声音乐播放器">
+  <div class="elden-music-heading">
+    <img src="/images/elden-ring/icons/harp-bow.png" alt="竖琴弓" title="竖琴弓 · Harp Bow" width="30" height="30">
+    <span>交界地之声 <small>NETEASE MUSIC</small></span>
+  </div>
+  <div id="elden-music-player" class="elden-native-player" hidden>
+    <div class="elden-track-info">
+      <img class="elden-track-cover" alt="" width="52" height="52" hidden>
+      <div><strong class="elden-track-name"></strong><span class="elden-track-artist"></span></div>
+    </div>
+    <audio class="elden-audio" controls preload="none" aria-label="音乐播放控制"></audio>
+    <div class="elden-track-actions">
+      <button type="button" data-music-action="prev">上一首</button>
+      <button type="button" data-music-action="next">下一首</button>
+      <a class="elden-track-link" target="_blank" rel="noopener noreferrer">网易云听本曲 ↗</a>
+    </div>
+    <details class="elden-track-picker">
+      <summary>选择曲目 <span class="elden-track-count"></span></summary>
+      <ol class="elden-track-list"></ol>
+    </details>
+  </div>
+  <p class="elden-music-status" role="status" aria-live="polite">正在载入歌单…</p>
+  <div class="elden-music-controls">
+    <button type="button" class="elden-music-retry" hidden>重试播放</button>
+    <a href="https://music.163.com/#/playlist?id=2990929899" target="_blank" rel="noopener noreferrer">在网易云打开歌单 ↗</a>
+  </div>
+  <noscript><p class="elden-music-note">请启用 JavaScript，或通过上方链接收听。</p></noscript>
+  <p class="elden-music-note">部分曲目仅提供试听，完整收听请打开网易云。</p>
+</section>
+
+  
+    
+    
+  
+ 
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+      
+        
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+  
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%85%88%E6%94%B6%E8%97%8F%E8%BF%99%E4%BA%9B%E6%95%99%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text"> 一、先收藏这些教程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%85%88%E7%A1%AE%E8%AE%A4%E7%89%88%E6%9C%AC%E5%86%8D%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text"> 二、先确认版本，再安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8-uv-%E5%BB%BA%E7%AB%8B%E7%8B%AC%E7%AB%8B%E9%A1%B9%E7%9B%AE"><span class="toc-number">2.1.</span> <span class="toc-text"> 用 uv 建立独立项目</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%85%88%E7%90%86%E8%A7%A3%E4%B8%89%E4%B8%AA%E6%A6%82%E5%BF%B5"><span class="toc-number">3.</span> <span class="toc-text"> 三、先理解三个概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8A%A8%E7%94%BB%E6%AD%A3%E6%96%B9%E5%BD%A2%E5%8F%98%E6%88%90%E5%9C%86"><span class="toc-number">4.</span> <span class="toc-text"> 四、第一个动画：正方形变成圆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E6%95%B0%E5%AD%A6%E4%BE%8B%E5%AD%90%E5%89%B2%E7%BA%BF%E6%80%8E%E6%A0%B7%E8%B6%8B%E8%BF%91%E5%88%87%E7%BA%BF"><span class="toc-number">5.</span> <span class="toc-text"> 五、数学例子：割线怎样趋近切线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E6%96%87%E5%AD%97-%E5%85%AC%E5%BC%8F%E5%92%8C%E6%8E%92%E9%94%99"><span class="toc-number">6.</span> <span class="toc-text"> 六、文字、公式和排错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E4%B8%80%E6%9D%A1%E9%80%82%E5%90%88%E6%95%B0%E5%AD%A6%E5%AD%A6%E4%B9%A0%E8%80%85%E7%9A%84%E7%BB%83%E4%B9%A0%E8%B7%AF%E7%BA%BF"><span class="toc-number">7.</span> <span class="toc-text"> 七、一条适合数学学习者的练习路线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E6%96%87%E4%BB%B6%E4%B8%8E%E5%A4%8D%E7%8E%B0%E8%AE%B0%E5%BD%95"><span class="toc-number">8.</span> <span class="toc-text"> 示例文件与复现记录</span></a></li></ol>
+  
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="zeta2" class="lazyload">
+  <div class="sidebar-author-name">zeta2</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">4</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">1</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">14</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/crimson-flask.png" alt="红露滴圣杯瓶" title="红露滴圣杯瓶" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/memory-stone.png" alt="记忆石" title="记忆石" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/snow-witch-hat.png" alt="雪魔女帽" title="雪魔女帽" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/finger-remedy.png" alt="唤勾指药" title="唤勾指药" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+    
+  
+</div>
+
+<div class="grace-sidebar-tools">
+  <button type="button" data-reading-action="shelf"><img src="/images/elden-ring/icons/grace-mimic.png" alt="">我的赐福 <span data-grace-count>0</span></button>
+  <button type="button" data-reading-action="assistant">菈妮阅读助手</button>
+</div>
+</div>
+        
+      
+      
+        
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+        
+      
+    </div>
+  </div>
+  
+  <div class="sidebar-widget">
+  
+  </div>
+  
+  </div>
+  
+</aside>
+
+
+
+          <section id="main" aria-label="Main content"><article id="post-manim-beginner-guide" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2026-11-13T02:57:00.000Z" itemprop="datePublished">2026-11-13</time>
+    <time style="display: none;" id="post-update-time">2026-11-13</time>
+  </span>
+  
+</div>
+
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E5%AD%A6/" title="数学">数学</a>
+  </div>
+
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+
+    
+    <div class="grace-article-tools" data-reading-post="/2026/11/13/manim-beginner-guide/">
+      <button type="button" data-reading-action="save" aria-pressed="false"><img src="/images/elden-ring/icons/grace-mimic.png" alt=""> <span data-save-label>点亮赐福</span></button>
+      <button type="button" data-reading-action="shelf">我的赐福 <span data-grace-count>0</span></button>
+      <button type="button" data-reading-action="toc">文章目录</button>
+      <button type="button" data-reading-action="assistant">菈妮阅读助手</button>
+    </div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+      
+        <p>想把数学推导做成动画，可以从 Manim 开始：用 Python 描述对象、位置和变化，让公式与图形按同一条逻辑逐步出现。</p>
+<p>本文整理适合入门的官方教程，并配上两个独立编写、实际渲染过的例子。建议先完成一个最小动画，再尝试将导数定义可视化。</p>
+<p><strong>整理：zeta2 · 资料核对日期：2026 年 11 月 13 日。</strong> 本文使用 <strong>Manim Community（ManimCE）</strong>；示例在本机 <strong>v0.19.2</strong> 实测，检索时官方 stable 文档显示 <strong>v0.22.1</strong>。代码采用两者共有的基础接口；本文没有在 v0.22.1 上重新渲染，不将它标为实测版本。</p>
+<span id="more"></span>
+<h2 id="一-先收藏这些教程"><a class="markdownIt-Anchor" href="#一-先收藏这些教程"></a> 一、先收藏这些教程</h2>
+<table>
+<thead>
+<tr>
+<th>资料</th>
+<th>适合解决的问题</th>
+<th>建议用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.manim.community/en/stable/installation.html">官方安装指南</a></td>
+<td>选择本地环境或在线体验</td>
+<td>先完成环境准备</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.manim.community/en/stable/tutorials/quickstart.html">Quickstart 快速入门</a></td>
+<td>创建场景、渲染视频、变换对象</td>
+<td>跟着做一次，再独立重写</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.manim.community/en/stable/tutorials/building_blocks.html">Manim 的基本组成</a></td>
+<td>理解对象、动画与场景的关系</td>
+<td>遇到“不知道该写在哪”的问题时回看</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.manim.community/en/stable/guides/using_text.html">文字与公式指南</a></td>
+<td>使用 Text、Tex、MathTex 等排版工具</td>
+<td>写数学公式前阅读</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.manim.community/en/stable/examples.html">官方示例库</a></td>
+<td>对照代码观察最终效果</td>
+<td>每次只选一个效果改写</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://try.manim.community">在线体验入口</a></td>
+<td>暂时不安装本地环境</td>
+<td>用浏览器先体验运行流程</td>
+</tr>
+</tbody>
+</table>
+<p>官方示例库提供代码与对应输出，适合查阅具体效果；本文下面的视频和 Python 文件是为这篇文章另写的示例，不是转载整篇官方教程。参考：<a target="_blank" rel="noopener" href="https://docs.manim.community/en/stable/examples.html">Example Gallery</a>。</p>
+<h2 id="二-先确认版本再安装"><a class="markdownIt-Anchor" href="#二-先确认版本再安装"></a> 二、先确认版本，再安装</h2>
+<p>Manim Community 与 3Blue1Brown 的原始项目是不同维护路线。入门时应让安装包、教程和代码属于同一个版本体系；本文统一使用 <code>from manim import *</code>，不混入 <code>manimlib</code> 的示例。参见 <a target="_blank" rel="noopener" href="https://docs.manim.community/en/stable/">Manim Community 项目介绍</a>。</p>
+<h3 id="用-uv-建立独立项目"><a class="markdownIt-Anchor" href="#用-uv-建立独立项目"></a> 用 uv 建立独立项目</h3>
+<p>先按 <a target="_blank" rel="noopener" href="https://docs.astral.sh/uv/getting-started/installation/">uv 官方说明</a> 安装 uv。macOS 用户还应根据 Manim 安装指南准备 Homebrew，以及 Cairo、pkg-config：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install cairo pkg-config</span><br></pre></td></tr></table></figure>
+<p>然后建立项目：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">uv init --python 3.12 manim-learning</span><br><span class="line"><span class="built_in">cd</span> manim-learning</span><br><span class="line">uv add manim</span><br><span class="line">uv run manim --version</span><br></pre></td></tr></table></figure>
+<p><code>uv add manim</code> 安装的是当前可解析的版本。若希望对照本文的实测环境，可改为 <code>uv add &quot;manim==0.19.2&quot;</code>。后续命令使用 <code>uv run</code>，确保运行的是这个项目里的 Manim。</p>
+<p>第一个例子只需要图形和普通文字；第二个用到 <code>MathTex</code>，还需要 LaTeX。macOS 可使用 MacTeX，Windows 可使用 MiKTeX；Linux 及系统依赖请按官方对应章节安装。来源：<a target="_blank" rel="noopener" href="https://docs.manim.community/en/stable/installation/uv.html">本地安装指南</a>，<a target="_blank" rel="noopener" href="https://github.com/ManimCommunity/manim/blob/main/docs/source/installation/uv.md">官方仓库中的安装说明</a>。</p>
+<h2 id="三-先理解三个概念"><a class="markdownIt-Anchor" href="#三-先理解三个概念"></a> 三、先理解三个概念</h2>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>在代码里的角色</th>
+<th>本文中的例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Mobject</code></td>
+<td>画面中的对象</td>
+<td>正方形、圆、坐标轴、公式</td>
+</tr>
+<tr>
+<td><code>Animation</code></td>
+<td>描述对象如何变化</td>
+<td>创建、书写、形状变换</td>
+</tr>
+<tr>
+<td><code>Scene</code></td>
+<td>组织对象与动画的时间顺序</td>
+<td>一个继承 <code>Scene</code> 的类</td>
+</tr>
+</tbody>
+</table>
+<p>在场景的 <code>construct()</code> 方法中，<code>self.add()</code> 直接加入对象，<code>self.play()</code> 播放动画，<code>self.wait()</code> 保留观察时间。理解这三个层次后，写动画就可以从“先展示什么、接着改变什么”开始。参考：<a target="_blank" rel="noopener" href="https://docs.manim.community/en/stable/tutorials/building_blocks.html">Manim’s building blocks</a>。</p>
+<h2 id="四-第一个动画正方形变成圆"><a class="markdownIt-Anchor" href="#四-第一个动画正方形变成圆"></a> 四、第一个动画：正方形变成圆</h2>
+<p>将下面的代码保存为 <code>first_scene.py</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> manim <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FirstAnimation</span>(<span class="title class_ inherited__">Scene</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">construct</span>(<span class="params">self</span>):</span><br><span class="line">        title = Text(<span class="string">&quot;My first Manim scene&quot;</span>, font_size=<span class="number">36</span>).to_edge(UP)</span><br><span class="line">        square = Square(side_length=<span class="number">2</span>, color=BLUE)</span><br><span class="line">        circle = Circle(radius=<span class="number">1</span>, color=GOLD)</span><br><span class="line">        <span class="variable language_">self</span>.play(Write(title), Create(square))</span><br><span class="line">        <span class="variable language_">self</span>.play(square.animate.rotate(PI / <span class="number">4</span>))</span><br><span class="line">        <span class="variable language_">self</span>.play(Transform(square, circle))</span><br><span class="line">        <span class="variable language_">self</span>.play(square.animate.set_fill(GOLD, opacity=<span class="number">0.4</span>))</span><br><span class="line">        <span class="variable language_">self</span>.wait(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>在文件所在目录执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uv run manim -pql first_scene.py FirstAnimation</span><br></pre></td></tr></table></figure>
+<p><code>-p</code> 表示渲染后打开预览，<code>-ql</code> 使用较低质量，适合快速修改。确认节奏和布局之后，可以改为 <code>-pqh</code> 输出高质量版本。终端会显示视频保存位置。渲染与预览的基本流程可参考 <a target="_blank" rel="noopener" href="https://docs.manim.community/en/stable/tutorials/quickstart.html">官方 Quickstart</a>。</p>
+<video controls playsinline preload="none" style="width:100%;height:auto;border-radius:10px" aria-label="正方形变成圆的 Manim 示例">
+  <source src="/downloads/manim-starter/FirstAnimation.mp4" type="video/mp4">
+  你的浏览器不支持视频，请通过下方链接下载观看。
+</video>
+<p><a href="/downloads/manim-starter/FirstAnimation.mp4">下载第一个动画</a></p>
+<p>这个例子可以拆成五步：标题和正方形出现、旋转、变成圆、填色、停留。<code>Transform(square, circle)</code> 改变的是原来 <code>square</code> 对象的外观，因此随后仍对 <code>square</code> 调用 <code>.animate</code>。</p>
+<p>练习时每次只改一个参数：先换颜色，再改大小，最后调整动画时长。这样更容易看清参数与画面之间的联系。</p>
+<h2 id="五-数学例子割线怎样趋近切线"><a class="markdownIt-Anchor" href="#五-数学例子割线怎样趋近切线"></a> 五、数学例子：割线怎样趋近切线</h2>
+<p>考虑 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">f(x)=x^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>，固定 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mo stretchy="false">(</mo><mn>1</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P=(1,1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>，让 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>h</mi><mo separator="true">,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>h</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Q=(1+h,(1+h)^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">Q</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">h</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathnormal">h</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 向 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span> 靠近。割线斜率是</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>h</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mi>h</mi></mfrac><mo>=</mo><mfrac><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>h</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow><mi>h</mi></mfrac><mo>=</mo><mn>2</mn><mo>+</mo><mi>h</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">\frac{f(1+h)-f(1)}{h}
+=\frac{(1+h)^2-1}{h}
+=2+h.
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.113em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">h</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathnormal">h</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.177108em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.491108em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">h</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathnormal">h</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">h</span><span class="mord">.</span></span></span></span></span></p>
+<p>当 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h\to 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">h</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 时，斜率趋近 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>，所以在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 处的切线为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>2</mn><mi>x</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y=2x-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>。</p>
+<p>下面的动画中，蓝线是函数图像，黄色线组展示割线及横、纵向变化量，最后出现的绿线是精确切线。为了避免数值计算中除以零，动画只把 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">h</span></span></span></span> 缩小到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.08</mn></mrow><annotation encoding="application/x-tex">0.08</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">0</span><span class="mord">8</span></span></span></span>；此时割线斜率是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2.08</mn></mrow><annotation encoding="application/x-tex">2.08</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">.</span><span class="mord">0</span><span class="mord">8</span></span></span></span>，它仍然是近似值。<strong>动画展示趋势，极限结论由上面的代数计算给出。</strong></p>
+<video controls playsinline preload="none" poster="/downloads/manim-starter/secant-preview.png" style="width:100%;height:auto;border-radius:10px" aria-label="割线趋近切线的导数可视化">
+  <source src="/downloads/manim-starter/SecantToTangent.mp4" type="video/mp4">
+  你的浏览器不支持视频，请通过下方链接下载观看。
+</video>
+<p><a href="/downloads/manim-starter/SecantToTangent.mp4">下载导数演示视频</a></p>
+<p>将下面的代码保存为 <code>derivative_scene.py</code>，然后运行 <code>uv run manim -pql derivative_scene.py SecantToTangent</code>。此例需要可用的 LaTeX 环境。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> manim <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SecantToTangent</span>(<span class="title class_ inherited__">Scene</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">construct</span>(<span class="params">self</span>):</span><br><span class="line">        axes = Axes(</span><br><span class="line">            x_range=[<span class="number">0</span>, <span class="number">3</span>, <span class="number">1</span>], y_range=[<span class="number">0</span>, <span class="number">9</span>, <span class="number">3</span>],</span><br><span class="line">            x_length=<span class="number">7</span>, y_length=<span class="number">3.8</span>,</span><br><span class="line">            axis_config=&#123;<span class="string">&quot;include_tip&quot;</span>: <span class="literal">False</span>&#125;,</span><br><span class="line">        ).shift(UP * <span class="number">0.15</span>)</span><br><span class="line">        graph = axes.plot(<span class="keyword">lambda</span> x: x**<span class="number">2</span>, x_range=[<span class="number">0</span>, <span class="number">2.8</span>], color=BLUE)</span><br><span class="line">        formula = MathTex(<span class="string">r&quot;f(x)=x^2,\quad f&#x27;(1)=2&quot;</span>).to_edge(UP)</span><br><span class="line">        h = ValueTracker(<span class="number">1.4</span>)</span><br><span class="line">        point_p = Dot(axes.c2p(<span class="number">1</span>, <span class="number">1</span>), color=WHITE)</span><br><span class="line">        point_q = always_redraw(<span class="keyword">lambda</span>: Dot(</span><br><span class="line">            axes.c2p(<span class="number">1</span> + h.get_value(), (<span class="number">1</span> + h.get_value())**<span class="number">2</span>), color=GOLD</span><br><span class="line">        ))</span><br><span class="line">        secant = always_redraw(<span class="keyword">lambda</span>: axes.get_secant_slope_group(</span><br><span class="line">            x=<span class="number">1</span>, graph=graph, dx=h.get_value(),</span><br><span class="line">            secant_line_length=<span class="number">5</span>, secant_line_color=GOLD,</span><br><span class="line">        ))</span><br><span class="line">        h_label = MathTex(<span class="string">&quot;h=&quot;</span>).scale(<span class="number">0.7</span>).to_corner(UL).shift(DOWN)</span><br><span class="line">        h_number = DecimalNumber(<span class="number">1.4</span>, num_decimal_places=<span class="number">2</span>).scale(<span class="number">0.7</span>)</span><br><span class="line">        h_number.add_updater(<span class="keyword">lambda</span> m: m.set_value(h.get_value()).next_to(h_label, RIGHT))</span><br><span class="line">        <span class="variable language_">self</span>.play(Create(axes), Create(graph), Write(formula))</span><br><span class="line">        <span class="variable language_">self</span>.add(h_label, h_number, point_p, point_q, secant)</span><br><span class="line">        <span class="variable language_">self</span>.play(h.animate.set_value(<span class="number">0.08</span>), run_time=<span class="number">5</span>, rate_func=smooth)</span><br><span class="line">        tangent = axes.plot(<span class="keyword">lambda</span> x: <span class="number">2</span>*x - <span class="number">1</span>, x_range=[<span class="number">0.5</span>, <span class="number">2.5</span>], color=GREEN)</span><br><span class="line">        limit_formula = MathTex(<span class="string">r&quot;\frac&#123;(1+h)^2-1&#125;&#123;h&#125;=2+h\longrightarrow 2&quot;</span>)</span><br><span class="line">        limit_formula.scale(<span class="number">0.75</span>).to_edge(DOWN)</span><br><span class="line">        <span class="variable language_">self</span>.play(Create(tangent), Write(limit_formula))</span><br><span class="line">        <span class="variable language_">self</span>.wait(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>这里的关键是让所有运动由同一个参数 <code>h</code> 控制：<code>ValueTracker</code> 保存它的值，<code>always_redraw</code> 根据当前值重新生成移动点和割线，数字标签通过 updater 同步变化。坐标用 <code>axes.c2p()</code> 转换成画面位置，避免把数学坐标与屏幕坐标混在一起。</p>
+<p>可以先只显示曲线与两个点，再加入割线，最后加入数字和公式。把场景分成这些小步骤，会比一次调试全部对象更清楚。</p>
+<h2 id="六-文字-公式和排错"><a class="markdownIt-Anchor" href="#六-文字-公式和排错"></a> 六、文字、公式和排错</h2>
+<p>普通标题可以用 <code>Text</code>；数学表达式可以用 <code>MathTex</code>，包含反斜杠的 LaTeX 字符串建议写成 Python 原始字符串，例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">formula = MathTex(<span class="string">r&quot;\int_0^1 x^2\,dx=\frac&#123;1&#125;&#123;3&#125;&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>中文文字需要系统中存在合适的字体。可先用 <code>manimpango.list_fonts()</code> 查看可识别的字体，再把实际存在的字体名称传给 <code>Text(..., font=...)</code>；不要直接假定每台电脑都有同一种中文字体。来源：<a target="_blank" rel="noopener" href="https://docs.manim.community/en/stable/guides/using_text.html">文字与公式指南</a>。</p>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>建议先检查什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>找不到 <code>manim</code> 命令</td>
+<td>是否在项目目录中使用了 <code>uv run manim</code></td>
+</tr>
+<tr>
+<td>第一例成功，第二例报 LaTeX 错误</td>
+<td>查看日志，检查 LaTeX 安装与所需宏包</td>
+</tr>
+<tr>
+<td>中文显示为空框</td>
+<td>检查字体是否存在且能被 Pango 识别</td>
+</tr>
+<tr>
+<td>场景名找不到</td>
+<td>命令最后的类名是否与 Python 文件一致，注意大小写</td>
+</tr>
+<tr>
+<td>动画效果不符合预期</td>
+<td>先只保留一个对象、一段动画，再逐步恢复</td>
+</tr>
+</tbody>
+</table>
+<h2 id="七-一条适合数学学习者的练习路线"><a class="markdownIt-Anchor" href="#七-一条适合数学学习者的练习路线"></a> 七、一条适合数学学习者的练习路线</h2>
+<p>下面是本文建议的练习安排，可按自己的 Python 基础调整：</p>
+<ol>
+<li><strong>图形与位置：</strong> 创建圆、直线、箭头，用 <code>next_to()</code>、<code>to_edge()</code> 组织画面。</li>
+<li><strong>变化与节奏：</strong> 练习 <code>Create</code>、<code>Write</code>、<code>Transform</code>，为重要结论留出停顿。</li>
+<li><strong>公式表达：</strong> 先呈现题目，再分步加入推导，避免一次堆满整个屏幕。</li>
+<li><strong>函数与参数：</strong> 改写本文导数例子，把固定点从 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 换成其他位置。</li>
+<li><strong>独立小作品：</strong> 选择一个定义或定理，用十几秒动画只解释一个关键想法，例如数列收敛、黎曼和或向量投影。</li>
+</ol>
+<h2 id="示例文件与复现记录"><a class="markdownIt-Anchor" href="#示例文件与复现记录"></a> 示例文件与复现记录</h2>
+<p><a href="/downloads/manim-starter/manim_starter.py">下载完整 Python 示例文件</a></p>
+<p>文件包含 <code>FirstAnimation</code> 和 <code>SecantToTangent</code> 两个场景。本文附带视频使用 Manim Community <strong>0.19.2</strong> 渲染，分辨率为 <strong>1280 × 720</strong>、帧率 <strong>30 fps</strong>；导数场景还使用了本机 LaTeX。下载文件后可以一次渲染两个场景：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uv run manim -qm manim_starter.py FirstAnimation SecantToTangent</span><br></pre></td></tr></table></figure>
+<p>本文提供的是官方资料的中文学习导读和原创示例。官方文档的 <code>stable</code> 链接会随版本更新；遇到接口差异时，请先核对自己的 Manim 版本，再查对应版本的说明。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/Manim/" rel="tag" title="Manim">Manim</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/Python/" rel="tag" title="Python">Python</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag" title="学习笔记">学习笔记</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6%E5%8F%AF%E8%A7%86%E5%8C%96/" rel="tag" title="数学可视化">数学可视化</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+  <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+    
+    
+    
+    <div class="article-nav-link-wrap right">
+      
+          <img data-src="/images/elden-ring/sunset.webp" data-sizes="auto" alt="" class="lazyload">
+        
+      <a href="/2026/11/10/applied-functional-analysis-exercises/" aria-label="后一篇: 应用泛函分析习题集：从度量空间到基本定理"  title="后一篇: 应用泛函分析习题集：从度量空间到基本定理"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+        
+          应用泛函分析习题集：从度量空间到基本定理
+        
+      </h3>
+    </div>
+    
+  </nav>
+
+
+</article>
+
+
+
+
+
+
+
+
+
+  <section id="comments" data-aos="fade-up">
+    <div class="comment-header">
+      
+      
+      <h2 class="comment-title">评论区</h2>
+      <div class="comment-selector">
+        <div class="comment-selector-wrap">
+            
+            <div class="selector-item" data-selector="giscus">
+              <span>giscus</span>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+    <div class="comment-content">
+      
+        <div class="comment giscus-comment" data-aos="fade-up"
+          id="giscus-comment">
+        </div>
+      
+    </div>
+  </section>
+
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    
+    <div>
+      <span class="icon-copyright"></span>
+      
+      
+      
+        2020-2026
+      
+      <span class="footer-info-sep "></span>
+      zeta2
+    </div>
+    
+      <div>
+        基于&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+    
+    
+      <div>
+        <span class="icon-brush"></span>
+        30k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        02:22
+      </div>
+    
+    
+    
+    
+    
+      
+      <div id="visit-stats" data-recorded-at="2026-11-11T12:53:39+08:00">
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv" aria-live="polite">1667</span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv" aria-live="polite">1202</span></span>
+        <div style="font-size: .85em; margin-top: .4em;">
+          <span id="visit-stats-status" title="真实统计的最近记录；连接成功后会更新。">最近记录：2026-11-11 12:53</span>
+          <button id="visit-stats-retry" type="button" hidden style="margin-left: .5em; color: inherit; cursor: pointer;">重新获取</button>
+        </div>
+      </div>
+    
+  </div>
+</footer>
+
+        
+          <div class="sidebar-top" title="返回顶部 · 暗月戒指">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+    
+      
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+  
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%85%88%E6%94%B6%E8%97%8F%E8%BF%99%E4%BA%9B%E6%95%99%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text"> 一、先收藏这些教程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%85%88%E7%A1%AE%E8%AE%A4%E7%89%88%E6%9C%AC%E5%86%8D%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text"> 二、先确认版本，再安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8-uv-%E5%BB%BA%E7%AB%8B%E7%8B%AC%E7%AB%8B%E9%A1%B9%E7%9B%AE"><span class="toc-number">2.1.</span> <span class="toc-text"> 用 uv 建立独立项目</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%85%88%E7%90%86%E8%A7%A3%E4%B8%89%E4%B8%AA%E6%A6%82%E5%BF%B5"><span class="toc-number">3.</span> <span class="toc-text"> 三、先理解三个概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8A%A8%E7%94%BB%E6%AD%A3%E6%96%B9%E5%BD%A2%E5%8F%98%E6%88%90%E5%9C%86"><span class="toc-number">4.</span> <span class="toc-text"> 四、第一个动画：正方形变成圆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E6%95%B0%E5%AD%A6%E4%BE%8B%E5%AD%90%E5%89%B2%E7%BA%BF%E6%80%8E%E6%A0%B7%E8%B6%8B%E8%BF%91%E5%88%87%E7%BA%BF"><span class="toc-number">5.</span> <span class="toc-text"> 五、数学例子：割线怎样趋近切线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E6%96%87%E5%AD%97-%E5%85%AC%E5%BC%8F%E5%92%8C%E6%8E%92%E9%94%99"><span class="toc-number">6.</span> <span class="toc-text"> 六、文字、公式和排错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E4%B8%80%E6%9D%A1%E9%80%82%E5%90%88%E6%95%B0%E5%AD%A6%E5%AD%A6%E4%B9%A0%E8%80%85%E7%9A%84%E7%BB%83%E4%B9%A0%E8%B7%AF%E7%BA%BF"><span class="toc-number">7.</span> <span class="toc-text"> 七、一条适合数学学习者的练习路线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E6%96%87%E4%BB%B6%E4%B8%8E%E5%A4%8D%E7%8E%B0%E8%AE%B0%E5%BD%95"><span class="toc-number">8.</span> <span class="toc-text"> 示例文件与复现记录</span></a></li></ol>
+  
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="zeta2" class="lazyload">
+  <div class="sidebar-author-name">zeta2</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">4</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">1</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">14</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/crimson-flask.png" alt="红露滴圣杯瓶" title="红露滴圣杯瓶" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/memory-stone.png" alt="记忆石" title="记忆石" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/snow-witch-hat.png" alt="雪魔女帽" title="雪魔女帽" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/finger-remedy.png" alt="唤勾指药" title="唤勾指药" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+    
+  
+</div>
+
+<div class="grace-sidebar-tools">
+  <button type="button" data-reading-action="shelf"><img src="/images/elden-ring/icons/grace-mimic.png" alt="">我的赐福 <span data-grace-count>0</span></button>
+  <button type="button" data-reading-action="assistant">菈妮阅读助手</button>
+</div>
+</div>
+      
+    
+  </div>
+  
+    
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+    
+  
+</nav>
+
+    </div>
+    
+      <div class="site-search">
+        <div class="reimu-popup popup">
+          <div class="reimu-search">
+            <div class="reimu-search-input-icon"></div>
+            <div id="reimu-search-input"></div>
+            <div class="popup-btn-close"></div>
+          </div>
+          <div class="reimu-results">
+            <div id="reimu-stats"></div>
+            <div id="reimu-hits"></div>
+            <div id="reimu-pagination" class="reimu-pagination"></div>
+          </div>
+          <img class="reimu-bg" alt="" aria-hidden="true" src="/images/elden-ring/erdtree.webp"/>
+        </div>
+      </div>
+    
+    
+    
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+  
+<script src="/js/generator_search.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+    
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "zeta2",
+          title: "Manim 入门指南：从第一个动画到导数可视化",
+          url: "https://mathzeta2.github.io/2026/11/13/manim-beginner-guide/",
+          excerpt: "想把数学推导做成动画，可以从 Manim 开始：用 Python 描述对象、位置和变化，让公式与图形按同一条逻辑逐步出现。 本文整理适合入门的官方教程，并配上两个独立编写、实际渲染过的例子。建议先完成一个最小动画，再尝试将导数定义可视化。 整理：zeta2 · 资料核对日期：2026 年 11 月 13 日。 本文使用 Manim Community（ManimCE）；示例在本机 v0.19.2 实测，检索时官方 stable 文档显示 v0.22.1。代码采用两者共有的基础接口；本文没有在 v0.22.1 上重新渲染，不将它标为实测版本。",
+          description: "整理 Manim Community 官方教程与学习路线，从环境安装、图形变换到割线趋近切线，附实测代码和动画视频。",
+          stripContent: "想把数学推导做成动画，可以从 Manim 开始：用 Python 描述对象、位置和变化，让公式与图形按同一条逻辑逐步出现。 本文整理适合入门的官方教程，并配上两个独立编写、实际渲染过的例子。建议先完成一个最小动画，再尝试将导数定义可视化。 整理：zeta2 · 资料核对日期：2026 年 11 月 13 日。 本文使用 Manim Community（ManimCE）；示例在本机 v0.19.2 实测，检索时官方 stable 文档显示 v0.22.1。代码采用两者共有的基础接口；本文没有在 v",
+          date: "Fri Nov 13 2026 10:57:00 GMT+0800",
+          updated: "Fri Nov 13 2026 10:58:56 GMT+0800",
+          cover: "/images/banner.webp",
+        };
+      </script>
+       
+    
+    
+      
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+        
+      
+    
+    
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+        const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+      
+        
+
+
+
+
+
+
+
+
+<script data-pjax>
+  var loadScript = (src, integrity) => {
+    const script = document.createElement('script');
+    script.src = src;
+    if (integrity) script.integrity = integrity;
+    script.crossOrigin = 'anonymous';
+    return script;
+  };
+
+  var commentConfigKeys = ["giscus"];
+  var commentConfig = {
+    
+    
+    
+    
+    
+    giscus: {
+      enable: true,
+      load: () => {
+        const container = document.querySelector('.giscus-comment');
+        if (!container) return;
+        container.style.display = 'block';
+
+        // 删除可能已存在的 giscus 脚本和 iframe
+        const existingScript = container.querySelector('script[src*="giscus.app/client.js"]');
+        if (existingScript) existingScript.remove();
+        const existingFrame = document.querySelector('iframe.giscus-frame');
+        if (existingFrame) existingFrame.remove();
+
+        const giscusScript = document.createElement('script');
+        const domMode = document.documentElement.getAttribute("data-theme");
+
+        const docLang = document.documentElement.lang || 'en';
+        const langBase = docLang.split('-')[0];
+        const supportedLangs = ['ar', 'be', 'bg', 'ca', 'cs', 'da', 'de', 'en', 
+        'eo', 'es', 'eu', 'fa', 'fr', 'gr', 'hbs', 'he', 'hu', 'id', 'it', 'ja', 
+        'kh', 'ko', 'nl', 'pl', 'pt', 'ro', 'ru', 'th', 'tr', 'uk', 'uz', 'vi', 'zh-CN', 'zh-HK', 'zh-TW'];
+        const giscusLang = supportedLangs.includes(docLang) ? docLang : supportedLangs.includes(langBase) ? langBase : 'en';
+
+        giscusScript.src = 'https://giscus.app/client.js';
+        giscusScript.setAttribute('data-repo', 'mathzeta2/mathzeta2.github.io');
+        giscusScript.setAttribute('data-repo-id', 'R_kgDOP8A4ug');
+        giscusScript.setAttribute('data-category', 'Announcements'); 
+        giscusScript.setAttribute('data-category-id', 'DIC_kwDOP8A4us4DK3Cg');
+        giscusScript.setAttribute('data-mapping', 'pathname');
+        giscusScript.setAttribute('data-strict', '1');
+        giscusScript.setAttribute('data-reactions-enabled', '1');
+        giscusScript.setAttribute('data-emit-metadata', '0');
+        giscusScript.setAttribute('data-input-position', 'top');
+        giscusScript.setAttribute('data-theme', domMode === 'dark' ? 'dark' : 'light');
+        giscusScript.setAttribute('data-lang', giscusLang);
+        giscusScript.setAttribute('crossorigin', 'anonymous');
+        giscusScript.async = true;
+        container.appendChild(giscusScript);
+        document.body.addEventListener('light-theme-set', () => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: 'light' } } }, 'https://giscus.app');
+        });
+        document.body.addEventListener('dark-theme-set', () => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: 'dark' } } }, 'https://giscus.app');
+        });
+      }
+    }
+    
+  }
+  commentConfig.enable = commentConfigKeys.some(key => commentConfig[key].enable);
+
+  var defaultComment = '';
+  if (commentConfig.enable) {
+    // 1. 首先检查localStorage中是否有保存的评论类型
+    var savedCommentType = localStorage.getItem('commentType');
+    
+    // 2. 如果localStorage中有值且对应的评论系统可用，就使用它
+    if (savedCommentType) {
+      if (commentConfig[savedCommentType]?.enable) {
+        defaultComment = savedCommentType;
+      }
+    }
+    
+    // 3. 如果localStorage无效，检查配置的默认评论系统
+    if (!defaultComment) {
+      var configDefault = 'giscus';
+      if (commentConfig[configDefault]?.enable) {
+        defaultComment = configDefault;
+      }
+    }
+    
+    // 4. 如果前两项都无效，按指定顺序找到第一个可用的评论系统
+    if (!defaultComment) {
+      defaultComment = commentConfigKeys.find(sys => commentConfig[sys].enable) || '';
+    }
+  }
+  function loadComments() {
+    if (!commentConfig.enable) return;
+    const loadedComments = {
+      valine: false,
+      waline: false,
+      twikoo: false,
+      gitalk: false,
+      giscus: false
+    };
+
+    // 隐藏所有评论容器
+    const hideAllComments = () => {
+      const commentContainers = document.querySelectorAll('.comment');
+      commentContainers.forEach(container => {
+        container.style.display = 'none';
+      });
+    };
+
+    // 按需加载评论系统
+    const loadCommentSystem = (type) => {
+      if (loadedComments[type]) {
+        // 如果已加载，只需显示对应容器
+        document.querySelector(`.${type}-comment`).style.display = 'block';
+        return;
+      }
+
+      // 根据类型加载对应的脚本
+      commentConfig[type]?.load();
+      loadedComments[type] = true;
+    };
+
+    // 评论组件选择器
+    const changeActiveCommentItems = (item) => {
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let i = 0; i < commentItems.length; i++) {
+        commentItems[i].classList.remove('active');
+      }
+      item.classList.add('active');
+
+      // 获取要加载的评论系统类型
+      const commentType = item.getAttribute('data-selector');
+
+      // 隐藏所有评论系统
+      hideAllComments();
+
+      // 加载选中的评论系统
+      loadCommentSystem(commentType);
+    };
+
+    const commentInit = () => {
+      // 评论组件选择器点击事件
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let item of commentItems) {
+        item.addEventListener('click', () => {
+          // 保存选择器状态
+          const commentType = item.getAttribute('data-selector');
+          window.localStorage.setItem('commentType', commentType);
+          // 切换选中状态
+          changeActiveCommentItems(item);
+        });
+      }
+
+      // 检查是否需要加载默认评论系统
+      if (defaultComment) {
+        const defaultSelectorItem = document.querySelector(`[data-selector="${defaultComment}"]`);
+        if (!defaultSelectorItem) return;
+        defaultSelectorItem.style.display = 'block';
+        defaultSelectorItem.classList.add('active');
+        loadCommentSystem(defaultComment);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', commentInit);
+    } else {
+      commentInit();
+    }
+  };
+  loadComments();
+</script>
+
+      
+    
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.10.0' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+
+  <script src="/js/visit-stats.js?v=20261111-2" defer></script>
+
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+
+
+  
+
+
+
+
+
+
+
+<aside id="elden-companion" aria-label="菈妮互动角色">
+  <div class="ranni-speech" role="status" aria-live="polite" hidden></div>
+  <div class="ranni-stage">
+    <button class="ranni-actor" type="button" aria-label="与菈妮互动；也可以拖动改变位置" title="点击互动 · 拖动移动">
+      <span class="ranni-depth">
+        <img class="ranni-portrait" src="/images/elden-ring/ranni-realistic.png" alt="菈妮：雪魔女帽、银白长发、蓝色人偶面容与四只手臂" draggable="false">
+      </span>
+      <span class="ranni-aura" aria-hidden="true"></span>
+      <span class="ranni-moon" aria-hidden="true">☾</span>
+    </button>
+    <div class="ranni-reading-actions"><button type="button" data-reading-action="assistant">阅读助手</button><button type="button" data-reading-action="shelf">赐福收藏</button></div>
+    <div class="ranni-actions"><button type="button" data-action="wave" aria-label="向菈妮打招呼">招呼</button><button type="button" data-action="magic" aria-label="唤起月光魔法">月光</button><button type="button" data-action="sound" aria-label="互动音效" aria-pressed="true" title="关闭互动音效">音效开</button><button type="button" data-action="hide" aria-label="收起菈妮">收起</button></div>
+  </div>
+  <button class="ranni-restore" type="button" aria-label="唤醒菈妮" title="唤醒菈妮" hidden>☾</button>
+</aside>
+
+<script src="/js/elden-companion.js?v=4" defer></script>
+
+<script type="application/json" id="grace-catalog">[{"path":"/2026/11/13/manim-beginner-guide/","title":"Manim 入门指南：从第一个动画到导数可视化"},{"path":"/2026/11/10/applied-functional-analysis-exercises/","title":"应用泛函分析习题集：从度量空间到基本定理"},{"path":"/2026/11/10/calculus-midterm-2025-2026-solutions/","title":"从极限到中值定理：2025—2026 高数 A（上）期中试题与详解"},{"path":"/2026/11/10/week-09-differentials-and-mean-value-theorems/","title":"微分与中值定理：第九周作业参考解答"}]</script>
+<dialog id="grace-dialog" aria-labelledby="grace-dialog-title">
+  <div class="grace-dialog-head">
+    <div><p class="grace-eyebrow">月光指引 · 求知之旅</p><h2 id="grace-dialog-title">赐福收藏夹</h2></div>
+    <button type="button" class="grace-close" data-reading-action="close" aria-label="关闭阅读面板">×</button>
+  </div>
+  <nav class="grace-tabs" aria-label="阅读面板切换">
+    <button type="button" data-reading-action="shelf">赐福收藏</button>
+    <button type="button" data-reading-action="assistant">菈妮的指引</button>
+  </nav>
+  <div id="grace-dialog-content"></div>
+  <p class="grace-local-note">收藏与阅读记录仅保存在当前浏览器，清理浏览器数据后会消失。</p>
+</dialog>
+<div id="grace-toast" role="status" aria-live="polite" hidden></div>
+
+<script src="/js/reading-store.js?v=1" defer></script>
+<script src="/js/grace-reading.js?v=1" defer></script>
+
+<script src="/js/elden-music.js?v=3" defer></script>
+
+    
+  </body>
+  </html>
+
