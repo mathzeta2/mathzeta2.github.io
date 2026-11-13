@@ -1,0 +1,1153 @@
+
+  <!DOCTYPE html>
+  <html lang="zh-CN"  
+    
+      data-theme-mode="auto"
+    
+  >
+  <head>
+  
+  <meta charset="utf-8">
+  
+
+  
+
+  
+
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://mathzeta2.github.io';</script>
+  
+  <title>
+    LaTeX 入门指南：写出第一份中文数学笔记 |
+    
+    zeta2的博客
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+  
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  
+  
+    <meta name="description" content="整理中文 LaTeX 入门课程与官方参考资料，从 XeLaTeX 和中文文档结构讲起，学习公式、定理证明、表格和交叉引用，附完整示例与 PDF。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LaTeX 入门指南：写出第一份中文数学笔记">
+<meta property="og:url" content="https://mathzeta2.github.io/2026/11/13/latex-beginner-guide/index.html">
+<meta property="og:site_name" content="zeta2的博客">
+<meta property="og:description" content="整理中文 LaTeX 入门课程与官方参考资料，从 XeLaTeX 和中文文档结构讲起，学习公式、定理证明、表格和交叉引用，附完整示例与 PDF。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-11-13T03:22:00.000Z">
+<meta property="article:modified_time" content="2026-11-13T03:23:23.779Z">
+<meta property="article:author" content="zeta2">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="LaTeX">
+<meta property="article:tag" content="数学排版">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+    <link rel="shortcut icon" href="/images/elden-ring/icons/crimson-flask.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
+  
+    
+      
+        
+<link rel="stylesheet" href="/lib/katex/katex.min.css" integrity="" crossorigin="anonymous">
+
+      
+    
+  
+  
+  
+  
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+  
+  
+  
+  
+    <link rel="stylesheet" href="/css/zeta-reading.css"><link rel="stylesheet" href="/css/elden-companion.css?v=5"><link rel="stylesheet" href="/css/grace-reading.css?v=1"><link rel="stylesheet" href="/css/elden-cursor-music.css?v=5">
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+    
+    
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+    
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon ">
+             
+              
+                <img src="/images/elden-ring/icons/crimson-flask.png" alt="红露滴圣杯瓶" title="红露滴圣杯瓶" style="height: 1em;">
+              
+             
+          </div>
+          <a class="main-nav-link" href="/">首页</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon ">
+             
+              
+                <img src="/images/elden-ring/icons/memory-stone.png" alt="记忆石" title="记忆石" style="height: 1em;">
+              
+             
+          </div>
+          <a class="main-nav-link" href="/archives">归档</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon ">
+             
+              
+                <img src="/images/elden-ring/icons/snow-witch-hat.png" alt="雪魔女帽" title="雪魔女帽" style="height: 1em;">
+              
+             
+          </div>
+          <a class="main-nav-link" href="/about">关于</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon ">
+             
+              
+                <img src="/images/elden-ring/icons/finger-remedy.png" alt="唤勾指药" title="唤勾指药" style="height: 1em;">
+              
+             
+          </div>
+          <a class="main-nav-link" href="/friend">友链</a>
+        </span>
+      
+    
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+    
+    
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="搜索" aria-label="搜索"></a>
+    
+  </nav>
+  
+</div>
+<header id="header" aria-label="Site header">
+  
+    
+      
+        <picture>
+          
+        </picture>
+        
+          <img  fetchpriority="high" src="/images/banner.webp" alt="LaTeX 入门指南：写出第一份中文数学笔记">
+        
+      
+    
+  
+  <div id="header-outer">
+    <div id="header-title">
+      
+        
+        
+          <span id="logo">
+            <h1 data-aos="slide-up">LaTeX 入门指南：写出第一份中文数学笔记</h1>
+          </span>
+        
+      
+      
+        
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+          
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content"  class="sidebar-right" >
+          <aside id="sidebar" aria-label="Sidebar">
+  
+  <div class="sidebar-wrapper-container sticky">
+  <section class="elden-music" aria-label="交界地之声音乐播放器">
+  <div class="elden-music-heading">
+    <img src="/images/elden-ring/icons/harp-bow.png" alt="竖琴弓" title="竖琴弓 · Harp Bow" width="30" height="30">
+    <span>交界地之声 <small>NETEASE MUSIC</small></span>
+  </div>
+  <div id="elden-music-player" class="elden-native-player" hidden>
+    <div class="elden-track-info">
+      <img class="elden-track-cover" alt="" width="52" height="52" hidden>
+      <div><strong class="elden-track-name"></strong><span class="elden-track-artist"></span></div>
+    </div>
+    <audio class="elden-audio" controls preload="none" aria-label="音乐播放控制"></audio>
+    <div class="elden-track-actions">
+      <button type="button" data-music-action="prev">上一首</button>
+      <button type="button" data-music-action="next">下一首</button>
+      <a class="elden-track-link" target="_blank" rel="noopener noreferrer">网易云听本曲 ↗</a>
+    </div>
+    <details class="elden-track-picker">
+      <summary>选择曲目 <span class="elden-track-count"></span></summary>
+      <ol class="elden-track-list"></ol>
+    </details>
+  </div>
+  <p class="elden-music-status" role="status" aria-live="polite">正在载入歌单…</p>
+  <div class="elden-music-controls">
+    <button type="button" class="elden-music-retry" hidden>重试播放</button>
+    <a href="https://music.163.com/#/playlist?id=2990929899" target="_blank" rel="noopener noreferrer">在网易云打开歌单 ↗</a>
+  </div>
+  <noscript><p class="elden-music-note">请启用 JavaScript，或通过上方链接收听。</p></noscript>
+  <p class="elden-music-note">部分曲目仅提供试听，完整收听请打开网易云。</p>
+</section>
+
+  
+    
+    
+  
+ 
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+      
+        
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+  
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E6%8E%A8%E8%8D%90%E4%BB%8E%E8%BF%99%E5%87%A0%E4%BB%BD%E8%B5%84%E6%96%99%E5%BC%80%E5%A7%8B"><span class="toc-number">1.</span> <span class="toc-text"> 一、推荐从这几份资料开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%88%86%E6%B8%85%E7%BC%96%E8%BE%91%E5%99%A8-%E5%8F%91%E8%A1%8C%E7%89%88%E4%B8%8E%E7%BC%96%E8%AF%91%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text"> 二、分清编辑器、发行版与编译器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E8%AE%A4%E8%AF%86%E6%96%87%E6%A1%A3%E7%9A%84%E9%AA%A8%E6%9E%B6"><span class="toc-number">3.</span> <span class="toc-text"> 三、认识文档的骨架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E5%85%88%E6%8E%8C%E6%8F%A1%E4%B8%89%E7%A7%8D%E7%8E%AF%E5%A2%83"><span class="toc-number">4.</span> <span class="toc-text"> 四、数学公式：先掌握三种环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E5%86%85%E4%B8%8E%E7%8B%AC%E7%AB%8B%E5%85%AC%E5%BC%8F"><span class="toc-number">4.1.</span> <span class="toc-text"> 行内与独立公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E7%BC%96%E5%8F%B7%E4%B8%8E%E5%BC%95%E7%94%A8"><span class="toc-number">4.2.</span> <span class="toc-text"> 自动编号与引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%A1%8C%E6%8E%A8%E5%AF%BC%E6%8C%89%E7%AD%89%E5%8F%B7%E5%AF%B9%E9%BD%90"><span class="toc-number">4.3.</span> <span class="toc-text"> 多行推导按等号对齐</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E5%AE%9A%E7%90%86-%E8%AF%81%E6%98%8E-%E8%A1%A8%E6%A0%BC%E4%B8%8E%E4%BA%A4%E5%8F%89%E5%BC%95%E7%94%A8"><span class="toc-number">5.</span> <span class="toc-text"> 五、定理、证明、表格与交叉引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E7%90%86%E5%92%8C%E8%AF%81%E6%98%8E"><span class="toc-number">5.1.</span> <span class="toc-text"> 定理和证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC%E4%B8%8E%E6%A0%87%E7%AD%BE"><span class="toc-number">5.2.</span> <span class="toc-text"> 表格与标签</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E5%AE%8C%E6%95%B4%E7%A4%BA%E4%BE%8B%E7%AC%AC%E4%B8%80%E4%BB%BD%E4%B8%AD%E6%96%87%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0"><span class="toc-number">6.</span> <span class="toc-text"> 六、完整示例：第一份中文数学笔记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E6%8A%A5%E9%94%99%E6%97%B6%E5%85%88%E6%A3%80%E6%9F%A5%E8%BF%99%E4%BA%9B%E5%9C%B0%E6%96%B9"><span class="toc-number">7.</span> <span class="toc-text"> 七、报错时先检查这些地方</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%80%8E%E4%B9%88%E7%BB%83%E4%B9%A0"><span class="toc-number">8.</span> <span class="toc-text"> 八、接下来怎么练习</span></a></li></ol>
+  
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="zeta2" class="lazyload">
+  <div class="sidebar-author-name">zeta2</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">6</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">2</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">19</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/crimson-flask.png" alt="红露滴圣杯瓶" title="红露滴圣杯瓶" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/memory-stone.png" alt="记忆石" title="记忆石" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/snow-witch-hat.png" alt="雪魔女帽" title="雪魔女帽" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/finger-remedy.png" alt="唤勾指药" title="唤勾指药" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+    
+  
+</div>
+
+<div class="grace-sidebar-tools">
+  <button type="button" data-reading-action="shelf"><img src="/images/elden-ring/icons/grace-mimic.png" alt="">我的赐福 <span data-grace-count>0</span></button>
+  <button type="button" data-reading-action="assistant">菈妮阅读助手</button>
+</div>
+</div>
+        
+      
+      
+        
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+        
+      
+    </div>
+  </div>
+  
+  <div class="sidebar-widget">
+  
+  </div>
+  
+  </div>
+  
+</aside>
+
+
+
+          <section id="main" aria-label="Main content"><article id="post-latex-beginner-guide" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2026-11-13T03:22:00.000Z" itemprop="datePublished">2026-11-13</time>
+    <time style="display: none;" id="post-update-time">2026-11-13</time>
+  </span>
+  
+</div>
+
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" title="入门教程">入门教程</a>
+  </div>
+
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+
+    
+    <div class="grace-article-tools" data-reading-post="/2026/11/13/latex-beginner-guide/">
+      <button type="button" data-reading-action="save" aria-pressed="false"><img src="/images/elden-ring/icons/grace-mimic.png" alt=""> <span data-save-label>点亮赐福</span></button>
+      <button type="button" data-reading-action="shelf">我的赐福 <span data-grace-count>0</span></button>
+      <button type="button" data-reading-action="toc">文章目录</button>
+      <button type="button" data-reading-action="assistant">菈妮阅读助手</button>
+    </div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+      
+        <p>如果你想把数学作业、课程笔记或论文写得整齐，LaTeX 是值得学习的工具。初学时可以把目标定得具体一些：先做出一份中文数学笔记，包含标题、公式、定理、表格和自动编号，再逐步扩展。</p>
+<p>本文整理适合入门的在线课程，并给出一份可以直接复制编译的完整示例。<strong>整理：zeta2 · 资料核对日期：2026 年 11 月 13 日。</strong> 示例使用本机 TeX Live 2022 中的 XeLaTeX 实际编译；这个版本记录用于说明验证环境，不表示新安装时需要选择旧版。</p>
+<span id="more"></span>
+<blockquote>
+<p><strong>入门教程系列</strong>：<a href="/categories/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/">系列归档</a> · <a href="/2026/11/13/latex-beginner-guide/">LaTeX：数学排版</a> · <a href="/2026/11/13/manim-beginner-guide/">Manim：数学动画</a> · <a href="/2026/11/13/lean4-formalization-guide/">Lean：形式化证明</a></p>
+</blockquote>
+<h2 id="一-推荐从这几份资料开始"><a class="markdownIt-Anchor" href="#一-推荐从这几份资料开始"></a> 一、推荐从这几份资料开始</h2>
+<table>
+<thead>
+<tr>
+<th>资料</th>
+<th>语言与形式</th>
+<th>怎么使用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.learnlatex.org/zh-hans/">LearnLaTeX 中文课程</a></td>
+<td>中文，分课练习，可在线修改示例</td>
+<td>作为主线，从文档结构读到公式与交叉引用</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://ctan.org/pkg/lshort-zh-cn">《一份（不太）简短的 LaTeX2ε 介绍》中文版</a></td>
+<td>中文，系统性手册，提供 PDF</td>
+<td>写作时查语法与排版细节，中文补充内容也很有用</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes">Overleaf：Learn LaTeX in 30 minutes</a></td>
+<td>英文，带示例的快速教程</td>
+<td>快速认识文档、命令和常用元素；按自己的节奏练习</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.overleaf.com/learn/latex/Chinese">Overleaf：中文排版</a></td>
+<td>英文，中文示例</td>
+<td>配置中文文档、编译器与字体时查阅</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.latex-project.org/get/">LaTeX 官方安装入口</a></td>
+<td>英文，按系统介绍发行版</td>
+<td>准备转到本地写作时使用</td>
+</tr>
+</tbody>
+</table>
+<p>LearnLaTeX 中文版提供 16 节基础课程和中文语言特性补充课；先按顺序完成基础，再按需求查后面的专题即可。《简短的介绍》中文版由中文 TeX 社区维护，CTAN 页面可找到原文、项目与下载入口。本文采用自己的例子讲解，完整教材请通过上面的原始链接阅读。</p>
+<h2 id="二-分清编辑器-发行版与编译器"><a class="markdownIt-Anchor" href="#二-分清编辑器-发行版与编译器"></a> 二、分清编辑器、发行版与编译器</h2>
+<p>LaTeX 文档通常是一个 UTF-8 编码的 <code>.tex</code> 文本文件。我们在里面写内容和结构命令，再编译成 PDF。编辑器是写代码的地方，TeX 发行版提供实际排版所需的程序、宏包和字体，两者不要混为一谈。<a target="_blank" rel="noopener" href="https://www.latex-project.org/get/">官方安装说明</a> 列出了不同平台的选择。</p>
+<p>初学者有两条实用路线：</p>
+<ul>
+<li><strong>在线：Overleaf。</strong> 新建空白项目，把下文完整代码放进 <code>main.tex</code>，在项目设置中将编译器改为 <strong>XeLaTeX</strong>，然后编译。</li>
+<li><strong>本地：安装 TeX 发行版。</strong> macOS 可使用 MacTeX，Windows 可使用 TeX Live 或 MiKTeX，Linux 可参考系统软件源或 TeX Live。再用自己习惯的编辑器打开 <code>.tex</code> 文件。</li>
+</ul>
+<p>本文选择 <strong>XeLaTeX + <code>ctexart</code></strong> 作为中文起点：<code>ctexart</code> 提供中文文章的常见排版设置；XeLaTeX 支持 Unicode 与现代字体。中文配置的具体说明见 <a target="_blank" rel="noopener" href="https://www.overleaf.com/learn/latex/Chinese">Overleaf 中文排版教程</a> 和 <a target="_blank" rel="noopener" href="https://www.learnlatex.org/zh-hans/language-01">LearnLaTeX 中文语言特性</a>。</p>
+<p>示例显式设置 <code>fontset=fandol</code>，使用 TeX 生态中的 <a target="_blank" rel="noopener" href="https://ctan.org/pkg/fandol">Fandol 字体</a>，避免依赖某台电脑特有的中文字体。若精简安装中缺少字体或 <code>ctex</code>，需要先通过发行版的包管理工具补齐。</p>
+<h2 id="三-认识文档的骨架"><a class="markdownIt-Anchor" href="#三-认识文档的骨架"></a> 三、认识文档的骨架</h2>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>[UTF8,fontset=fandol]&#123;ctexart&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;amsmath&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\title</span>&#123;我的数学笔记&#125;</span><br><span class="line"><span class="keyword">\author</span>&#123;zeta2&#125;</span><br><span class="line"><span class="keyword">\date</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="keyword">\maketitle</span></span><br><span class="line"><span class="keyword">\section</span>&#123;第一个问题&#125;</span><br><span class="line">这是一段正文，行内公式是 <span class="keyword">\(</span>f(x)=x<span class="built_in">^</span>2<span class="keyword">\)</span>。</span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<p>这几部分分别负责：</p>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\documentclass&#123;...&#125;</code></td>
+<td>选择文档类，确定文档的总体结构</td>
+</tr>
+<tr>
+<td><code>\usepackage&#123;...&#125;</code></td>
+<td>加载额外功能，通常写在导言区</td>
+</tr>
+<tr>
+<td><code>\begin&#123;document&#125;</code> 之前</td>
+<td>导言区，用来配置宏包、标题等</td>
+</tr>
+<tr>
+<td><code>\begin&#123;document&#125;</code> 与 <code>\end&#123;document&#125;</code> 之间</td>
+<td>实际正文</td>
+</tr>
+<tr>
+<td><code>\maketitle</code></td>
+<td>输出已经设置的标题、作者和日期</td>
+</tr>
+<tr>
+<td><code>\section&#123;...&#125;</code>、<code>\subsection&#123;...&#125;</code></td>
+<td>表达章节层级并自动编号</td>
+</tr>
+</tbody>
+</table>
+<p>正文里<strong>空一行表示新段落</strong>。不要用许多空格模拟缩进，也不要把每个段落结尾都写成 <code>\\</code>。结构命令和样式分开之后，文档更容易统一调整。基本文档组织可以继续阅读 <a target="_blank" rel="noopener" href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes">Overleaf 快速入门</a>。</p>
+<h2 id="四-数学公式先掌握三种环境"><a class="markdownIt-Anchor" href="#四-数学公式先掌握三种环境"></a> 四、数学公式：先掌握三种环境</h2>
+<h3 id="行内与独立公式"><a class="markdownIt-Anchor" href="#行内与独立公式"></a> 行内与独立公式</h3>
+<p>行内公式使用 <code>\(...\)</code>，例如 <code>\(a_n=1/n\)</code>；不编号的独立公式可以使用 <code>\[...\]</code>。在 <code>.tex</code> 文档中建议用这些 LaTeX 数学分隔符，不必沿用博客 Markdown 里输入公式的习惯。</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">数列 <span class="keyword">\(</span>a<span class="built_in">_</span>n=1/n<span class="keyword">\)</span> 满足</span><br><span class="line"><span class="keyword">\[</span></span><br><span class="line">  <span class="keyword">\lim</span><span class="built_in">_</span>&#123;n<span class="keyword">\to</span><span class="keyword">\infty</span>&#125; a<span class="built_in">_</span>n = 0.</span><br><span class="line"><span class="keyword">\]</span></span><br></pre></td></tr></table></figure>
+<h3 id="自动编号与引用"><a class="markdownIt-Anchor" href="#自动编号与引用"></a> 自动编号与引用</h3>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;equation&#125;<span class="keyword">\label</span>&#123;eq:square&#125;</span><br><span class="line">  (x+2)<span class="built_in">^</span>2=x<span class="built_in">^</span>2+4x+4.</span><br><span class="line"><span class="keyword">\end</span>&#123;equation&#125;</span><br><span class="line">由公式~<span class="keyword">\eqref</span>&#123;eq:square&#125; 可知……</span><br></pre></td></tr></table></figure>
+<p><code>equation</code> 产生编号，<code>\label</code> 给它一个稳定的内部名字，<code>\eqref</code> 输出带括号的编号。插入新公式后，编号可以自动更新。<code>~</code> 是不换行空格，让“公式”和后面的编号不容易被拆到两行。</p>
+<h3 id="多行推导按等号对齐"><a class="markdownIt-Anchor" href="#多行推导按等号对齐"></a> 多行推导按等号对齐</h3>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;align*&#125;</span><br><span class="line">  (x+2)<span class="built_in">^</span>2 <span class="built_in">&amp;</span>= (x+2)(x+2) <span class="keyword">\\</span></span><br><span class="line">          <span class="built_in">&amp;</span>= x<span class="built_in">^</span>2+2x+2x+4 <span class="keyword">\\</span></span><br><span class="line">          <span class="built_in">&amp;</span>= x<span class="built_in">^</span>2+4x+4.</span><br><span class="line"><span class="keyword">\end</span>&#123;align*&#125;</span><br></pre></td></tr></table></figure>
+<p><code>&amp;</code> 指定对齐位置，<code>\\</code> 换到下一行；星号版本 <code>align*</code> 不编号。<code>align</code> 本身已经是数学环境，不要再把它包在 <code>\[...\]</code> 内。这里的 <code>align</code> 和 <code>\eqref</code> 来自 <code>amsmath</code>；其官方包页面和手册入口见 <a target="_blank" rel="noopener" href="https://ctan.org/pkg/amsmath">CTAN：amsmath</a>。</p>
+<p>常见符号可以先从 <code>\frac&#123;a&#125;&#123;b&#125;</code>、<code>\sqrt&#123;x&#125;</code>、<code>x_i</code>、<code>x^&#123;n+1&#125;</code>、<code>\sum_&#123;k=1&#125;^&#123;n&#125;</code> 学起。多字符的上下标要用花括号分组；数学中的函数名宜写 <code>\sin</code>、<code>\log</code>，而不是直接输入普通字母。更完整的讲解见 <a target="_blank" rel="noopener" href="https://www.learnlatex.org/zh-hans/lesson-10">LearnLaTeX：数学</a>。</p>
+<h2 id="五-定理-证明-表格与交叉引用"><a class="markdownIt-Anchor" href="#五-定理-证明-表格与交叉引用"></a> 五、定理、证明、表格与交叉引用</h2>
+<h3 id="定理和证明"><a class="markdownIt-Anchor" href="#定理和证明"></a> 定理和证明</h3>
+<p>在导言区加载 <code>amsthm</code> 并声明一个环境：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\usepackage</span>&#123;amsthm&#125;</span><br><span class="line"><span class="keyword">\theoremstyle</span>&#123;definition&#125;</span><br><span class="line"><span class="keyword">\newtheorem</span>&#123;theorem&#125;&#123;定理&#125;[section]</span><br><span class="line"><span class="keyword">\renewcommand</span>&#123;<span class="keyword">\proofname</span>&#125;&#123;证明&#125;</span><br></pre></td></tr></table></figure>
+<p>随后在正文使用 <code>\begin&#123;theorem&#125;...\end&#123;theorem&#125;</code> 和 <code>\begin&#123;proof&#125;...\end&#123;proof&#125;</code>。<code>[section]</code> 使定理按节编号；本例采用正文直立的样式，便于中文数学笔记阅读。<code>amsthm</code> 负责排版定理与证明，但不会检查推理是否正确；这与系列中的 Lean 形式化证明用途不同。<a target="_blank" rel="noopener" href="https://ctan.org/pkg/amsthm">宏包说明</a></p>
+<h3 id="表格与标签"><a class="markdownIt-Anchor" href="#表格与标签"></a> 表格与标签</h3>
+<p>完整示例使用 <a target="_blank" rel="noopener" href="https://ctan.org/pkg/booktabs">booktabs</a> 的 <code>\toprule</code>、<code>\midrule</code>、<code>\bottomrule</code> 排三线表。在 <code>tabular</code> 中，<code>&amp;</code> 分隔列，<code>\\</code> 结束一行；例如 <code>&#123;rrr&#125;</code> 表示三列都右对齐。</p>
+<p>表格标题使用 <code>\caption</code>，<strong>表格的 <code>\label</code> 放在 <code>\caption</code> 后面</strong>，再用 <code>\ref</code> 引用。<code>table</code> 是浮动体，<code>[htbp]</code> 表达允许的放置位置，不保证表格严格停在源码所在位置。表格与图片的交叉引用可参考 <a target="_blank" rel="noopener" href="https://www.learnlatex.org/zh-hans/lesson-09">LearnLaTeX：交叉引用</a>。</p>
+<p>第一次编译可能看到 <code>??</code>：先再次编译，让标签与引用信息更新。如果仍然存在，再检查标签是否拼错或重复，不要手工把它改成固定编号。</p>
+<h2 id="六-完整示例第一份中文数学笔记"><a class="markdownIt-Anchor" href="#六-完整示例第一份中文数学笔记"></a> 六、完整示例：第一份中文数学笔记</h2>
+<p>下面代码是完整的 <code>main.tex</code>，包含标题、目录、列表、公式、定理证明、表格、链接和交叉引用。复制整个代码块即可，不需要图片等额外文件。</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>[UTF8,a4paper,11pt,fontset=fandol]&#123;ctexart&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>[margin=2.5cm]&#123;geometry&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;amsmath,amssymb,amsthm&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;booktabs&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>[hidelinks]&#123;hyperref&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\theoremstyle</span>&#123;definition&#125;</span><br><span class="line"><span class="keyword">\newtheorem</span>&#123;theorem&#125;&#123;定理&#125;[section]</span><br><span class="line"><span class="keyword">\renewcommand</span>&#123;<span class="keyword">\proofname</span>&#125;&#123;证明&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\title</span>&#123;我的第一份数学笔记&#125;</span><br><span class="line"><span class="keyword">\author</span>&#123;zeta2&#125;</span><br><span class="line"><span class="keyword">\date</span>&#123;2026 年 11 月 13 日&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="keyword">\maketitle</span></span><br><span class="line"><span class="keyword">\tableofcontents</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">\section</span>&#123;正文与结构&#125;</span><br><span class="line">这是一份用于练习中文、公式和交叉引用的短文。</span><br><span class="line">正文中的行内公式可以写成 <span class="keyword">\(</span>f(x)=x<span class="built_in">^</span>2<span class="keyword">\)</span>。</span><br><span class="line"></span><br><span class="line">空一行会开始一个新的段落。下面列出本次练习的目标：</span><br><span class="line"><span class="keyword">\begin</span>&#123;enumerate&#125;</span><br><span class="line">  <span class="keyword">\item</span> 写出带编号的公式；</span><br><span class="line">  <span class="keyword">\item</span> 排版一个定理及其证明；</span><br><span class="line">  <span class="keyword">\item</span> 用标签引用公式、定理和表格。</span><br><span class="line"><span class="keyword">\end</span>&#123;enumerate&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\section</span>&#123;公式与证明&#125;</span><br><span class="line">对任意实数 <span class="keyword">\(</span>x<span class="keyword">\)</span>，有</span><br><span class="line"><span class="keyword">\begin</span>&#123;equation&#125;<span class="keyword">\label</span>&#123;eq:square&#125;</span><br><span class="line">  (x+2)<span class="built_in">^</span>2=x<span class="built_in">^</span>2+4x+4.</span><br><span class="line"><span class="keyword">\end</span>&#123;equation&#125;</span><br><span class="line">多行计算可以按等号对齐：</span><br><span class="line"><span class="keyword">\begin</span>&#123;align*&#125;</span><br><span class="line">  (x+2)<span class="built_in">^</span>2 <span class="built_in">&amp;</span>= (x+2)(x+2) <span class="keyword">\\</span></span><br><span class="line">          <span class="built_in">&amp;</span>= x<span class="built_in">^</span>2+2x+2x+4 <span class="keyword">\\</span></span><br><span class="line">          <span class="built_in">&amp;</span>= x<span class="built_in">^</span>2+4x+4.</span><br><span class="line"><span class="keyword">\end</span>&#123;align*&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\begin</span>&#123;theorem&#125;<span class="keyword">\label</span>&#123;thm:nonnegative&#125;</span><br><span class="line">对任意 <span class="keyword">\(</span>x<span class="keyword">\in</span><span class="keyword">\mathbb</span>&#123;R&#125;<span class="keyword">\)</span>，有 <span class="keyword">\(</span>x<span class="built_in">^</span>2+4x+4<span class="keyword">\geq</span> 0<span class="keyword">\)</span>。</span><br><span class="line"><span class="keyword">\end</span>&#123;theorem&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;proof&#125;</span><br><span class="line">由公式~<span class="keyword">\eqref</span>&#123;eq:square&#125;，左边等于 <span class="keyword">\(</span>(x+2)<span class="built_in">^</span>2<span class="keyword">\)</span>。</span><br><span class="line">实数的平方非负，因此结论成立。</span><br><span class="line"><span class="keyword">\end</span>&#123;proof&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">% 本示例手动分页，让表格与练习放在第二页。</span></span><br><span class="line"><span class="keyword">\newpage</span></span><br><span class="line"><span class="keyword">\section</span>&#123;表格与引用&#125;</span><br><span class="line">定理~<span class="keyword">\ref</span>&#123;thm:nonnegative&#125; 给出了一个对所有实数成立的结论。</span><br><span class="line">表~<span class="keyword">\ref</span>&#123;tab:values&#125; 仅列出几个具体值；有限个例子不能替代证明。</span><br><span class="line"></span><br><span class="line"><span class="keyword">\begin</span>&#123;table&#125;[htbp]</span><br><span class="line">  <span class="keyword">\centering</span></span><br><span class="line">  <span class="keyword">\caption</span>&#123;几个代入值&#125;</span><br><span class="line">  <span class="keyword">\label</span>&#123;tab:values&#125;</span><br><span class="line">  <span class="keyword">\begin</span>&#123;tabular&#125;&#123;rrr&#125;</span><br><span class="line">    <span class="keyword">\toprule</span></span><br><span class="line">    <span class="keyword">\(</span>x<span class="keyword">\)</span> <span class="built_in">&amp;</span> <span class="keyword">\(</span>x+2<span class="keyword">\)</span> <span class="built_in">&amp;</span> <span class="keyword">\(</span>(x+2)<span class="built_in">^</span>2<span class="keyword">\)</span> <span class="keyword">\\</span></span><br><span class="line">    <span class="keyword">\midrule</span></span><br><span class="line">    -3 <span class="built_in">&amp;</span> -1 <span class="built_in">&amp;</span> 1 <span class="keyword">\\</span></span><br><span class="line">    -2 <span class="built_in">&amp;</span>  0 <span class="built_in">&amp;</span> 0 <span class="keyword">\\</span></span><br><span class="line">     0 <span class="built_in">&amp;</span>  2 <span class="built_in">&amp;</span> 4 <span class="keyword">\\</span></span><br><span class="line">     1 <span class="built_in">&amp;</span>  3 <span class="built_in">&amp;</span> 9 <span class="keyword">\\</span></span><br><span class="line">    <span class="keyword">\bottomrule</span></span><br><span class="line">  <span class="keyword">\end</span>&#123;tabular&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;table&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\subsection</span>&#123;动手练习&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;enumerate&#125;</span><br><span class="line">  <span class="keyword">\item</span> 将式子中的常数 2 改成 3，并修改展开结果。</span><br><span class="line">  <span class="keyword">\item</span> 增加一条表格数据，检查各列是否对齐。</span><br><span class="line">  <span class="keyword">\item</span> 在前面插入一个新公式，重新编译并观察引用编号。</span><br><span class="line"><span class="keyword">\end</span>&#123;enumerate&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\subsection</span>&#123;继续阅读&#125;</span><br><span class="line">可以从 <span class="keyword">\href</span>&#123;<span class="link">https://www.learnlatex.org/zh-hans/</span>&#125;&#123;LearnLaTeX 中文课程&#125;</span><br><span class="line">继续学习文档结构、数学模式和交叉引用。</span><br><span class="line">本示例由 zeta2 博客整理，用 XeLaTeX 编译。</span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<p>在文件所在文件夹中运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">latexmk -xelatex -interaction=nonstopmode -halt-on-error main.tex</span><br></pre></td></tr></table></figure>
+<p><code>latexmk</code> 会根据需要重复调用排版程序，使目录和交叉引用稳定。如果本地没有 <code>latexmk</code>，这个简单示例也可连续运行两次 <code>xelatex main.tex</code>；若日志仍提示重新运行，就继续编译直到引用更新。<code>latexmk</code> 的功能与文档入口见 <a target="_blank" rel="noopener" href="https://ctan.org/pkg/latexmk">CTAN：latexmk</a>。</p>
+<p><strong>示例 PDF：</strong> <a href="/downloads/latex-starter/latex-starter.pdf">查看或下载排版结果</a>。完整源代码已放在正文，附件提供 PDF，方便直接阅读。</p>
+<h2 id="七-报错时先检查这些地方"><a class="markdownIt-Anchor" href="#七-报错时先检查这些地方"></a> 七、报错时先检查这些地方</h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>先检查什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中文无法显示，或出现字体相关错误</td>
+<td>编译器是否为 XeLaTeX；<code>ctex</code> 与指定字体是否安装</td>
+</tr>
+<tr>
+<td><code>Undefined control sequence</code></td>
+<td>命令是否拼错，相关宏包是否加载</td>
+</tr>
+<tr>
+<td><code>Missing $ inserted</code></td>
+<td>是否把下标 <code>_</code> 或其他数学语法写到了正文模式</td>
+</tr>
+<tr>
+<td><code>Environment ... undefined</code></td>
+<td>环境名是否拼错，例如用了 <code>align</code> 却没加载 <code>amsmath</code></td>
+</tr>
+<tr>
+<td><code>??</code> 或未定义引用警告</td>
+<td>标签名字、标签位置，以及是否完成了重复编译</td>
+</tr>
+<tr>
+<td><code>Overfull \hbox</code></td>
+<td>行内内容是否太长；检查长公式、长网址和不可断行的内容</td>
+</tr>
+</tbody>
+</table>
+<p>正文中想显示百分号、下划线、井号和与号时，可以分别写 <code>\%</code>、<code>\_</code>、<code>\#</code>、<code>\&amp;</code>；未转义的 <code>%</code> 会把后面的行内内容当成注释。</p>
+<p>处理错误时从日志中的<strong>第一个错误</strong>开始，一次只改一处，再重新编译。后面很多报错可能只是第一处错误引起的连锁反应。可以对照 <a target="_blank" rel="noopener" href="https://www.learnlatex.org/zh-hans/lesson-15">LearnLaTeX：处理错误</a> 学习判断诊断信息。</p>
+<h2 id="八-接下来怎么练习"><a class="markdownIt-Anchor" href="#八-接下来怎么练习"></a> 八、接下来怎么练习</h2>
+<p>建议先把一页自己已经写好的数学作业重新排版，再尝试增加内容：</p>
+<ol>
+<li>修改完整示例中的平方展开式，检查公式与证明是否同步变化。</li>
+<li>增加一个小节和一个定理，观察目录、定理编号和引用如何更新。</li>
+<li>插入一张图片，学习 <code>graphicx</code> 与 <code>figure</code>；接着学习参考文献管理。</li>
+<li>写长文档时再研究分文件组织、学校或期刊模板，避免一开始就修改复杂模板。</li>
+</ol>
+<p>LaTeX 可以帮助表达数学，Manim 可以把变化过程做成动画，Lean 可以检查形式化证明。你可以从同一个数学主题出发，分别练习这三种表达方式。</p>
+<p>继续阅读：<a href="/2026/11/13/manim-beginner-guide/">Manim 入门指南</a> · <a href="/2026/11/13/lean4-formalization-guide/">Lean 4 形式化入门</a> · <a href="/categories/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/">全部入门教程</a>。</p>
+<p>本文参考资料均在对应段落附有原始链接，教材版权归原作者；本文的学习建议、讲解和完整示例为整理编写。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/LaTeX/" rel="tag" title="LaTeX">LaTeX</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag" title="学习笔记">学习笔记</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6%E6%8E%92%E7%89%88/" rel="tag" title="数学排版">数学排版</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+  <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+    
+    
+    
+    <div class="article-nav-link-wrap right">
+      
+          <img data-src="/images/elden-ring/sunset.webp" data-sizes="auto" alt="" class="lazyload">
+        
+      <a href="/2026/11/13/lean4-formalization-guide/" aria-label="后一篇: Lean 4 形式化入门：从数学证明到可检查的代码"  title="后一篇: Lean 4 形式化入门：从数学证明到可检查的代码"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+        
+          Lean 4 形式化入门：从数学证明到可检查的代码
+        
+      </h3>
+    </div>
+    
+  </nav>
+
+
+</article>
+
+
+
+
+
+
+
+
+
+  <section id="comments" data-aos="fade-up">
+    <div class="comment-header">
+      
+      
+      <h2 class="comment-title">评论区</h2>
+      <div class="comment-selector">
+        <div class="comment-selector-wrap">
+            
+            <div class="selector-item" data-selector="giscus">
+              <span>giscus</span>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+    <div class="comment-content">
+      
+        <div class="comment giscus-comment" data-aos="fade-up"
+          id="giscus-comment">
+        </div>
+      
+    </div>
+  </section>
+
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    
+    <div>
+      <span class="icon-copyright"></span>
+      
+      
+      
+        2020-2026
+      
+      <span class="footer-info-sep "></span>
+      zeta2
+    </div>
+    
+      <div>
+        基于&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+    
+    
+      <div>
+        <span class="icon-brush"></span>
+        36k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        02:46
+      </div>
+    
+    
+    
+    
+    
+      
+      <div id="visit-stats" data-recorded-at="2026-11-11T12:53:39+08:00">
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv" aria-live="polite">1667</span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv" aria-live="polite">1202</span></span>
+        <div style="font-size: .85em; margin-top: .4em;">
+          <span id="visit-stats-status" title="真实统计的最近记录；连接成功后会更新。">最近记录：2026-11-11 12:53</span>
+          <button id="visit-stats-retry" type="button" hidden style="margin-left: .5em; color: inherit; cursor: pointer;">重新获取</button>
+        </div>
+      </div>
+    
+  </div>
+</footer>
+
+        
+          <div class="sidebar-top" title="返回顶部 · 暗月戒指">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+    
+      
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+  
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E6%8E%A8%E8%8D%90%E4%BB%8E%E8%BF%99%E5%87%A0%E4%BB%BD%E8%B5%84%E6%96%99%E5%BC%80%E5%A7%8B"><span class="toc-number">1.</span> <span class="toc-text"> 一、推荐从这几份资料开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%88%86%E6%B8%85%E7%BC%96%E8%BE%91%E5%99%A8-%E5%8F%91%E8%A1%8C%E7%89%88%E4%B8%8E%E7%BC%96%E8%AF%91%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text"> 二、分清编辑器、发行版与编译器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E8%AE%A4%E8%AF%86%E6%96%87%E6%A1%A3%E7%9A%84%E9%AA%A8%E6%9E%B6"><span class="toc-number">3.</span> <span class="toc-text"> 三、认识文档的骨架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E5%85%88%E6%8E%8C%E6%8F%A1%E4%B8%89%E7%A7%8D%E7%8E%AF%E5%A2%83"><span class="toc-number">4.</span> <span class="toc-text"> 四、数学公式：先掌握三种环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E5%86%85%E4%B8%8E%E7%8B%AC%E7%AB%8B%E5%85%AC%E5%BC%8F"><span class="toc-number">4.1.</span> <span class="toc-text"> 行内与独立公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E7%BC%96%E5%8F%B7%E4%B8%8E%E5%BC%95%E7%94%A8"><span class="toc-number">4.2.</span> <span class="toc-text"> 自动编号与引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%A1%8C%E6%8E%A8%E5%AF%BC%E6%8C%89%E7%AD%89%E5%8F%B7%E5%AF%B9%E9%BD%90"><span class="toc-number">4.3.</span> <span class="toc-text"> 多行推导按等号对齐</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E5%AE%9A%E7%90%86-%E8%AF%81%E6%98%8E-%E8%A1%A8%E6%A0%BC%E4%B8%8E%E4%BA%A4%E5%8F%89%E5%BC%95%E7%94%A8"><span class="toc-number">5.</span> <span class="toc-text"> 五、定理、证明、表格与交叉引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E7%90%86%E5%92%8C%E8%AF%81%E6%98%8E"><span class="toc-number">5.1.</span> <span class="toc-text"> 定理和证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC%E4%B8%8E%E6%A0%87%E7%AD%BE"><span class="toc-number">5.2.</span> <span class="toc-text"> 表格与标签</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E5%AE%8C%E6%95%B4%E7%A4%BA%E4%BE%8B%E7%AC%AC%E4%B8%80%E4%BB%BD%E4%B8%AD%E6%96%87%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0"><span class="toc-number">6.</span> <span class="toc-text"> 六、完整示例：第一份中文数学笔记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E6%8A%A5%E9%94%99%E6%97%B6%E5%85%88%E6%A3%80%E6%9F%A5%E8%BF%99%E4%BA%9B%E5%9C%B0%E6%96%B9"><span class="toc-number">7.</span> <span class="toc-text"> 七、报错时先检查这些地方</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%80%8E%E4%B9%88%E7%BB%83%E4%B9%A0"><span class="toc-number">8.</span> <span class="toc-text"> 八、接下来怎么练习</span></a></li></ol>
+  
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="zeta2" class="lazyload">
+  <div class="sidebar-author-name">zeta2</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">6</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">2</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">19</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/crimson-flask.png" alt="红露滴圣杯瓶" title="红露滴圣杯瓶" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/memory-stone.png" alt="记忆石" title="记忆石" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/snow-witch-hat.png" alt="雪魔女帽" title="雪魔女帽" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              <img src="/images/elden-ring/icons/finger-remedy.png" alt="唤勾指药" title="唤勾指药" style="width: 1em;">
+            
+          
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+    
+  
+</div>
+
+<div class="grace-sidebar-tools">
+  <button type="button" data-reading-action="shelf"><img src="/images/elden-ring/icons/grace-mimic.png" alt="">我的赐福 <span data-grace-count>0</span></button>
+  <button type="button" data-reading-action="assistant">菈妮阅读助手</button>
+</div>
+</div>
+      
+    
+  </div>
+  
+    
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+    
+  
+</nav>
+
+    </div>
+    
+      <div class="site-search">
+        <div class="reimu-popup popup">
+          <div class="reimu-search">
+            <div class="reimu-search-input-icon"></div>
+            <div id="reimu-search-input"></div>
+            <div class="popup-btn-close"></div>
+          </div>
+          <div class="reimu-results">
+            <div id="reimu-stats"></div>
+            <div id="reimu-hits"></div>
+            <div id="reimu-pagination" class="reimu-pagination"></div>
+          </div>
+          <img class="reimu-bg" alt="" aria-hidden="true" src="/images/elden-ring/erdtree.webp"/>
+        </div>
+      </div>
+    
+    
+    
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+  
+<script src="/js/generator_search.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+    
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "zeta2",
+          title: "LaTeX 入门指南：写出第一份中文数学笔记",
+          url: "https://mathzeta2.github.io/2026/11/13/latex-beginner-guide/",
+          excerpt: "如果你想把数学作业、课程笔记或论文写得整齐，LaTeX 是值得学习的工具。初学时可以把目标定得具体一些：先做出一份中文数学笔记，包含标题、公式、定理、表格和自动编号，再逐步扩展。 本文整理适合入门的在线课程，并给出一份可以直接复制编译的完整示例。整理：zeta2 · 资料核对日期：2026 年 11 月 13 日。 示例使用本机 TeX Live 2022 中的 XeLaTeX 实际编译；这个版本记录用于说明验证环境，不表示新安装时需要选择旧版。",
+          description: "整理中文 LaTeX 入门课程与官方参考资料，从 XeLaTeX 和中文文档结构讲起，学习公式、定理证明、表格和交叉引用，附完整示例与 PDF。",
+          stripContent: "如果你想把数学作业、课程笔记或论文写得整齐，LaTeX 是值得学习的工具。初学时可以把目标定得具体一些：先做出一份中文数学笔记，包含标题、公式、定理、表格和自动编号，再逐步扩展。 本文整理适合入门的在线课程，并给出一份可以直接复制编译的完整示例。整理：zeta2 · 资料核对日期：2026 年 11 月 13 日。 示例使用本机 TeX Live 2022 中的 XeLaTeX 实际编译；这个版本记录用于说明验证环境，不表示新安装时需要选择旧版。 入门教程系列：系列归档 · LaTeX：数学排版",
+          date: "Fri Nov 13 2026 11:22:00 GMT+0800",
+          updated: "Fri Nov 13 2026 11:23:23 GMT+0800",
+          cover: "/images/banner.webp",
+        };
+      </script>
+       
+    
+    
+      
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+        
+      
+    
+    
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+        const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+      
+        
+
+
+
+
+
+
+
+
+<script data-pjax>
+  var loadScript = (src, integrity) => {
+    const script = document.createElement('script');
+    script.src = src;
+    if (integrity) script.integrity = integrity;
+    script.crossOrigin = 'anonymous';
+    return script;
+  };
+
+  var commentConfigKeys = ["giscus"];
+  var commentConfig = {
+    
+    
+    
+    
+    
+    giscus: {
+      enable: true,
+      load: () => {
+        const container = document.querySelector('.giscus-comment');
+        if (!container) return;
+        container.style.display = 'block';
+
+        // 删除可能已存在的 giscus 脚本和 iframe
+        const existingScript = container.querySelector('script[src*="giscus.app/client.js"]');
+        if (existingScript) existingScript.remove();
+        const existingFrame = document.querySelector('iframe.giscus-frame');
+        if (existingFrame) existingFrame.remove();
+
+        const giscusScript = document.createElement('script');
+        const domMode = document.documentElement.getAttribute("data-theme");
+
+        const docLang = document.documentElement.lang || 'en';
+        const langBase = docLang.split('-')[0];
+        const supportedLangs = ['ar', 'be', 'bg', 'ca', 'cs', 'da', 'de', 'en', 
+        'eo', 'es', 'eu', 'fa', 'fr', 'gr', 'hbs', 'he', 'hu', 'id', 'it', 'ja', 
+        'kh', 'ko', 'nl', 'pl', 'pt', 'ro', 'ru', 'th', 'tr', 'uk', 'uz', 'vi', 'zh-CN', 'zh-HK', 'zh-TW'];
+        const giscusLang = supportedLangs.includes(docLang) ? docLang : supportedLangs.includes(langBase) ? langBase : 'en';
+
+        giscusScript.src = 'https://giscus.app/client.js';
+        giscusScript.setAttribute('data-repo', 'mathzeta2/mathzeta2.github.io');
+        giscusScript.setAttribute('data-repo-id', 'R_kgDOP8A4ug');
+        giscusScript.setAttribute('data-category', 'Announcements'); 
+        giscusScript.setAttribute('data-category-id', 'DIC_kwDOP8A4us4DK3Cg');
+        giscusScript.setAttribute('data-mapping', 'pathname');
+        giscusScript.setAttribute('data-strict', '1');
+        giscusScript.setAttribute('data-reactions-enabled', '1');
+        giscusScript.setAttribute('data-emit-metadata', '0');
+        giscusScript.setAttribute('data-input-position', 'top');
+        giscusScript.setAttribute('data-theme', domMode === 'dark' ? 'dark' : 'light');
+        giscusScript.setAttribute('data-lang', giscusLang);
+        giscusScript.setAttribute('crossorigin', 'anonymous');
+        giscusScript.async = true;
+        container.appendChild(giscusScript);
+        document.body.addEventListener('light-theme-set', () => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: 'light' } } }, 'https://giscus.app');
+        });
+        document.body.addEventListener('dark-theme-set', () => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: 'dark' } } }, 'https://giscus.app');
+        });
+      }
+    }
+    
+  }
+  commentConfig.enable = commentConfigKeys.some(key => commentConfig[key].enable);
+
+  var defaultComment = '';
+  if (commentConfig.enable) {
+    // 1. 首先检查localStorage中是否有保存的评论类型
+    var savedCommentType = localStorage.getItem('commentType');
+    
+    // 2. 如果localStorage中有值且对应的评论系统可用，就使用它
+    if (savedCommentType) {
+      if (commentConfig[savedCommentType]?.enable) {
+        defaultComment = savedCommentType;
+      }
+    }
+    
+    // 3. 如果localStorage无效，检查配置的默认评论系统
+    if (!defaultComment) {
+      var configDefault = 'giscus';
+      if (commentConfig[configDefault]?.enable) {
+        defaultComment = configDefault;
+      }
+    }
+    
+    // 4. 如果前两项都无效，按指定顺序找到第一个可用的评论系统
+    if (!defaultComment) {
+      defaultComment = commentConfigKeys.find(sys => commentConfig[sys].enable) || '';
+    }
+  }
+  function loadComments() {
+    if (!commentConfig.enable) return;
+    const loadedComments = {
+      valine: false,
+      waline: false,
+      twikoo: false,
+      gitalk: false,
+      giscus: false
+    };
+
+    // 隐藏所有评论容器
+    const hideAllComments = () => {
+      const commentContainers = document.querySelectorAll('.comment');
+      commentContainers.forEach(container => {
+        container.style.display = 'none';
+      });
+    };
+
+    // 按需加载评论系统
+    const loadCommentSystem = (type) => {
+      if (loadedComments[type]) {
+        // 如果已加载，只需显示对应容器
+        document.querySelector(`.${type}-comment`).style.display = 'block';
+        return;
+      }
+
+      // 根据类型加载对应的脚本
+      commentConfig[type]?.load();
+      loadedComments[type] = true;
+    };
+
+    // 评论组件选择器
+    const changeActiveCommentItems = (item) => {
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let i = 0; i < commentItems.length; i++) {
+        commentItems[i].classList.remove('active');
+      }
+      item.classList.add('active');
+
+      // 获取要加载的评论系统类型
+      const commentType = item.getAttribute('data-selector');
+
+      // 隐藏所有评论系统
+      hideAllComments();
+
+      // 加载选中的评论系统
+      loadCommentSystem(commentType);
+    };
+
+    const commentInit = () => {
+      // 评论组件选择器点击事件
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let item of commentItems) {
+        item.addEventListener('click', () => {
+          // 保存选择器状态
+          const commentType = item.getAttribute('data-selector');
+          window.localStorage.setItem('commentType', commentType);
+          // 切换选中状态
+          changeActiveCommentItems(item);
+        });
+      }
+
+      // 检查是否需要加载默认评论系统
+      if (defaultComment) {
+        const defaultSelectorItem = document.querySelector(`[data-selector="${defaultComment}"]`);
+        if (!defaultSelectorItem) return;
+        defaultSelectorItem.style.display = 'block';
+        defaultSelectorItem.classList.add('active');
+        loadCommentSystem(defaultComment);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', commentInit);
+    } else {
+      commentInit();
+    }
+  };
+  loadComments();
+</script>
+
+      
+    
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.10.0' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+
+  <script src="/js/visit-stats.js?v=20261111-2" defer></script>
+
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+
+
+  
+
+
+
+
+
+
+
+<aside id="elden-companion" aria-label="菈妮互动角色">
+  <div class="ranni-speech" role="status" aria-live="polite" hidden></div>
+  <div class="ranni-stage">
+    <button class="ranni-actor" type="button" aria-label="与菈妮互动；也可以拖动改变位置" title="点击互动 · 拖动移动">
+      <span class="ranni-depth">
+        <img class="ranni-portrait" src="/images/elden-ring/ranni-realistic.png" alt="菈妮：雪魔女帽、银白长发、蓝色人偶面容与四只手臂" draggable="false">
+      </span>
+      <span class="ranni-aura" aria-hidden="true"></span>
+      <span class="ranni-moon" aria-hidden="true">☾</span>
+    </button>
+    <div class="ranni-reading-actions"><button type="button" data-reading-action="assistant">阅读助手</button><button type="button" data-reading-action="shelf">赐福收藏</button></div>
+    <div class="ranni-actions"><button type="button" data-action="wave" aria-label="向菈妮打招呼">招呼</button><button type="button" data-action="magic" aria-label="唤起月光魔法">月光</button><button type="button" data-action="sound" aria-label="互动音效" aria-pressed="true" title="关闭互动音效">音效开</button><button type="button" data-action="hide" aria-label="收起菈妮">收起</button></div>
+  </div>
+  <button class="ranni-restore" type="button" aria-label="唤醒菈妮" title="唤醒菈妮" hidden>☾</button>
+</aside>
+
+<script src="/js/elden-companion.js?v=4" defer></script>
+
+<script type="application/json" id="grace-catalog">[{"path":"/2026/11/13/latex-beginner-guide/","title":"LaTeX 入门指南：写出第一份中文数学笔记"},{"path":"/2026/11/13/lean4-formalization-guide/","title":"Lean 4 形式化入门：从数学证明到可检查的代码"},{"path":"/2026/11/13/manim-beginner-guide/","title":"Manim 入门指南：从第一个动画到导数可视化"},{"path":"/2026/11/10/applied-functional-analysis-exercises/","title":"应用泛函分析习题集：从度量空间到基本定理"},{"path":"/2026/11/10/calculus-midterm-2025-2026-solutions/","title":"从极限到中值定理：2025—2026 高数 A（上）期中试题与详解"},{"path":"/2026/11/10/week-09-differentials-and-mean-value-theorems/","title":"微分与中值定理：第九周作业参考解答"}]</script>
+<dialog id="grace-dialog" aria-labelledby="grace-dialog-title">
+  <div class="grace-dialog-head">
+    <div><p class="grace-eyebrow">月光指引 · 求知之旅</p><h2 id="grace-dialog-title">赐福收藏夹</h2></div>
+    <button type="button" class="grace-close" data-reading-action="close" aria-label="关闭阅读面板">×</button>
+  </div>
+  <nav class="grace-tabs" aria-label="阅读面板切换">
+    <button type="button" data-reading-action="shelf">赐福收藏</button>
+    <button type="button" data-reading-action="assistant">菈妮的指引</button>
+  </nav>
+  <div id="grace-dialog-content"></div>
+  <p class="grace-local-note">收藏与阅读记录仅保存在当前浏览器，清理浏览器数据后会消失。</p>
+</dialog>
+<div id="grace-toast" role="status" aria-live="polite" hidden></div>
+
+<script src="/js/reading-store.js?v=1" defer></script>
+<script src="/js/grace-reading.js?v=1" defer></script>
+
+<script src="/js/elden-music.js?v=3" defer></script>
+
+    
+  </body>
+  </html>
+
