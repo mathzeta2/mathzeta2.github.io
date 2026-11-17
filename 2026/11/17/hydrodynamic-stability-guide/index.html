@@ -17,7 +17,7 @@
   <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://mathzeta2.github.io';</script>
   
   <title>
-    高雷诺数下的流体稳定性：从剪切混合到 Couette 流转捩阈值 |
+    高 Reynolds 数下的流体稳定性：从剪切混合到 Couette 流转捩阈值 |
     
     zeta2的博客
   </title>
@@ -29,15 +29,15 @@
   
   
   
-    <meta name="description" content="对照魏东奕、张志飞的 ICM 2022 综述，整理无黏阻尼、增强耗散、lift-up 与有限通道 Couette 流稳定性的推导，重点解释 Rayleigh 预解式、壁面条件及零模分解。">
+    <meta name="description" content="对照章志飞、韦东奕的 ICM 2022 综述，整理无黏阻尼、增强耗散、lift-up 与有限通道 Couette 流稳定性的推导，重点解释 Rayleigh 预解式、壁面条件及零模分解。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="高雷诺数下的流体稳定性：从剪切混合到 Couette 流转捩阈值">
+<meta property="og:title" content="高 Reynolds 数下的流体稳定性：从剪切混合到 Couette 流转捩阈值">
 <meta property="og:url" content="https://mathzeta2.github.io/2026/11/17/hydrodynamic-stability-guide/index.html">
 <meta property="og:site_name" content="zeta2的博客">
-<meta property="og:description" content="对照魏东奕、张志飞的 ICM 2022 综述，整理无黏阻尼、增强耗散、lift-up 与有限通道 Couette 流稳定性的推导，重点解释 Rayleigh 预解式、壁面条件及零模分解。">
+<meta property="og:description" content="对照章志飞、韦东奕的 ICM 2022 综述，整理无黏阻尼、增强耗散、lift-up 与有限通道 Couette 流稳定性的推导，重点解释 Rayleigh 预解式、壁面条件及零模分解。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-11-17T11:30:00.000Z">
-<meta property="article:modified_time" content="2026-11-17T11:31:08.184Z">
+<meta property="article:modified_time" content="2026-11-17T11:35:28.302Z">
 <meta property="article:author" content="zeta2">
 <meta property="article:tag" content="学习笔记">
 <meta property="article:tag" content="偏微分方程">
@@ -153,7 +153,7 @@
           
         </picture>
         
-          <img  fetchpriority="high" src="/images/banner.webp" alt="高雷诺数下的流体稳定性：从剪切混合到 Couette 流转捩阈值">
+          <img  fetchpriority="high" src="/images/banner.webp" alt="高 Reynolds 数下的流体稳定性：从剪切混合到 Couette 流转捩阈值">
         
       
     
@@ -164,7 +164,7 @@
         
         
           <span id="logo">
-            <h1 data-aos="slide-up">高雷诺数下的流体稳定性：从剪切混合到 Couette 流转捩阈值</h1>
+            <h1 data-aos="slide-up">高 Reynolds 数下的流体稳定性：从剪切混合到 Couette 流转捩阈值</h1>
           </span>
         
       
@@ -376,8 +376,8 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
       
-        <p>高雷诺数意味着黏性很小，但“小黏性”并不简单等于“扰动必然增长”。剪切可以把扰动拉出越来越细的空间尺度，使速度衰减、让扩散更有效；与此同时，三维流动中的 lift-up 又可能放大流向扰动。理解稳定性，需要把这些相互竞争的机制放在一起。</p>
-<p><strong>整理：zeta2 · 2026 年 11 月 17 日。</strong> 本文以我的 LaTeX 阅读笔记为基础，对照魏东奕、张志飞的综述 <a target="_blank" rel="noopener" href="https://ems.press/books/standalone/277/5540">Hydrodynamic stability at high Reynolds number</a> 整理，保留主要计算，并补充符号核对、边界条件与拟线性论证的说明。</p>
+        <p>高 Reynolds 数意味着黏性很小，但“小黏性”并不简单等于“扰动必然增长”。剪切可以把扰动拉出越来越细的空间尺度，使速度衰减、让扩散更有效；与此同时，三维流动中的 lift-up 又可能放大流向扰动。理解稳定性，需要把这些相互竞争的机制放在一起。</p>
+<p><strong>整理：zeta2 · 2026 年 11 月 17 日。</strong> 本文以我的 LaTeX 阅读笔记为基础，对照章志飞、韦东奕的综述 <a target="_blank" rel="noopener" href="https://ems.press/books/standalone/277/5540">Hydrodynamic stability at high Reynolds number</a> 整理，保留主要计算，并补充符号核对、边界条件与拟线性论证的说明。</p>
 <blockquote>
 <p><strong>阅读范围</strong>：这是一篇论文解读，不是完整证明或最新研究进展综述。“定理 2.1”“模型（4.6）”等编号指原论文；其中的猜想与开放问题按原文写作背景理解。文末附整理版 PDF 和原论文 PDF。</p>
 </blockquote>
@@ -1265,7 +1265,7 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
 </table>
 <h2 id="pdf-附件"><a class="markdownIt-Anchor" href="#pdf-附件"></a> PDF 附件</h2>
 <ul>
-<li><a href="/downloads/hydrodynamic-stability/hydrodynamic-stability-notes.pdf">下载整理版《高雷诺数流体稳定性阅读笔记》PDF</a>：保留完整推导、目录与公式编号，适合离线阅读。</li>
+<li><a href="/downloads/hydrodynamic-stability/hydrodynamic-stability-notes.pdf">下载整理版《高 Reynolds 数流体稳定性阅读笔记》PDF</a>：保留完整推导、目录与公式编号，适合离线阅读。</li>
 <li><a href="/downloads/hydrodynamic-stability/wei-zhang-icm2022.pdf">下载原论文 PDF</a>：Dongyi Wei、Zhifei Zhang，ICM 2022，Vol. 5，pp. 3902–3922；原文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> 许可，文件未作修改。</li>
 </ul>
 <p>也可以通过 <a target="_blank" rel="noopener" href="https://ems.press/books/standalone/277/5540">EMS Press 原文页面</a> 或 <a target="_blank" rel="noopener" href="https://doi.org/10.4171/ICM2022/31">DOI</a> 访问论文。欢迎在评论区指出公式、符号或推导中的问题。</p>
@@ -1574,13 +1574,13 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
       <script data-pjax>
         window.REIMU_POST = {
           author: "zeta2",
-          title: "高雷诺数下的流体稳定性：从剪切混合到 Couette 流转捩阈值",
+          title: "高 Reynolds 数下的流体稳定性：从剪切混合到 Couette 流转捩阈值",
           url: "https://mathzeta2.github.io/2026/11/17/hydrodynamic-stability-guide/",
-          excerpt: "高雷诺数意味着黏性很小，但“小黏性”并不简单等于“扰动必然增长”。剪切可以把扰动拉出越来越细的空间尺度，使速度衰减、让扩散更有效；与此同时，三维流动中的 lift-up 又可能放大流向扰动。理解稳定性，需要把这些相互竞争的机制放在一起。 整理：zeta2 · 2026 年 11 月 17 日。 本文以我的 LaTeX 阅读笔记为基础，对照魏东奕、张志飞的综述 Hydrodynamic stability at high Reynolds number 整理，保留主要计算，并补充符号核对、边界条件与拟线性论证的说明。 阅读范围：这是一篇论文解读，不是完整证明或最新研究进展综述。“定理 2.1”“模型（4.6）”等编号指原论文；其中的猜想与开放问题按原文写作背景理解。文末附整理版 PDF 和原论文 PDF。",
-          description: "对照魏东奕、张志飞的 ICM 2022 综述，整理无黏阻尼、增强耗散、lift-up 与有限通道 Couette 流稳定性的推导，重点解释 Rayleigh 预解式、壁面条件及零模分解。",
-          stripContent: "高雷诺数意味着黏性很小，但“小黏性”并不简单等于“扰动必然增长”。剪切可以把扰动拉出越来越细的空间尺度，使速度衰减、让扩散更有效；与此同时，三维流动中的 lift-up 又可能放大流向扰动。理解稳定性，需要把这些相互竞争的机制放在一起。 整理：zeta2 · 2026 年 11 月 17 日。 本文以我的 LaTeX 阅读笔记为基础，对照魏东奕、张志飞的综述 Hydrodynamic stability at high Reynolds number 整理，保留主要计算，并补充符号核对、边界条件",
+          excerpt: "高 Reynolds 数意味着黏性很小，但“小黏性”并不简单等于“扰动必然增长”。剪切可以把扰动拉出越来越细的空间尺度，使速度衰减、让扩散更有效；与此同时，三维流动中的 lift-up 又可能放大流向扰动。理解稳定性，需要把这些相互竞争的机制放在一起。 整理：zeta2 · 2026 年 11 月 17 日。 本文以我的 LaTeX 阅读笔记为基础，对照章志飞、韦东奕的综述 Hydrodynamic stability at high Reynolds number 整理，保留主要计算，并补充符号核对、边界条件与拟线性论证的说明。 阅读范围：这是一篇论文解读，不是完整证明或最新研究进展综述。“定理 2.1”“模型（4.6）”等编号指原论文；其中的猜想与开放问题按原文写作背景理解。文末附整理版 PDF 和原论文 PDF。",
+          description: "对照章志飞、韦东奕的 ICM 2022 综述，整理无黏阻尼、增强耗散、lift-up 与有限通道 Couette 流稳定性的推导，重点解释 Rayleigh 预解式、壁面条件及零模分解。",
+          stripContent: "高 Reynolds 数意味着黏性很小，但“小黏性”并不简单等于“扰动必然增长”。剪切可以把扰动拉出越来越细的空间尺度，使速度衰减、让扩散更有效；与此同时，三维流动中的 lift-up 又可能放大流向扰动。理解稳定性，需要把这些相互竞争的机制放在一起。 整理：zeta2 · 2026 年 11 月 17 日。 本文以我的 LaTeX 阅读笔记为基础，对照章志飞、韦东奕的综述 Hydrodynamic stability at high Reynolds number 整理，保留主要计算，并补充符",
           date: "Tue Nov 17 2026 19:30:00 GMT+0800",
-          updated: "Tue Nov 17 2026 19:31:08 GMT+0800",
+          updated: "Tue Nov 17 2026 19:35:28 GMT+0800",
           cover: "/images/banner.webp",
         };
       </script>
@@ -1871,7 +1871,7 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
 
 <script src="/js/elden-companion.js?v=4" defer></script>
 
-<script type="application/json" id="grace-catalog">[{"path":"/2026/11/17/hydrodynamic-stability-guide/","title":"高雷诺数下的流体稳定性：从剪切混合到 Couette 流转捩阈值"},{"path":"/2026/11/13/latex-beginner-guide/","title":"LaTeX 入门指南：写出第一份中文数学笔记"},{"path":"/2026/11/13/lean4-formalization-guide/","title":"Lean 4 形式化入门：从数学证明到可检查的代码"},{"path":"/2026/11/13/manim-beginner-guide/","title":"Manim 入门指南：从第一个动画到导数可视化"},{"path":"/2026/11/10/applied-functional-analysis-exercises/","title":"应用泛函分析习题集：从度量空间到基本定理"},{"path":"/2026/11/10/calculus-midterm-2025-2026-solutions/","title":"从极限到中值定理：2025—2026 高数 A（上）期中试题与详解"},{"path":"/2026/11/10/week-09-differentials-and-mean-value-theorems/","title":"微分与中值定理：第九周作业参考解答"}]</script>
+<script type="application/json" id="grace-catalog">[{"path":"/2026/11/17/hydrodynamic-stability-guide/","title":"高 Reynolds 数下的流体稳定性：从剪切混合到 Couette 流转捩阈值"},{"path":"/2026/11/13/latex-beginner-guide/","title":"LaTeX 入门指南：写出第一份中文数学笔记"},{"path":"/2026/11/13/lean4-formalization-guide/","title":"Lean 4 形式化入门：从数学证明到可检查的代码"},{"path":"/2026/11/13/manim-beginner-guide/","title":"Manim 入门指南：从第一个动画到导数可视化"},{"path":"/2026/11/10/applied-functional-analysis-exercises/","title":"应用泛函分析习题集：从度量空间到基本定理"},{"path":"/2026/11/10/calculus-midterm-2025-2026-solutions/","title":"从极限到中值定理：2025—2026 高数 A（上）期中试题与详解"},{"path":"/2026/11/10/week-09-differentials-and-mean-value-theorems/","title":"微分与中值定理：第九周作业参考解答"}]</script>
 <dialog id="grace-dialog" aria-labelledby="grace-dialog-title">
   <div class="grace-dialog-head">
     <div><p class="grace-eyebrow">月光指引 · 求知之旅</p><h2 id="grace-dialog-title">赐福收藏夹</h2></div>
