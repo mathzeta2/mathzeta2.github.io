@@ -24,6 +24,9 @@ body:has(.reimu-popup.show) #elden-companion {visibility:hidden}
 .ranni-actor {position:relative;perspective:700px;filter:drop-shadow(0 4px 12px #0d172840)}
 .ranni-depth {display:block;transform:rotateY(var(--ranni-look-x,0deg)) rotateX(var(--ranni-look-y,0deg));transition:transform .25s ease-out}
 .ranni-portrait {display:block;width:100%;height:auto;max-height:340px;object-fit:contain;pointer-events:none;animation:ranni-breathe 5.5s ease-in-out infinite;transform-origin:50% 95%}
+/* Keep the character interactive, but stop motion while it cannot be seen. */
+#elden-companion.is-motion-paused *,#elden-companion.is-collapsed *,body:has(.reimu-popup.show) #elden-companion * {animation-play-state:paused!important}
+#elden-companion.is-motion-paused .ranni-depth {transition:none}
 .ranni-aura {position:absolute;bottom:6%;left:8%;width:84%;height:12%;border:1px solid #a8daff;box-shadow:0 0 12px #83bfff,inset 0 0 10px #aadfff;border-radius:50%;opacity:0;pointer-events:none}
 .ranni-moon {position:absolute;left:25%;top:49%;font-size:40px;color:#ddf8ff;text-shadow:0 0 16px #80bfff;opacity:0;pointer-events:none}
 .ranni-casting .ranni-aura {animation:ranni-moonring 2.2s ease-out}

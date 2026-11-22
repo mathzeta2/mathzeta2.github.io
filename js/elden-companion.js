@@ -3,8 +3,42 @@
   if(!root || root.dataset.ready) return;
   root.dataset.ready='true';
   const actor=root.querySelector('.ranni-actor'), speech=root.querySelector('.ranni-speech'), stage=root.querySelector('.ranni-stage'), restore=root.querySelector('.ranni-restore'), depth=root.querySelector('.ranni-depth');
-  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
+  const finePointer=matchMedia('(hover: hover) and (pointer: fine)');
+  const searchPopup=document.querySelector('.reimu-popup');
   let speechTimer, motionTimer, drag=null, moved=false, phrase=0, frame=0;
+  let following=false, inViewport=true;
+  function visible(){return !document.hidden && !stage.hidden && inViewport && !searchPopup?.classList.contains('show');}
+  function canFollow(){return visible() && finePointer.matches && !motionPreference.matches;}
+  function stopFollowingFrame(){
+    if(frame)cancelAnimationFrame(frame);
+    frame=0;
+    depth.style.removeProperty('--ranni-look-x');
+    depth.style.removeProperty('--ranni-look-y');
+  }
+  function followPointer(event){
+    if(event.pointerType==='touch' || frame || drag || !canFollow())return;
+    const clientX=event.clientX,clientY=event.clientY;
+    frame=requestAnimationFrame(()=>{
+      frame=0;
+      if(drag || !canFollow())return;
+      const r=actor.getBoundingClientRect();
+      const x=Math.max(-3,Math.min(3,(clientX-r.left-r.width/2)/80));
+      const y=Math.max(-2,Math.min(2,(clientY-r.top-r.height/2)/100));
+      depth.style.setProperty('--ranni-look-x',`${x*.5}deg`);
+      depth.style.setProperty('--ranni-look-y',`${-y*.4}deg`);
+    });
+  }
+  function syncMotion(){
+    root.classList.toggle('is-motion-paused',!visible());
+    const enabled=canFollow();
+    if(enabled!==following){
+      if(enabled)document.addEventListener('pointermove',followPointer,{passive:true});
+      else document.removeEventListener('pointermove',followPointer);
+      following=enabled;
+    }
+    if(!enabled)stopFollowingFrame();
+  }
   const lines=['褪色者，今天也来寻找知识了吗？','愿月光照亮你的证明。','休息片刻，再继续这段求知旅途吧。'];
   // Create audio only inside a gesture; no autoplay or external audio requests.
   const soundButton=root.querySelector('[data-action="sound"]');
@@ -60,7 +94,7 @@
     try{localStorage.setItem('zeta-ranni-sound',soundEnabled?'enabled':'muted');}catch(_){}
     if(soundEnabled)playSound('wave');else stopSound();
   });
-  document.addEventListener('visibilitychange',()=>{if(document.hidden)stopSound();});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)stopSound();syncMotion();});
   window.addEventListener('pagehide',stopSound);
   updateSoundButton();
   function respond(kind,customText){
@@ -75,7 +109,7 @@
     speechTimer=setTimeout(()=>speech.hidden=true,5000);
   }
   document.addEventListener('zeta:reading-message',event=>{if(!stage.hidden && typeof event.detail?.text==='string')respond('magic',event.detail.text);});
-  function collapse(value){if(value)stopSound();stage.hidden=value;restore.hidden=!value;speech.hidden=true;root.classList.toggle('is-collapsed',value);root.style.left='';root.style.top='';root.style.right='';root.style.bottom='';try{localStorage.setItem('zeta-ranni-collapsed',String(value));}catch(_){} }
+  function collapse(value){if(value)stopSound();stage.hidden=value;restore.hidden=!value;speech.hidden=true;root.classList.toggle('is-collapsed',value);root.style.left='';root.style.top='';root.style.right='';root.style.bottom='';syncMotion();try{localStorage.setItem('zeta-ranni-collapsed',String(value));}catch(_){} }
   actor.addEventListener('click',()=>{if(moved){moved=false;return;}respond('wave');});
   root.querySelector('[data-action="wave"]').addEventListener('click',()=>respond('wave'));
   root.querySelector('[data-action="magic"]').addEventListener('click',()=>respond('magic'));
@@ -88,5 +122,13 @@
   actor.addEventListener('pointerup',()=>drag=null);
   actor.addEventListener('pointercancel',()=>{drag=null;moved=false;});
   window.addEventListener('resize',()=>{if(root.style.left){const r=root.getBoundingClientRect();place(r.left,r.top);}});
-  if(!reduced)document.addEventListener('pointermove',e=>{if(frame||drag||stage.hidden)return;frame=requestAnimationFrame(()=>{const r=actor.getBoundingClientRect();const x=Math.max(-3,Math.min(3,(e.clientX-r.left-r.width/2)/80)),y=Math.max(-2,Math.min(2,(e.clientY-r.top-r.height/2)/100));depth.style.setProperty('--ranni-look-x',`${x*.5}deg`);depth.style.setProperty('--ranni-look-y',`${-y*.4}deg`);frame=0;});},{passive:true});
+  motionPreference.addEventListener('change',syncMotion);
+  finePointer.addEventListener('change',syncMotion);
+  if(searchPopup)new MutationObserver(syncMotion).observe(searchPopup,{attributes:true,attributeFilter:['class','hidden']});
+  if('IntersectionObserver' in window)new IntersectionObserver(entries=>{
+    inViewport=entries[0].isIntersecting;
+    syncMotion();
+  }).observe(root);
+  window.addEventListener('pageshow',syncMotion);
+  syncMotion();
 })();
