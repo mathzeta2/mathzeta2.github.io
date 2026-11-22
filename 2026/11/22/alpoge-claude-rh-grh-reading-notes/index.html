@@ -37,7 +37,7 @@
 <meta property="og:description" content="结合两份解读文稿，梳理 Alpöge–Claude 的 RH 与 Dirichlet GRH 论证：平滑素数和、窗口化 Landau 判据、主不等式、theta 提升链及 Lean 核验，并标明讲义尚未展开的证明环节。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-11-22T14:30:00.000Z">
-<meta property="article:modified_time" content="2026-11-22T14:20:40.170Z">
+<meta property="article:modified_time" content="2026-11-22T14:33:29.931Z">
 <meta property="article:author" content="zeta2">
 <meta property="article:tag" content="学习笔记">
 <meta property="article:tag" content="Lean 4">
@@ -743,10 +743,15 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
 </ul>
 <p><a id="pdf-attachments"></a></p>
 <h2 id="pdf-附件"><a class="markdownIt-Anchor" href="#pdf-附件"></a> PDF 附件</h2>
+<p>点击“下载 PDF”可保存文件；若附件页面一直加载，请使用“备用直链”，或下载下方的 ZIP 压缩包后解压阅读。</p>
 <ul>
-<li><a href="/downloads/alpoge-claude-rh-grh/riemann-zeta-exposition.pdf">下载 ζ 函数情形的数学解读（164 页 PDF）</a>：2026 年 11 月 21 日工作稿，原文件完整保留。</li>
-<li><a href="/downloads/alpoge-claude-rh-grh/grh-reader-friendly-guide-en.pdf">下载 GRH Reader’s Guide（42 页英文 PDF）</a>：用于配合阅读整体结构，原文件完整保留。</li>
+<li><strong>ζ 函数情形的数学解读</strong>：164 页，约 1.6 MB，2026 年 11 月 21 日工作稿。<br><br />
+<a href="https://mathzeta2.github.io/downloads/alpoge-claude-rh-grh/riemann-zeta-exposition.pdf?v=20261122-2" download="riemann-zeta-exposition.pdf">下载 PDF</a> · <a href="https://mathzeta2.github.io/downloads/alpoge-claude-rh-grh/riemann-zeta-exposition.pdf?v=20261122-2" target="_blank" rel="noopener noreferrer">新窗口预览</a> · <a href="https://raw.githubusercontent.com/mathzeta2/mathzeta2.github.io/master/downloads/alpoge-claude-rh-grh/riemann-zeta-exposition.pdf" target="_blank" rel="noopener noreferrer">备用直链</a></li>
+<li><strong>GRH Reader’s Guide</strong>：42 页英文指南，约 363 KB，用于配合阅读整体结构。<br><br />
+<a href="https://mathzeta2.github.io/downloads/alpoge-claude-rh-grh/grh-reader-friendly-guide-en.pdf?v=20261122-2" download="grh-reader-friendly-guide-en.pdf">下载 PDF</a> · <a href="https://mathzeta2.github.io/downloads/alpoge-claude-rh-grh/grh-reader-friendly-guide-en.pdf?v=20261122-2" target="_blank" rel="noopener noreferrer">新窗口预览</a> · <a href="https://raw.githubusercontent.com/mathzeta2/mathzeta2.github.io/master/downloads/alpoge-claude-rh-grh/grh-reader-friendly-guide-en.pdf" target="_blank" rel="noopener noreferrer">备用直链</a></li>
 </ul>
+<p><a href="https://mathzeta2.github.io/downloads/alpoge-claude-rh-grh/rh-grh-reading-pdfs.zip?v=20261122-2" download="rh-grh-reading-pdfs.zip"><strong>打包下载两份 PDF（ZIP）</strong></a></p>
+<p>两份 PDF 均保留原文件。若使用微信等应用内置浏览器，可选择“在浏览器中打开”后保存。</p>
 <p>本文不替代两份讲义的完整陈述。若继续深入，建议同时对照文稿中的章节编号、输入条件和对应版本的 Lean 代码。</p>
 
       
@@ -849,7 +854,7 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
     
       <div>
         <span class="icon-brush"></span>
-        51.1k
+        51.2k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
         03:49
@@ -1059,7 +1064,7 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
           description: "结合两份解读文稿，梳理 Alpöge–Claude 的 RH 与 Dirichlet GRH 论证：平滑素数和、窗口化 Landau 判据、主不等式、theta 提升链及 Lean 核验，并标明讲义尚未展开的证明环节。",
           stripContent: "黎曼猜想通常被表述为一个关于复函数零点的位置问题，但它背后也有一个更直观的问题：素数偏离其平均分布的幅度，能否被控制在平方根尺度附近？ 这份笔记结合两份阅读材料，尝试沿着“零点 → 平滑素数和 → 整除性与大小 → 平方根误差”的路线理解 Alpöge–Claude 的论证，再说明 Lean 核验究竟检查了什么。 整理：zeta2 · 2026 年 11 月 22 日。 本文是一份中文阅读笔记，主要依据文末两份 PDF；其中的完整形式化证明归 Levent Alpöge 与 Claude 的工作",
           date: "Sun Nov 22 2026 22:30:00 GMT+0800",
-          updated: "Sun Nov 22 2026 22:20:40 GMT+0800",
+          updated: "Sun Nov 22 2026 22:33:29 GMT+0800",
           cover: "/images/banner.webp",
         };
       </script>
